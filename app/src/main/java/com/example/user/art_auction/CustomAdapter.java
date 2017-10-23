@@ -28,7 +28,7 @@ class CustomAdapter extends ArrayAdapter<String>{
         // get references.
         String singleFoodItem = getItem(position);
         TextView itemText = (TextView) customView.findViewById(R.id.item_text);
-        Button b1 = (Button)  customView.findViewById(R.id.button1);
+//        Button b1 = (Button)  customView.findViewById(R.id.ENTER);
         ImageView auctionImage = (ImageView) customView.findViewById(R.id.my_profile_image);
 
         // dynamically update the text from the array
