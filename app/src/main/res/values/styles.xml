@@ -1,11 +1,38 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/background_blue</item>
-        <item name="colorPrimaryDark">@color/primary_orange</item>
-        <item name="colorAccent">@color/primary_green</item>
+<!-- Base application theme. -->
+<style name="AuctionAppTheme" parent="android:Theme.Holo">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">@color/background_blue</item>
+    <item name="colorPrimaryDark">@color/primary_orange</item>
+    <item name="colorAccent">@color/primary_green</item>
+</style>
+
+    <style name="AuctionAppTheme.BasicButton">
+        <item name="android:layout_width">@dimen/btn_width</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:background">@color/primary_green</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">16dp</item>
+
     </style>
 
+    <style name="AuctionAppTheme.BasicTextView">
+        <item name="android:layout_width">@dimen/btn_width</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <!--<item name="android:background">@color/primary_green</item>-->
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textSize">16dp</item>
+        <!--<item name="textStyle">bold</item>-->
+    </style>
+
+    <style name="AuctionAppTheme.HPImage">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
 </resources>

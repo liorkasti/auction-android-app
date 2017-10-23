@@ -1,26 +1,35 @@
+// 17.8.17 14:24
 package com.example.user.art_auction;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.widget.Button;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "Messeges";
 
-    Button bt1,bt2,bt3;
+    Button bt1, bt2, bt3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.i(TAG, "onCreate");
+
 
         bt1 = (Button) findViewById(R.id.guest_btn);
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, GuestActivity.class);
+                Intent myIntent = new Intent(MainActivity.this, HomeActivity.class);
                 startActivity(myIntent);
             }
         });
@@ -28,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, SignInActivity.class);
+                Intent myIntent = new Intent(MainActivity.this, SignUpActivity.class);
                 startActivity(myIntent);
             }
         });
@@ -40,5 +49,105 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i(TAG, "onResume");
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i(TAG, "onPause");
+    }
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i(TAG, "onStop");
+    }
+
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i(TAG, "onRestart");
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i(TAG, "onDestroy");
+    }
+
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.i(TAG, "onSaveInstanceState");
+    }
+
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        Log.i(TAG, "onRestoreInstanceState");
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        RelativeLayout main_view = (RelativeLayout) findViewById(R.id.main_view);
+
+        switch (item.getItemId()) {
+            case R.id.menu_level1: {
+                if (item.isChecked())
+                    item.setChecked(false);
+                else
+                    item.setChecked(true);
+
+                Intent myIntent = new Intent(MainActivity.this, HomeActivity.class);
+                startActivity(myIntent);
+                return true;
+            }
+
+            case R.id.menu_level2: {
+                if (item.isChecked())
+                    item.setChecked(false);
+                else
+                    item.setChecked(true);
+
+                Intent myIntent = new Intent(MainActivity.this, AuctionItem.class);
+                startActivity(myIntent);
+                return true;
+            }
+
+            case R.id.menu_level3: {
+                if (item.isChecked())
+                    item.setChecked(false);
+                else
+                    item.setChecked(true);
+
+                Intent myIntent = new Intent(MainActivity.this, MyAccount.class);
+                startActivity(myIntent);
+                return true;
+            }
+
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
