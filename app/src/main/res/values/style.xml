@@ -1,5 +1,4 @@
 <resources>
-
     <!-- Base application theme. -->
     <style name="AuctionAppTheme" parent="android:Theme.Holo">
         <!-- Customize your theme here. -->
