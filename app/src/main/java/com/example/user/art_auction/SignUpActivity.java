@@ -6,14 +6,51 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class SignUpActivity extends AppCompatActivity {
+
+
+    EditText userName;
+    EditText password;
+    TextView dataView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up_activity);
+
+        userName = (EditText) findViewById(R.id.userNameInput);
+        password = (EditText) findViewById(R.id.passwordInput);
+        dataView = (TextView) findViewById(R.id.dataTextView);
+
     }
+
+    // Lesson 64
+    //Save login info
+    public void saveData(View view) {
+        SharedPreferences loginData = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = loginData.edit();
+        editor.putString("userName", userName.getText().toString());
+        editor.putString("password", password.getText().toString());
+        editor.apply();
+
+        Toast.makeText(this, "Saved", Toast.LENGTH_LONG).show();
+    }
+
+    public void getData(View view) {
+        SharedPreferences loginData = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        String name = loginData.getString("userName", "");
+        String pw = loginData.getString("password", "");
+        String msg = "Saved User Name: " + name + "\nSaved Password: " + pw;
+        dataView.setText(msg);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

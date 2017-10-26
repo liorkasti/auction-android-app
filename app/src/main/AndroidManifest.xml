@@ -28,7 +28,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity> <!-- Include the AdActivity configChanges and theme. -->
-        <activity android:name=".AuctionItem"></activity>
+        <activity android:name=".ItemActivity"></activity>
+        <activity android:name=".SignUpActivity"></activity>
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
