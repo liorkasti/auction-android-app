@@ -30,12 +30,13 @@
         </activity> <!-- Include the AdActivity configChanges and theme. -->
         <activity android:name=".ItemActivity"></activity>
         <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".MyAccountActivity"></activity>
+        <activity android:name=".ItemActivity"></activity>
+        <activity android:name=".HomeActivity"></activity>
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@android:style/Theme.Translucent" />
-        <activity android:name=".HomeActivity"></activity>
-
     </application>
 
 </manifest>

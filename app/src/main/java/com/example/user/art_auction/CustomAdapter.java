@@ -27,14 +27,14 @@ class CustomAdapter extends ArrayAdapter<String>{
         LayoutInflater myCustomInflater = LayoutInflater.from(getContext());
         View customView = myCustomInflater.inflate(R.layout.custom_row, parent, false);
         // get references.
-        String singleFoodItem = getItem(position);
+        String singleAuctionItem = getItem(position);
         TextView itemText = (TextView) customView.findViewById(R.id.item_text);
         Button b1 = (Button)  customView.findViewById(R.id.enter_btn);
         Button b2 = (Button)  customView.findViewById(R.id.sign_up_btn);
         ImageView auctionImage = (ImageView) customView.findViewById(R.id.my_profile_image);
 
         // dynamically update the text from the array
-        itemText.setText(singleFoodItem);
+        itemText.setText(singleAuctionItem);
         // using the same image every time
         auctionImage.setImageResource(R.drawable.art10);
         // Now we can finally return our custom View or custom item

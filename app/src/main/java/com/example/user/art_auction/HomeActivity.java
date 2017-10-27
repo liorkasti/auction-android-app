@@ -100,16 +100,16 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(myIntent);
                 return true;
             }
-            case R.id.menu_level5: {
-                if (item.isChecked())
-                    item.setChecked(false);
-                else
-                    item.setChecked(true);
-
-                Intent myIntent = new Intent(HomeActivity.this, ItemActivity.class);
-                startActivity(myIntent);
-                return true;
-            }
+//            case R.id.menu_level5: {
+//                if (item.isChecked())
+//                    item.setChecked(false);
+//                else
+//                    item.setChecked(true);
+//
+//                Intent myIntent = new Intent(HomeActivity.this, ItemActivity.class);
+//                startActivity(myIntent);
+//                return true;
+//            }
 //            case R.id.menu_level6: {
 //                if (item.isChecked())
 //                    item.setChecked(false);

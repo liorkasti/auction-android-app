@@ -24,22 +24,20 @@ public class ItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.item_activity);
 
-        String[] auctions = {"Dvir - Auction1", "Lior - Auction2", "Anton - Auction3", "Auction4", "Auction5", "Auction6"};
-        // Replace the Array adapter with your custom adapter.
-        // ListAdapter theListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, foods);
-        ListAdapter auctionsListAdapter = new CustomAdapter(this, auctions);// Pass the food arrary to the constructor.
-        ListView auctionscustomListView = (ListView) findViewById(R.id.custom_ListView);
-        auctionscustomListView.setAdapter(auctionsListAdapter);
-
-        auctionscustomListView.setOnItemClickListener(
-                new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        String auctions = String.valueOf(parent.getItemAtPosition(position));
-                        Toast.makeText(ItemActivity.this, auctions, Toast.LENGTH_LONG).show();
-                    }
-                }
-        );
+//        String[] itemPics = {"pic1", "pic2", "pic3", "pic4", "pic5", "pic6"};
+//        ListAdapter itemListAdapter = new ItemAdapter(this, itemPics);// Pass the food arrary to the constructor.
+//        ListView itemListView = (ListView) findViewById(R.id.item_ListView);
+//        itemListAdapter.setAdapter(itemListView);
+//
+//        ListView.setOnItemClickListener(
+//                new AdapterView.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                        String itemPics = String.valueOf(parent.getItemAtPosition(position));
+//                        Toast.makeText(ItemActivity.this, itemPics, Toast.LENGTH_LONG).show();
+//                    }
+//                }
+//        );
 
     }
 
