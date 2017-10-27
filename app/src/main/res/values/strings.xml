@@ -7,8 +7,10 @@
     <string name="welcome_auction">Welcome to the auction arena</string>
 
     <string name="guest_string">Guest</string>
+    <string name="main_string">Main</string>
     <string name="sign_in_string">Sign In</string>
     <string name="sign_up_string">Sign Up</string>
+    <string name="account_string">My Account</string>
 
     <string name="tvInstructions">Select a color from the overflow menu, to change the screen background color.</string>
 

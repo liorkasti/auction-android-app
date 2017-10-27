@@ -70,7 +70,7 @@ public class SignUpActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(SignUpActivity.this, HomeActivity.class);
+                Intent myIntent = new Intent(SignUpActivity.this, MainActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -81,7 +81,7 @@ public class SignUpActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(SignUpActivity.this, AuctionItem.class);
+                Intent myIntent = new Intent(SignUpActivity.this, HomeActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -92,10 +92,40 @@ public class SignUpActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(SignUpActivity.this, MyAccount.class);
+                Intent myIntent = new Intent(SignUpActivity.this, SignUpActivity.class);
                 startActivity(myIntent);
                 return true;
             }
+            case R.id.menu_level4: {
+                if (item.isChecked())
+                    item.setChecked(false);
+                else
+                    item.setChecked(true);
+
+                Intent myIntent = new Intent(SignUpActivity.this, MyAccountActivity.class);
+                startActivity(myIntent);
+                return true;
+            }
+            case R.id.menu_level5: {
+                if (item.isChecked())
+                    item.setChecked(false);
+                else
+                    item.setChecked(true);
+
+                Intent myIntent = new Intent(SignUpActivity.this, ItemActivity.class);
+                startActivity(myIntent);
+                return true;
+            }
+//            case R.id.menu_level6: {
+//                if (item.isChecked())
+//                    item.setChecked(false);
+//                else
+//                    item.setChecked(true);
+//
+//                Intent myIntent = new Intent(SignUpActivity.this, Exit.class);
+//                startActivity(myIntent);
+//                return true;
+//            }
 
 
             default:

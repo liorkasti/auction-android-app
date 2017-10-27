@@ -6,13 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.RelativeLayout;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-public class HomeActivity extends AppCompatActivity {
+public class ItemActivity extends AppCompatActivity {
 
     @Override
     public boolean onMenuOpened(int featureId, Menu menu) {
@@ -22,25 +22,22 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_activity);
+        setContentView(R.layout.item_activity);
 
         String[] auctions = {"Dvir - Auction1", "Lior - Auction2", "Anton - Auction3", "Auction4", "Auction5", "Auction6"};
         // Replace the Array adapter with your custom adapter.
         // ListAdapter theListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, foods);
-        ListAdapter customListAdapter = new CustomAdapter(this, auctions);// Pass the food arrary to the constructor.
-        ListView customListView = (ListView) findViewById(R.id.custom_ListView);
-        customListView.setAdapter(customListAdapter);
+        ListAdapter auctionsListAdapter = new CustomAdapter(this, auctions);// Pass the food arrary to the constructor.
+        ListView auctionscustomListView = (ListView) findViewById(R.id.custom_ListView);
+        auctionscustomListView.setAdapter(auctionsListAdapter);
 
-        customListView.setOnItemClickListener(
+        auctionscustomListView.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         String auctions = String.valueOf(parent.getItemAtPosition(position));
-                        Toast.makeText(HomeActivity.this, auctions, Toast.LENGTH_LONG).show();
-
-
+                        Toast.makeText(ItemActivity.this, auctions, Toast.LENGTH_LONG).show();
                     }
-
                 }
         );
 
@@ -64,7 +61,7 @@ public class HomeActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(HomeActivity.this, MainActivity.class);
+                Intent myIntent = new Intent(ItemActivity.this, MainActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -75,7 +72,7 @@ public class HomeActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(HomeActivity.this, HomeActivity.class);
+                Intent myIntent = new Intent(ItemActivity.this, HomeActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -86,7 +83,7 @@ public class HomeActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(HomeActivity.this, SignUpActivity.class);
+                Intent myIntent = new Intent(ItemActivity.this, SignUpActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -96,7 +93,7 @@ public class HomeActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(HomeActivity.this, MyAccountActivity.class);
+                Intent myIntent = new Intent(ItemActivity.this, MyAccountActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -106,7 +103,7 @@ public class HomeActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(HomeActivity.this, ItemActivity.class);
+                Intent myIntent = new Intent(ItemActivity.this, ItemActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -116,7 +113,7 @@ public class HomeActivity extends AppCompatActivity {
 //                else
 //                    item.setChecked(true);
 //
-//                Intent myIntent = new Intent(HomeActivity.this, Exit.class);
+//                Intent myIntent = new Intent(ItemActivity.this, Exit.class);
 //                startActivity(myIntent);
 //                return true;
 //            }

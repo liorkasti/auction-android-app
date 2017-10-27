@@ -20,39 +20,12 @@ public class AuctionItem extends AppCompatActivity {
 
     }
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.item_activity);
-
-        //itemName = (EditText) findViewById(R.id.name);
-        //itemDescription = (EditText) findViewById(R.id.description);
-        //itemBid = (TextView) findViewById(R.id.promtBid);
-
     }
 
-
-    //Save login info
-    //public void saveData(View view) {
-//        SharedPreferences loginData = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
-//        SharedPreferences.Editor editor = loginData.edit();
-//        editor.putString("userName", userName.getText().toString());
-//        editor.putString("password", password.getText().toString());
-//        editor.apply();
-
-//        Toast.makeText(this, "Saved", Toast.LENGTH_LONG).show();
-    //}
-
-  /*  public void getData(View view) {
-        SharedPreferences loginData = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
-        String name = loginData.getString("userName", "");
-        String pw = loginData.getString("password", "");
-        String msg = "Saved User Name: " + name + "\nSaved Password: " + pw;
-        dataView.setText(msg);
-    }
-*/
     public AuctionItem(long id, String name, String description, int minimumPrice) {
         this.id = id;
         this.name = name;

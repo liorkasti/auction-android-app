@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(MainActivity.this, HomeActivity.class);
+                Intent myIntent = new Intent(MainActivity.this, MainActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(MainActivity.this, AuctionItem.class);
+                Intent myIntent = new Intent(MainActivity.this, HomeActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -140,10 +140,40 @@ public class MainActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(MainActivity.this, MyAccount.class);
+                Intent myIntent = new Intent(MainActivity.this, SignUpActivity.class);
                 startActivity(myIntent);
                 return true;
             }
+            case R.id.menu_level4: {
+                if (item.isChecked())
+                    item.setChecked(false);
+                else
+                    item.setChecked(true);
+
+                Intent myIntent = new Intent(MainActivity.this, MyAccountActivity.class);
+                startActivity(myIntent);
+                return true;
+            }
+            case R.id.menu_level5: {
+                if (item.isChecked())
+                    item.setChecked(false);
+                else
+                    item.setChecked(true);
+
+                Intent myIntent = new Intent(MainActivity.this, ItemActivity.class);
+                startActivity(myIntent);
+                return true;
+            }
+//            case R.id.menu_level6: {
+//                if (item.isChecked())
+//                    item.setChecked(false);
+//                else
+//                    item.setChecked(true);
+//
+//                Intent myIntent = new Intent(HomeActivity.this, Exit.class);
+//                startActivity(myIntent);
+//                return true;
+//            }
 
 
             default:

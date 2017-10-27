@@ -11,17 +11,17 @@ import android.widget.RelativeLayout;
  * Created by user on 24/10/2017.
  */
 
-class MyAccount extends AppCompatActivity {
-
-    @Override
-    public boolean onMenuOpened(int featureId, Menu menu) {
-        return super.onMenuOpened(featureId, menu);
-    }
+class MyAccountActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_account_activity);
+    }
+
+    @Override
+    public boolean onMenuOpened(int featureId, Menu menu) {
+        return super.onMenuOpened(featureId, menu);
     }
 
     @Override
@@ -42,7 +42,7 @@ class MyAccount extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(MyAccount.this, HomeActivity.class);
+                Intent myIntent = new Intent(MyAccountActivity.this, MainActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -53,7 +53,7 @@ class MyAccount extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(MyAccount.this, AuctionItem.class);
+                Intent myIntent = new Intent(MyAccountActivity.this, HomeActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -64,10 +64,40 @@ class MyAccount extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(MyAccount.this, MyAccount.class);
+                Intent myIntent = new Intent(MyAccountActivity.this, SignUpActivity.class);
                 startActivity(myIntent);
                 return true;
             }
+            case R.id.menu_level4: {
+                if (item.isChecked())
+                    item.setChecked(false);
+                else
+                    item.setChecked(true);
+
+                Intent myIntent = new Intent(MyAccountActivity.this, MyAccountActivity.class);
+                startActivity(myIntent);
+                return true;
+            }
+            case R.id.menu_level5: {
+                if (item.isChecked())
+                    item.setChecked(false);
+                else
+                    item.setChecked(true);
+
+                Intent myIntent = new Intent(MyAccountActivity.this, ItemActivity.class);
+                startActivity(myIntent);
+                return true;
+            }
+//            case R.id.menu_level6: {
+//                if (item.isChecked())
+//                    item.setChecked(false);
+//                else
+//                    item.setChecked(true);
+//
+//                Intent myIntent = new Intent(MyAccountActivity.this, Exit.class);
+//                startActivity(myIntent);
+//                return true;
+//            }
 
 
             default:
