@@ -5,12 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 public class ItemActivity extends AppCompatActivity {
 
@@ -91,7 +86,7 @@ public class ItemActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(ItemActivity.this, MyAccountActivity.class);
+                Intent myIntent = new Intent(ItemActivity.this, MyUserActivity.class);
                 startActivity(myIntent);
                 return true;
             }

@@ -102,7 +102,7 @@ public class LogInActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(LogInActivity.this, MyAccountActivity.class);
+                Intent myIntent = new Intent(LogInActivity.this, MyUserActivity.class);
                 startActivity(myIntent);
                 return true;
             }

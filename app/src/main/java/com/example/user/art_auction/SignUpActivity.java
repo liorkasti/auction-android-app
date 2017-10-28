@@ -102,7 +102,7 @@ public class SignUpActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(SignUpActivity.this, MyAccountActivity.class);
+                Intent myIntent = new Intent(SignUpActivity.this, MyUserActivity.class);
                 startActivity(myIntent);
                 return true;
             }

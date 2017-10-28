@@ -1,9 +1,7 @@
 // 17.8.17 14:24
 package com.example.user.art_auction;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -165,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(MainActivity.this, MyAccountActivity.class);
+                Intent myIntent = new Intent(MainActivity.this, MyUserActivity.class);
                 startActivity(myIntent);
                 return true;
             }

@@ -31,8 +31,8 @@
         <activity android:name=".ItemActivity"></activity>
         <activity android:name=".SignUpActivity"></activity>
         <activity android:name=".LogInActivity"></activity>
-        <activity android:name=".MyAccountActivity"></activity>
         <activity android:name=".ItemActivity"></activity>
+        <activity android:name=".MyUserActivity"></activity>
         <activity android:name=".HomeActivity"></activity>
         <activity
             android:name="com.google.android.gms.ads.AdActivity"

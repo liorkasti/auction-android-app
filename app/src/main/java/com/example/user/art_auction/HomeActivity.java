@@ -94,7 +94,7 @@ public class HomeActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(HomeActivity.this, MyAccountActivity.class);
+                Intent myIntent = new Intent(HomeActivity.this, MyUserActivity.class);
                 startActivity(myIntent);
                 return true;
             }

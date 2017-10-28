@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
  * Created by user on 24/10/2017.
  */
 
-class MyAccountActivity extends AppCompatActivity {
+class MyUserActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,7 @@ class MyAccountActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(MyAccountActivity.this, MainActivity.class);
+                Intent myIntent = new Intent(MyUserActivity.this, MainActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -53,7 +53,7 @@ class MyAccountActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(MyAccountActivity.this, HomeActivity.class);
+                Intent myIntent = new Intent(MyUserActivity.this, HomeActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -64,7 +64,7 @@ class MyAccountActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(MyAccountActivity.this, SignUpActivity.class);
+                Intent myIntent = new Intent(MyUserActivity.this, SignUpActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -74,7 +74,7 @@ class MyAccountActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(MyAccountActivity.this, MyAccountActivity.class);
+                Intent myIntent = new Intent(MyUserActivity.this, MyUserActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -84,7 +84,7 @@ class MyAccountActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(MyAccountActivity.this, ItemActivity.class);
+                Intent myIntent = new Intent(MyUserActivity.this, ItemActivity.class);
                 startActivity(myIntent);
                 return true;
             }
