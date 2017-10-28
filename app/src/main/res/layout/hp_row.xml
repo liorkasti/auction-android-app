@@ -42,7 +42,7 @@
         </LinearLayout>
 
         <ImageButton
-            android:id="@+id/my_profile_image"
+            android:id="@+id/hp_main_image"
             style="@style/AuctionAppTheme.HPImage"
             android:layout_width="wrap_content"
             android:layout_height="160dp"

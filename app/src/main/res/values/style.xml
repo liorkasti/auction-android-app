@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Base application theme. -->
-    <style name="AuctionAppTheme" parent="android:Theme.Holo">
+    <style name="AuctionAppTheme" parent="AppTheme">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/background_blue</item>
         <item name="colorPrimaryDark">@color/primary_orange</item>
@@ -34,4 +35,12 @@
         <item name="android:layout_height">80dp</item>
         <item name="android:layout_margin">5dp</item>
     </style>
+
+
+    <style name="AuctionAppTheme.ItemImage">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
 </resources>
+

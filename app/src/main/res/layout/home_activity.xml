@@ -8,10 +8,10 @@
     android:background="@color/background_blue"
     tools:context="com.example.user.art_auction.HomeActivity">
 
-    <ListView
+        <ListView
 
-        android:id="@+id/custom_ListView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+            android:id="@+id/hp_ListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></ListView>
 
 </RelativeLayout>

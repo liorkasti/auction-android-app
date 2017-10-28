@@ -1,7 +1,9 @@
 // 17.8.17 14:24
 package com.example.user.art_auction;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,12 +11,15 @@ import android.widget.Button;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "Messeges";
 
+    EditText userName;
     Button bt1, bt2, bt3;
 
     @Override
@@ -24,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.i(TAG, "onCreate");
 
+//        userName = (EditText) findViewById(R.id.userName);
+//        dataView = (TextView) findViewById(R.id.userName);
+//        editor.putString("userName", LogInActivity.userName.getText().toString());
+//        String msg = "Hello: " + name;
 
         bt1 = (Button) findViewById(R.id.guest_btn);
         bt1.setOnClickListener(new View.OnClickListener() {
@@ -37,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, SignUpActivity.class);
+                Intent myIntent = new Intent(MainActivity.this, LogInActivity.class);
                 startActivity(myIntent);
             }
         });
@@ -49,6 +58,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
+    }
+
+    public void getData(View view) {
+//        SharedPreferences loginData = LogInActivity.getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+//        String name = loginData.getString("userName", "");
+//        dataView.setText(msg);
     }
 
     @Override

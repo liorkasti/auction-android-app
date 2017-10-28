@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_blue"
@@ -23,7 +24,7 @@
         <!--android:layout_weight="1"-->
         <!--android:inputType="textMultiLine"-->
         <!--android:text="Large Text" />-->
-        <TextView
+        <EditText
             android:id="@+id/item_description"
             android:layout_width="match_parent"
             android:layout_height="90dp"
@@ -31,8 +32,8 @@
             android:layout_row="1"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="textMultiLine"
-            android:text="item description item description item description item description item description item description item description item description " />
+            android:hint="text descriptio text descriptio text descriptio text descriptio text descriptio text descriptio text descriptio text descriptio text descriptio "
+            android:inputType="textMultiLine" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,13 +44,17 @@
 
             <TextView
                 android:id="@+id/item_text"
+
+                style="@style/AuctionAppTheme.BasicTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="0"
                 android:layout_margin="5dp"
                 android:layout_row="0"
+
                 android:layout_weight="1"
-                android:text="Iten Name"
+                android:text="Item Name"
+
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextClock
@@ -60,8 +65,8 @@
                 android:layout_margin="5dp"
 
                 android:layout_weight="1"
-                android:text="28/10/2017"
-                android:textAlignment="textEnd" />
+                android:textAlignment="textEnd"
+                tools:text="28.10.2017" />
 
         </LinearLayout>
 
@@ -70,21 +75,56 @@
             android:layout_width="match_parent"
             android:layout_height="66dp"
             android:layout_column="0"
+            android:layout_margin="5dp"
             android:layout_row="4"
-            android:orientation="horizontal"
-            android:layout_column="0"
-            android:layout_row="40"
-            android:padding="5dp">
+            android:orientation="horizontal">
+
+
+            <ImageButton
+                android:id="@+id/imageButton5"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/art11" />
+
+            <ImageButton
+                android:id="@+id/imageButton4"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+
+                app:srcCompat="@drawable/art11" />
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+
+                app:srcCompat="@drawable/art11" />
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+
+                app:srcCompat="@drawable/art11" />
 
         </LinearLayout>
 
         <ImageButton
             android:id="@+id/my_item_image"
+            style="@style/AuctionAppTheme.HPImage"
             android:layout_width="wrap_content"
-            android:layout_height="230dp"
-            android:layout_margin="5dp"
+            android:layout_height="236dp"
             android:layout_column="0"
             android:layout_row="50"
+            android:layout_rowSpan="2"
             android:layout_weight="1"
             android:src="@drawable/art11" />
 
@@ -96,15 +136,16 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/bid_btn"
+                android:id="@+id/enter_btn"
                 style="@style/AuctionAppTheme.BasicButton"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="0"
                 android:layout_margin="5dp"
                 android:layout_row="0"
                 android:layout_weight="1"
-                android:text="BID"
+                android:text="ENTER"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <Button

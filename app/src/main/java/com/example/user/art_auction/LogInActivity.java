@@ -1,48 +1,56 @@
 package com.example.user.art_auction;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.RelativeLayout;
-import android.widget.AdapterView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class HomeActivity extends AppCompatActivity {
+public class LogInActivity extends AppCompatActivity {
 
-    @Override
-    public boolean onMenuOpened(int featureId, Menu menu) {
-        return super.onMenuOpened(featureId, menu);
-    }
+
+    EditText userName;
+    EditText password;
+    TextView dataView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_activity);
+        setContentView(R.layout.sign_in_activity);
 
-        String[] auctions = {"Dvir - Auction1", "Lior - Auction2", "Anton - Auction3", "Auction4", "Auction5", "Auction6"};
-        // Replace the Array adapter with your custom adapter.
-        // ListAdapter theListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, auctions);
-        ListAdapter customListAdapter = new CustomAdapter(this, auctions);// Pass the auction arrary to the constructor.
-        ListView customListView = (ListView) findViewById(R.id.hp_ListView);
-        customListView.setAdapter(customListAdapter);
-
-        customListView.setOnItemClickListener(
-                new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        String auctions = String.valueOf(parent.getItemAtPosition(position));
-                        Toast.makeText(HomeActivity.this, auctions, Toast.LENGTH_LONG).show();
-
-                    }
-                }
-        );
+        userName = (EditText) findViewById(R.id.userNameInput);
+        password = (EditText) findViewById(R.id.passwordInput);
+        dataView = (TextView) findViewById(R.id.dataTextView);
 
     }
+
+    // Lesson 64
+    //Save login info
+    public void saveData(View view) {
+        SharedPreferences loginData = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = loginData.edit();
+        editor.putString("userName", userName.getText().toString());
+        editor.putString("password", password.getText().toString());
+        editor.apply();
+
+        Toast.makeText(this, "Saved", Toast.LENGTH_LONG).show();
+    }
+
+    public void getData(View view) {
+        SharedPreferences loginData = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        String name = loginData.getString("userName", "");
+        String pw = loginData.getString("password", "");
+        String msg = "Saved User Name: " + name + "\nSaved Password: " + pw;
+        dataView.setText(msg);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -62,7 +70,7 @@ public class HomeActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(HomeActivity.this, MainActivity.class);
+                Intent myIntent = new Intent(LogInActivity.this, MainActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -73,7 +81,7 @@ public class HomeActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(HomeActivity.this, HomeActivity.class);
+                Intent myIntent = new Intent(LogInActivity.this, HomeActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -84,7 +92,7 @@ public class HomeActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(HomeActivity.this, SignUpActivity.class);
+                Intent myIntent = new Intent(LogInActivity.this, SignUpActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -94,27 +102,27 @@ public class HomeActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(HomeActivity.this, MyAccountActivity.class);
+                Intent myIntent = new Intent(LogInActivity.this, MyAccountActivity.class);
                 startActivity(myIntent);
                 return true;
             }
-//            case R.id.menu_level5: {
-//                if (item.isChecked())
-//                    item.setChecked(false);
-//                else
-//                    item.setChecked(true);
-//
-//                Intent myIntent = new Intent(HomeActivity.this, ItemActivity.class);
-//                startActivity(myIntent);
-//                return true;
-//            }
+            case R.id.menu_level5: {
+                if (item.isChecked())
+                    item.setChecked(false);
+                else
+                    item.setChecked(true);
+
+                Intent myIntent = new Intent(LogInActivity.this, ItemActivity.class);
+                startActivity(myIntent);
+                return true;
+            }
 //            case R.id.menu_level6: {
 //                if (item.isChecked())
 //                    item.setChecked(false);
 //                else
 //                    item.setChecked(true);
 //
-//                Intent myIntent = new Intent(HomeActivity.this, Exit.class);
+//                Intent myIntent = new Intent(SignInActivity.this, Exit.class);
 //                startActivity(myIntent);
 //                return true;
 //            }
