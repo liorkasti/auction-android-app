@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_blue"
-    tools:context="com.example.user.art_auction.SignUpActivity">
+    tools:context="com.example.user.art_auction.LogInActivity">
 
 
     <TextView
@@ -24,8 +24,8 @@
         android:id="@+id/userNameInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/etCommands"
-        android:layout_alignStart="@+id/etCommands"
+        android:layout_alignLeft="@+id/passwordInput"
+        android:layout_alignStart="@+id/passwordInput"
         android:layout_below="@+id/textView2"
         android:layout_marginTop="16dp"
         android:width="300dp"
@@ -33,7 +33,7 @@
          />
 
     <EditText
-        android:id="@+id/etCommands"
+        android:id="@+id/passwordInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/userNameInput"
@@ -52,7 +52,7 @@
         android:layout_centerHorizontal="true"
 
         android:layout_centerVertical="true"
-        android:onClick="saveData"
+        android:onClick="doLogin"
         android:text="Login" />
 
     <TextView

@@ -33,7 +33,7 @@ public class LogInActivity extends AppCompatActivity {
 
     // Lesson 64
     //Save login info
-    public void saveData(View view) {
+    public void doLogin(View view) {
         SharedPreferences loginData = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = loginData.edit();
         editor.putString("userName", userName.getText().toString());

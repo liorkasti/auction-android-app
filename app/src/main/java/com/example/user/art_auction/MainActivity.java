@@ -12,6 +12,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 
+import com.android.volley.toolbox.RequestFuture;
+
+import org.json.JSONArray;
+
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "Messeges";
@@ -21,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        final ServerRestConsumer rest = new ServerRestConsumer(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.i(TAG, "onCreate");
@@ -55,6 +64,25 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
+        Button bt4 = (Button) findViewById(R.id.test_rest);
+        bt4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Future<JSONArray> a  =rest.getAuctionsList();
+                try {
+                    JSONArray arr = a.get(2, TimeUnit.SECONDS);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (TimeoutException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+
     }
 
     public void getData(View view) {
@@ -80,7 +108,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        Log.i(TAG, "onStop");
+        Log.i(TAG
+                , "onStop");
     }
 
 

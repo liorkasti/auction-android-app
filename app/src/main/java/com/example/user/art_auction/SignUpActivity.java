@@ -1,10 +1,12 @@
 package com.example.user.art_auction;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.RelativeLayout;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -13,18 +15,35 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
+
 public class SignUpActivity extends AppCompatActivity {
 
 
     EditText userName;
     EditText password;
     TextView dataView;
+    RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up_activity);
-
+        requestQueue = Volley.newRequestQueue(this);
+        requestQueue.start();
         userName = (EditText) findViewById(R.id.userNameInput);
         password = (EditText) findViewById(R.id.passwordInput);
         dataView = (TextView) findViewById(R.id.dataTextView);
@@ -33,16 +52,52 @@ public class SignUpActivity extends AppCompatActivity {
 
     // Lesson 64
     //Save login info
-    public void saveData(View view) {
+    public void saveData(final View view) {
         SharedPreferences loginData = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = loginData.edit();
         editor.putString("userName", userName.getText().toString());
         editor.putString("password", password.getText().toString());
         editor.apply();
 
-        Toast.makeText(this, "Saved", Toast.LENGTH_LONG).show();
-    }
+        String url = "http://10.0.2.2:8080/user/add";
 
+        StringRequest request = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Toast.makeText(view.getContext(), "ok " + response, Toast.LENGTH_LONG);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                String body = "";
+                try {
+                    body = new String(error.networkResponse.data,"UTF-8");
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+                Toast.makeText(view.getContext(), "Error" + body, Toast.LENGTH_LONG).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> params2 = new HashMap<String, String>();
+                params2.put("fName", "Anton");
+                params2.put("lName", "Lerner");
+                params2.put("email", userName.getText().toString());
+                params2.put("password", password.getText().toString());
+                return params2;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Content-Type","application/x-www-form-urlencoded");
+                return headers;
+            }
+        };
+        requestQueue.add(request);
+    }
     public void getData(View view) {
         SharedPreferences loginData = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
         String name = loginData.getString("userName", "");
@@ -131,5 +186,8 @@ public class SignUpActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void signUp(View view) {
     }
 }

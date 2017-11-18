@@ -71,6 +71,16 @@
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:text="@string/sign_up_string"
         android:onClick="sign_up_click"/>
+
+    <Button
+        style="@style/AuctionAppTheme.BasicButton"
+        android:id="@+id/test_rest"
+        android:layout_width="@dimen/btn_width"
+        android:layout_below="@+id/sign_up_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="@string/test_rest" />
     />
 
 
