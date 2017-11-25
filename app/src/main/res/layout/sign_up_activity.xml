@@ -56,7 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="saveData"
-        android:text="Save Info"
+        android:text="Sign up"
         android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/textView2"
         android:layout_alignStart="@+id/textView2" />

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_blue"
+    tools:context="com.example.user.art_auction.AddAuctionActivity">
+
+    <EditText
+        android:id="@+id/auctionName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Auction Name"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+    <EditText
+        android:id="@+id/auctionDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Auction Description"
+        tools:layout_below="@id/auctionName" />
+
+    <TextView
+        android:id="@+id/startText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose start data and time"
+        android:layout_below="@id/auctionDesc"/>
+
+    <Button
+        android:id="@+id/dateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addAuction"
+        android:text="Date"
+        android:layout_centerVertical="true"
+        android:layout_below="@id/startText"
+        android:layout_alignLeft="@+id/startText"
+        android:layout_alignStart="@+id/startText" />
+
+    <Button
+        android:id="@+id/timeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addAuction"
+        android:text="Time"
+        android:layout_centerVertical="true"
+        android:layout_below="@id/startText"
+        android:layout_alignRight="@+id/auctionDesc"
+        android:layout_alignEnd="@+id/auctionDesc" />
+
+    <TextView
+        android:id="@+id/endTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose end date and time"
+        android:layout_below="@id/timeButton"/>
+
+    <Button
+        android:id="@+id/date2Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addAuction"
+        android:text="Date"
+        android:layout_centerVertical="true"
+        android:layout_below="@id/endTimeText"
+        android:layout_alignLeft="@+id/endTimeText"
+        android:layout_alignStart="@+id/endTimeText" />
+
+    <Button
+        android:id="@+id/time2Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addAuction"
+        android:text="Time"
+        android:layout_centerVertical="true"
+        android:layout_below="@id/endTimeText"
+        android:layout_alignRight="@+id/auctionDesc"
+        android:layout_alignEnd="@+id/auctionDesc" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addAuction"
+        android:text="Add Auction"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/auctionDesc"
+        android:layout_alignStart="@+id/auctionDesc" />
+
+</RelativeLayout>
