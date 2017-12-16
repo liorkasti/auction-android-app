@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;
 
-public class AuctionItem extends AppCompatActivity {
+public class Item extends AppCompatActivity {
     private long id;
     private String name;
     private String description;
@@ -16,7 +16,7 @@ public class AuctionItem extends AppCompatActivity {
 
     //list of bidders?
 
-    public AuctionItem() {
+    public Item() {
 
     }
 
@@ -26,7 +26,7 @@ public class AuctionItem extends AppCompatActivity {
         setContentView(R.layout.item_activity);
     }
 
-    public AuctionItem(long id, String name, String description, int minimumPrice) {
+    public Item(long id, String name, String description, int minimumPrice) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -85,7 +85,7 @@ public class AuctionItem extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(AuctionItem.this, HomeActivity.class);
+                Intent myIntent = new Intent(Item.this, HomeActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -96,7 +96,7 @@ public class AuctionItem extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(AuctionItem.this, AuctionItem.class);
+                Intent myIntent = new Intent(Item.this, Item.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -107,7 +107,7 @@ public class AuctionItem extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(AuctionItem.this, SignUpActivity.class);
+                Intent myIntent = new Intent(Item.this, SignUpActivity.class);
                 startActivity(myIntent);
                 return true;
             }

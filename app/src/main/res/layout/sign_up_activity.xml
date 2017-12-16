@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_blue"
-    tools:context="com.example.user.art_auction.SignUpActivity">
+    tools:context="com.example.user.art_auction.AddUserActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -53,6 +53,7 @@
 
     <Button
         android:id="@+id/saveButton"
+        style="@style/AuctionAppTheme.BasicButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="saveData"
@@ -63,6 +64,7 @@
 
     <Button
         android:id="@+id/displayButton"
+        style="@style/AuctionAppTheme.BasicButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="getData"

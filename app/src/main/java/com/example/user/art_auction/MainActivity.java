@@ -12,8 +12,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 
-import com.android.volley.toolbox.RequestFuture;
-
 import org.json.JSONArray;
 
 import java.util.concurrent.ExecutionException;
@@ -69,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Future<JSONArray> a  =rest.getAuctionsList();
+                Future<JSONArray> a = rest.getAuctionsList();
                 try {
                     JSONArray arr = a.get(2, TimeUnit.SECONDS);
                 } catch (InterruptedException e) {
@@ -181,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(MainActivity.this, SignUpActivity.class);
+                Intent myIntent = new Intent(MainActivity.this, AddUserActivityActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -201,24 +199,24 @@ public class MainActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
+                Intent myIntent = new Intent(MainActivity.this, AuctionActivityActivity.class);
+                startActivity(myIntent);
+                return true;
+            }
+            case R.id.menu_level6: {
+                if (item.isChecked())
+                    item.setChecked(false);
+                else
+                    item.setChecked(true);
+
                 Intent myIntent = new Intent(MainActivity.this, ItemActivity.class);
                 startActivity(myIntent);
                 return true;
             }
-//            case R.id.menu_level6: {
-//                if (item.isChecked())
-//                    item.setChecked(false);
-//                else
-//                    item.setChecked(true);
-//
-//                Intent myIntent = new Intent(HomeActivity.this, Exit.class);
-//                startActivity(myIntent);
-//                return true;
-//            }
 
 
-            default:
-                return super.onOptionsItemSelected(item);
+                default:
+                    return super.onOptionsItemSelected(item);
+            }
         }
     }
-}

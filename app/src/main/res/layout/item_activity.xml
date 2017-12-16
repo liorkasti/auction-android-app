@@ -15,8 +15,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true">
 
-        <TextView
-            android:id="@+id/item_description"
+        <EditText
+            android:id="@+id/itemDesc"
             android:layout_width="match_parent"
             android:layout_height="90dp"
             android:layout_column="0"
@@ -24,7 +24,8 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textMultiLine"
-            android:text="item description item description item description item description item description item description item description item description " />
+            android:text="item description item description item description item description item description item description item description item description "
+            android:textSize="14dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,8 +34,8 @@
             android:layout_row="10"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/item_text"
+            <EditText
+                android:id="@+id/itemName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="0"
@@ -42,6 +43,18 @@
                 android:layout_row="0"
                 android:layout_weight="1"
                 android:text="Iten Name"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <EditText
+                android:id="@+id/itemPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_margin="5dp"
+                android:layout_row="0"
+                android:layout_weight="1"
+                android:inputType="number"
+                android:text="Item Price"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextClock
@@ -125,25 +138,51 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/bid_btn"
+                android:id="@+id/saveButton"
+                android:layout_margin="5dp"
                 style="@style/AuctionAppTheme.BasicButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="0"
-                android:layout_margin="5dp"
                 android:layout_row="0"
                 android:layout_weight="1"
                 android:text="BID"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <Button
-                android:id="@+id/sign_up_btn"
+                android:id="@+id/dateButton"
+                android:layout_margin="5dp"
                 style="@style/AuctionAppTheme.BasicButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/startText"
+                android:layout_alignStart="@+id/startText"
+                android:layout_below="@id/startText"
+                android:layout_centerVertical="true"
+                android:onClick="addAuction"
+                android:text="Date" />
+
+            <Button
+                android:id="@+id/timeButton"
                 android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:text="SIGN IN" />
+                style="@style/AuctionAppTheme.BasicButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/auctionDesc"
+                android:layout_alignRight="@+id/auctionDesc"
+                android:layout_below="@id/startText"
+                android:layout_centerVertical="true"
+                android:onClick="addAuction"
+                android:text="Time" />
+
+            <!--<Button-->
+                <!--android:id="@+id/sign_up_btn"-->
+                <!--style="@style/AuctionAppTheme.BasicButton"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="5dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:text="SIGN IN" />-->
 
         </LinearLayout>
 

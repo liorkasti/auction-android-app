@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_blue"
-    tools:context="com.example.user.art_auction.ItemActivity">
+    tools:context="com.example.user.art_auction.AuctionActivity">
 
 
     <GridLayout
@@ -25,7 +25,7 @@
         <!--android:inputType="textMultiLine"-->
         <!--android:text="Large Text" />-->
         <EditText
-            android:id="@+id/item_description"
+            android:id="@+id/auctionDesc"
             android:layout_width="match_parent"
             android:layout_height="90dp"
             android:layout_column="0"
@@ -42,8 +42,8 @@
             android:layout_row="0"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/item_text"
+            <EditText
+                android:id="@+id/itemName"
 
                 style="@style/AuctionAppTheme.BasicTextView"
                 android:layout_width="wrap_content"
@@ -53,7 +53,7 @@
                 android:layout_row="0"
 
                 android:layout_weight="1"
-                android:text="Item Name"
+                android:text="Auction Name"
 
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -84,7 +84,7 @@
                 android:id="@+id/imageButton5"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_margin="3dp"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/art11" />
 
@@ -92,7 +92,7 @@
                 android:id="@+id/imageButton4"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_margin="3dp"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
 
                 app:srcCompat="@drawable/art11" />
@@ -101,32 +101,122 @@
                 android:id="@+id/imageButton3"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_margin="3dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+
+                app:srcCompat="@drawable/art11" />
+
+        </LinearLayout>// first itens row
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:layout_column="0"
+            android:layout_margin="5dp"
+            android:layout_row="5"
+            android:orientation="horizontal">
+
+
+            <ImageButton
+                android:id="@+id/imageButton5"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/art11" />
+
+            <ImageButton
+                android:id="@+id/imageButton4"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
 
                 app:srcCompat="@drawable/art11" />
 
             <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/imageButton3"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_margin="3dp"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
 
                 app:srcCompat="@drawable/art11" />
 
-        </LinearLayout>
-
-        <ImageButton
-            android:id="@+id/my_item_image"
-            style="@style/AuctionAppTheme.HPImage"
-            android:layout_width="wrap_content"
-            android:layout_height="236dp"
+        </LinearLayout>// second itens row
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
             android:layout_column="0"
-            android:layout_row="50"
-            android:layout_rowSpan="2"
-            android:layout_weight="1"
-            android:src="@drawable/art11" />
+            android:layout_margin="5dp"
+            android:layout_row="6"
+            android:orientation="horizontal">
+
+
+            <ImageButton
+                android:id="@+id/imageButton5"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/art11" />
+
+            <ImageButton
+                android:id="@+id/imageButton4"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+
+                app:srcCompat="@drawable/art11" />
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+
+                app:srcCompat="@drawable/art11" />
+
+        </LinearLayout>// third itens row
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:layout_column="0"
+            android:layout_margin="5dp"
+            android:layout_row="7"
+            android:orientation="horizontal">
+
+
+            <ImageButton
+                android:id="@+id/imageButton5"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/art11" />
+
+            <ImageButton
+                android:id="@+id/imageButton4"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+
+                app:srcCompat="@drawable/art11" />
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+
+                app:srcCompat="@drawable/art11" />
+
+        </LinearLayout>// fourth itens row
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -135,18 +225,44 @@
             android:layout_row="60"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/enter_btn"
-                style="@style/AuctionAppTheme.BasicButton"
+            <!--<Button-->
+                <!--android:id="@+id/enter_btn"-->
+                <!--style="@style/AuctionAppTheme.BasicButton"-->
+                <!--android:layout_margin="5dp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_column="0"-->
 
+                <!--android:layout_row="0"-->
+                <!--android:layout_weight="1"-->
+                <!--android:text="ENTER"-->
+                <!--android:textAppearance="?android:attr/textAppearanceLarge" />-->
+
+            <Button
+                android:id="@+id/dateButton"
+                style="@style/AuctionAppTheme.BasicButton"
+                android:layout_margin="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_column="0"
+                android:onClick="addAuction"
+                android:text="Date"
+                android:layout_centerVertical="true"
+                android:layout_below="@id/startText"
+                android:layout_alignLeft="@+id/startText"
+                android:layout_alignStart="@+id/startText" />
+
+            <Button
+                android:id="@+id/timeButton"
+                style="@style/AuctionAppTheme.BasicButton"
                 android:layout_margin="5dp"
-                android:layout_row="0"
-                android:layout_weight="1"
-                android:text="ENTER"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="addAuction"
+                android:text="Time"
+                android:layout_centerVertical="true"
+                android:layout_below="@id/startText"
+                android:layout_alignRight="@+id/auctionDesc"
+                android:layout_alignEnd="@+id/auctionDesc" />
 
             <Button
                 android:id="@+id/sign_up_btn"
