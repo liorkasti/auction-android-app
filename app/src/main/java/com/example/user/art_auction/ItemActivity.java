@@ -63,9 +63,9 @@ public class ItemActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> params2 = new HashMap<String, String>();
-                params2.get("title", itemName.getText().toString());
-                params2.get("description", itemDesc.getText().toString());
-                params2.get("price", itemPrice.getText().toString());
+//                params2.get("title", itemName.getText().toString());
+//                params2.get("description", itemDesc.getText().toString());
+//                params2.get("price", itemPrice.getText().toString());
                 //params2.put("password", password.getText().toString());
                 return params2;
             }

@@ -105,7 +105,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        android:text="press to save your auction"
+        android:text="press to save your auction"></TextView>
 
 </RelativeLayout>
 

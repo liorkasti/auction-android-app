@@ -30,9 +30,9 @@
         </activity> <!-- Include the AdActivity configChanges and theme. -->
         <activity android:name=".ItemActivity" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".AddUserActivity" />
+        <!--<activity android:name=".AddUserActivity" />-->
         <activity android:name=".ItemActivity" />
-        <activity android:name=".MyUserActivity" />
+        <!--<activity android:name=".MyUserActivity" />-->
         <activity android:name=".HomeActivity" />
         <activity
             android:name="com.google.android.gms.ads.AdActivity"

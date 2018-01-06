@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(MainActivity.this, AddUserActivityActivity.class);
+                Intent myIntent = new Intent(MainActivity.this, AddUserActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -199,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(MainActivity.this, AuctionActivityActivity.class);
+                Intent myIntent = new Intent(MainActivity.this, ItemActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -209,8 +209,19 @@ public class MainActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(MainActivity.this, ItemActivity.class);
+                Intent myIntent = new Intent(MainActivity.this, AuctionActivity.class);
                 startActivity(myIntent);
+                return true;
+            }
+
+            case R.id.menu_level8: {
+                if (item.isChecked())
+                    item.setChecked(false);
+                else
+                    item.setChecked(true);
+
+//                Intent myIntent = new Intent(MainActivity.this, ItemActivity.class);
+//                startActivity(myIntent);
                 return true;
             }
 
