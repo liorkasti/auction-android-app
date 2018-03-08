@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, LogInActivity.class);
+                Intent myIntent = new Intent(MainActivity.this, AddAuctionActivity.class);
                 startActivity(myIntent);
             }
         });
