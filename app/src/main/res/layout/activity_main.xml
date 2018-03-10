@@ -83,5 +83,16 @@
         android:text="@string/test_rest" />
     />
 
+    <Button
+        style="@style/AuctionAppTheme.BasicButton"
+        android:id="@+id/addItem"
+        android:layout_width="@dimen/btn_width"
+        android:layout_below="@+id/sign_up_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="@string/add_item" />
+    />
+
 
 </RelativeLayout>

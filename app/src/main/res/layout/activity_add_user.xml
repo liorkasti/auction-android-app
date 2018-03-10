@@ -11,34 +11,34 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="47dp"
-        android:text="User Name"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_marginLeft="17dp"
-        android:layout_marginStart="17dp" />
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="47dp"
+        android:text="User Name"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Password"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_above="@+id/saveButton"
         android:layout_alignLeft="@+id/textView"
         android:layout_alignStart="@+id/textView"
-        android:layout_marginBottom="62dp" />
+        android:layout_marginBottom="62dp"
+        android:text="Password"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
         android:id="@+id/passwordInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:width="200dp"
         android:layout_alignBottom="@+id/textView2"
         android:layout_alignLeft="@+id/userNameInput"
-        android:layout_alignStart="@+id/userNameInput" />
+        android:layout_alignStart="@+id/userNameInput"
+        android:width="200dp" />
 
     <EditText
         android:id="@+id/userNameInput"
@@ -54,22 +54,22 @@
         style="@style/AuctionAppTheme.BasicButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="saveData"
-        android:text="Sign up"
-        android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2" />
+        android:layout_alignStart="@+id/textView2"
+        android:layout_centerVertical="true"
+        android:onClick="saveData"
+        android:text="Sign up" />
 
     <Button
         android:id="@+id/displayButton"
         style="@style/AuctionAppTheme.BasicButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="getData"
-        android:text="Display Info"
         android:layout_above="@+id/dataTextView"
+        android:layout_alignEnd="@+id/passwordInput"
         android:layout_alignRight="@+id/passwordInput"
-        android:layout_alignEnd="@+id/passwordInput" />
+        android:onClick="getData"
+        android:text="Display Info" />
 
     <TextView
         android:id="@+id/dataTextView"

@@ -38,5 +38,6 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
     <string name="prompt_search">Search Auction</string>
     <string name="home">Home</string>
+    <string name="add_item">add item</string>
 
 </resources>

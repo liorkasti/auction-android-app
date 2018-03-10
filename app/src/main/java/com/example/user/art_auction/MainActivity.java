@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "Messeges";
 
     EditText userName;
-    Button bt1, bt2, bt3;
+    Button bt1, bt2, bt3,bt_add_item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +79,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
+        bt_add_item = (Button) findViewById(R.id.addItem);
+        bt_add_item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(MainActivity.this, AddAuctionItemActivity.class);
+                startActivity(myIntent);
+            }
+        });
 
     }
 

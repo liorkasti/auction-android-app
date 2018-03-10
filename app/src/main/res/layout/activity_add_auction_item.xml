@@ -7,52 +7,62 @@
         android:background="@color/background_blue"
         tools:context=".AddAuctionItemActivity">
 
-    <EditText
-        android:id="@+id/itemName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Item Name1"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
-    <EditText
-        android:id="@+id/itemDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Item Description"
-        tools:layout_below="@id/itemName" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/itemPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:text="Item Price"
-        tools:layout_below="@id/itemDesc" />
+        <EditText
+            android:id="@+id/itemPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:text="Item Price"
+            tools:layout_below="@id/itemDesc" />
 
-    <Button
-        android:id="@+id/uploadImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="uploadImage"
-        android:text="Upload Image"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/itemDesc"
-        android:layout_below="@+id/itemPrice" />
+        <EditText
+            android:id="@+id/itemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:text="Item Name"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="16dp" />
 
-    <Button
-        android:id="@+id/saveButton"
-        style="@style/AuctionAppTheme.BasicButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="addItem"
-        android:text="Add Item"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/itemDesc"
-        android:layout_alignStart="@+id/itemDesc" />
+        <Button
+            android:id="@+id/uploadImage"
+            style="@style/AuctionAppTheme.BasicButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/itemDesc"
+            android:layout_below="@+id/itemPrice"
+            android:layout_centerVertical="true"
+            android:onClick="uploadImage"
+            android:padding="10dp"
+            android:text="Upload Image >" />
+
+        <EditText
+            android:id="@+id/itemDesc"
+            android:layout_width="match_parent"
+            android:layout_height="138dp"
+            android:ems="10"
+            android:gravity="top"
+            android:inputType="text"
+            android:text="Item Description"
+            tools:layout_below="@id/itemName" />
+
+        <Button
+            android:id="@+id/saveButton"
+            style="@style/AuctionAppTheme.BasicButton"
+            android:layout_width="wrap_content"
+            android:layout_alignLeft="@+id/itemDesc"
+            android:layout_alignStart="@+id/itemDesc"
+            android:layout_centerVertical="true"
+            android:onClick="addItem"
+            android:text="Add Item" />
+    </LinearLayout>
 
 </RelativeLayout>
