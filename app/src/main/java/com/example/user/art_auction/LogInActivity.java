@@ -3,7 +3,6 @@ package com.example.user.art_auction;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;
@@ -34,7 +33,7 @@ public class LogInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sign_in_activity);
+        setContentView(R.layout.activity_log_in);
 
         userName = (EditText) findViewById(R.id.userNameInput);
         password = (EditText) findViewById(R.id.passwordInput);

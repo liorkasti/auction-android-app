@@ -81,7 +81,6 @@ public class AddAuctionItemActivity extends AppCompatActivity {
                 params2.put("title", itemName.getText().toString());
                 params2.put("description", itemDesc.getText().toString());
                 params2.put("price", itemPrice.getText().toString());
-                //params2.put("password", password.getText().toString());
                 return params2;
             }
 

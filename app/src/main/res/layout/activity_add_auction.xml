@@ -31,10 +31,21 @@
         android:layout_height="wrap_content"
         android:text="Choose start data and time"
         android:layout_below="@id/auctionDesc"/>
-
+    <Button
+        android:id="@+id/dateButton"
+        style="@style/AuctionAppTheme.BasicButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addAuction"
+        android:text="Date"
+        android:layout_centerVertical="true"
+        android:layout_below="@id/startText"
+        android:layout_alignLeft="@+id/startText"
+        android:layout_alignStart="@+id/startText" />
 
     <Button
         android:id="@+id/timeButton"
+        style="@style/AuctionAppTheme.BasicButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="addAuctionStartDate"
@@ -51,9 +62,21 @@
         android:text="Choose end date and time"
         android:layout_below="@id/timeButton"/>
 
+    <Button
+        android:id="@+id/date2Button"
+        style="@style/AuctionAppTheme.BasicButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addAuction"
+        android:text="Date"
+        android:layout_centerVertical="true"
+        android:layout_below="@id/endTimeText"
+        android:layout_alignLeft="@+id/endTimeText"
+        android:layout_alignStart="@+id/endTimeText" />
 
     <Button
         android:id="@+id/time2Button"
+        style="@style/AuctionAppTheme.BasicButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="addAuction"
@@ -65,12 +88,23 @@
 
     <Button
         android:id="@+id/saveButton"
+        style="@style/AuctionAppTheme.BasicButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/saveText"
         android:onClick="addAuction"
-        android:text="Add Auction"
+        android:text="Add Auction" />
+
+    <TextView
+        android:id="@+id/saveText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/auctionDesc"
-        android:layout_alignStart="@+id/auctionDesc" />
+        android:text="press to save your auction"/>
 
 </RelativeLayout>
+

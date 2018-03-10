@@ -30,7 +30,7 @@
         </activity> <!-- Include the AdActivity configChanges and theme. -->
         <activity android:name=".ItemActivity" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".LogInActivity" />
+        <!--<activity android:name=".AddUserActivity" />-->
         <activity android:name=".ItemActivity" />
         <activity android:name=".AuctionActivity" />
         <activity android:name=".HomeActivity" />

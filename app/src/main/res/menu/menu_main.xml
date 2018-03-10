@@ -44,6 +44,12 @@
         <item
             android:id="@+id/menu_level6"
             android:orderInCategory="6"
+            android:title="Action"
+            app:showAsAction="never" />
+
+        <item
+            android:id="@+id/menu_level8"
+            android:orderInCategory="8"
             android:title="Exit"
             app:showAsAction="never" />
     </group>
