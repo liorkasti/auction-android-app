@@ -1,9 +1,17 @@
 package com.example.user.art_auction;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -13,10 +21,15 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class AddAuctionActivity extends AppCompatActivity {
+
+    Date _startDate;
+    Date _endDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,5 +83,31 @@ public class AddAuctionActivity extends AppCompatActivity {
         RequestQueueSingleton.getInstance(AddAuctionActivity.this).addToRequestQue(request);
 
         Toast.makeText(this, "Saved", Toast.LENGTH_LONG).show();
+    }
+
+    public void addAuctionStartDate(View view) {
+        setDate(view.getId());
+    }
+
+    private void setDate(final int id){
+        LayoutInflater inflater = AddAuctionActivity.this.getLayoutInflater();
+        AlertDialog.Builder bl = new AlertDialog.Builder(AddAuctionActivity.this);
+        bl.setView(inflater.inflate(R.layout.datetime_layout, null))
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Calendar c = Calendar.getInstance();
+                        TimePicker tp = (TimePicker)((Dialog)dialog).findViewById(R.id.timePicker1);
+                        DatePicker dp = (DatePicker)((Dialog)dialog).findViewById(R.id.datePicker1);
+                        c.set(Calendar.DAY_OF_MONTH, dp.getDayOfMonth());
+                        c.set(Calendar.MONTH, dp.getMonth());
+                        c.set(Calendar.YEAR, dp.getYear());
+                        c.set(Calendar.HOUR_OF_DAY, tp.getCurrentHour());
+                        c.set(Calendar.MINUTE, tp.getCurrentMinute());
+                        TextView tv = (TextView)AddAuctionActivity.this.findViewById(id);
+                        tv.setText(c.getTime().toString());
+                    }
+                });
+        bl.create().show();
     }
 }

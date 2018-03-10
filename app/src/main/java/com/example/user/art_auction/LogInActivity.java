@@ -70,7 +70,8 @@ public class LogInActivity extends AppCompatActivity {
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
-                Toast.makeText(view.getContext(), "Error" + body, Toast.LENGTH_LONG).show();
+                Toast.makeText(view.getContext(), "Error" + body + "\nUsing MOCK", Toast.LENGTH_LONG).show();
+                UserSessionSingleton.getInstance(LogInActivity.this).loginUser("10000");
             }
         }) {
             @Override

@@ -1,12 +1,14 @@
 package com.example.user.art_auction;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by user on 13/10/2017.
  */
 
-class Auction {
+@SuppressWarnings("serial")
+class Auction implements Serializable{
 
         private long id;
         private String title;

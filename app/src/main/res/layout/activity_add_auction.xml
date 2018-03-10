@@ -32,23 +32,13 @@
         android:text="Choose start data and time"
         android:layout_below="@id/auctionDesc"/>
 
-    <Button
-        android:id="@+id/dateButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="addAuction"
-        android:text="Date"
-        android:layout_centerVertical="true"
-        android:layout_below="@id/startText"
-        android:layout_alignLeft="@+id/startText"
-        android:layout_alignStart="@+id/startText" />
 
     <Button
         android:id="@+id/timeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="addAuction"
-        android:text="Time"
+        android:onClick="addAuctionStartDate"
+        android:text="Choose date time"
         android:layout_centerVertical="true"
         android:layout_below="@id/startText"
         android:layout_alignRight="@+id/auctionDesc"
@@ -61,23 +51,13 @@
         android:text="Choose end date and time"
         android:layout_below="@id/timeButton"/>
 
-    <Button
-        android:id="@+id/date2Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="addAuction"
-        android:text="Date"
-        android:layout_centerVertical="true"
-        android:layout_below="@id/endTimeText"
-        android:layout_alignLeft="@+id/endTimeText"
-        android:layout_alignStart="@+id/endTimeText" />
 
     <Button
         android:id="@+id/time2Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="addAuction"
-        android:text="Time"
+        android:text="Choose date time"
         android:layout_centerVertical="true"
         android:layout_below="@id/endTimeText"
         android:layout_alignRight="@+id/auctionDesc"

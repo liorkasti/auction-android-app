@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <DatePicker
+        android:id="@+id/datePicker1"
+        android:datePickerMode="spinner"
+        android:spinnersShown="true"
+        android:calendarViewShown="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+    </DatePicker>
+
+    <TimePicker
+        android:id="@+id/timePicker1"
+        android:timePickerMode="spinner"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/datePicker1"
+        android:layout_height="wrap_content" >
+    </TimePicker>
+    <!--     <Button
+   android:id="@+id/cancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:layout_centerVertical="true"
+        android:layout_below="@id/timePicker1"
+        android:layout_alignLeft="@+id/timePicker1"
+        android:layout_alignStart="@+id/timePicker1" />
+
+    <Button
+        android:id="@+id/okButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:layout_centerVertical="true"
+        android:layout_below="@id/timePicker1"
+        android:layout_alignRight="@+id/timePicker1"
+        android:layout_alignEnd="@+id/timePicker1" />
+-->
+</RelativeLayout>

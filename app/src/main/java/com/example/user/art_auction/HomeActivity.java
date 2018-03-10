@@ -12,6 +12,9 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+
 public class HomeActivity extends AppCompatActivity {
 
     @Override
@@ -23,11 +26,10 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_activity);
+        ArrayList<Auction> auctions = new ArrayList<>();
+        auctions.add(new Auction(1, "First Auction", "lalala", Calendar.getInstance().getTime(), Calendar.getInstance().getTime()));
 
-        String[] auctions = {"Dvir - Auction1", "Lior - Auction2", "Anton - Auction3", "Auction4", "Auction5", "Auction6"};
-        // Replace the Array adapter with your custom adapter.
-        // ListAdapter theListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, auctions);
-        ListAdapter customListAdapter = new CustomAdapter(this, auctions);// Pass the auction arrary to the constructor.
+        ListAdapter customListAdapter = new AuctionCustomAdapter(this, auctions.toArray(new Auction[auctions.size()]));// Pass the auction arrary to the constructor.
         ListView customListView = (ListView) findViewById(R.id.hp_ListView);
         customListView.setAdapter(customListAdapter);
 
@@ -36,8 +38,7 @@ public class HomeActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         String auctions = String.valueOf(parent.getItemAtPosition(position));
-                        Toast.makeText(HomeActivity.this, auctions, Toast.LENGTH_LONG).show();
-
+                        Toast.makeText(HomeActivity.this, "Hi", Toast.LENGTH_LONG).show();
                     }
                 }
         );
@@ -98,30 +99,13 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(myIntent);
                 return true;
             }
-//            case R.id.menu_level5: {
-//                if (item.isChecked())
-//                    item.setChecked(false);
-//                else
-//                    item.setChecked(true);
-//
-//                Intent myIntent = new Intent(HomeActivity.this, ItemActivity.class);
-//                startActivity(myIntent);
-//                return true;
-//            }
-//            case R.id.menu_level6: {
-//                if (item.isChecked())
-//                    item.setChecked(false);
-//                else
-//                    item.setChecked(true);
-//
-//                Intent myIntent = new Intent(HomeActivity.this, Exit.class);
-//                startActivity(myIntent);
-//                return true;
-//            }
-
-
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void startMain(View view) {
+        Intent myIntent = new Intent(HomeActivity.this, MainActivity.class);
+        startActivity(myIntent);
     }
 }

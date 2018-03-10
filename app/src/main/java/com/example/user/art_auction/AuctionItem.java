@@ -7,24 +7,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;
 
-public class AuctionItem extends AppCompatActivity {
+import java.io.Serializable;
+
+
+public class AuctionItem implements Serializable {
     private long id;
     private String name;
     private String description;
     private int minimumPrice;
     private String promtBid;
-
-    //list of bidders?
-
-    public AuctionItem() {
-
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.item_activity);
-    }
 
     public AuctionItem(long id, String name, String description, int minimumPrice) {
         this.id = id;
@@ -65,56 +56,5 @@ public class AuctionItem extends AppCompatActivity {
 
     public void setMinimumPrice(int minimumPrice) {
         this.minimumPrice = minimumPrice;
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        RelativeLayout main_view = (RelativeLayout) findViewById(R.id.main_view);
-
-        switch (item.getItemId()) {
-            case R.id.menu_level1: {
-                if (item.isChecked())
-                    item.setChecked(false);
-                else
-                    item.setChecked(true);
-
-                Intent myIntent = new Intent(AuctionItem.this, HomeActivity.class);
-                startActivity(myIntent);
-                return true;
-            }
-
-            case R.id.menu_level2: {
-                if (item.isChecked())
-                    item.setChecked(false);
-                else
-                    item.setChecked(true);
-
-                Intent myIntent = new Intent(AuctionItem.this, AuctionItem.class);
-                startActivity(myIntent);
-                return true;
-            }
-
-            case R.id.menu_level3: {
-                if (item.isChecked())
-                    item.setChecked(false);
-                else
-                    item.setChecked(true);
-
-                Intent myIntent = new Intent(AuctionItem.this, SignUpActivity.class);
-                startActivity(myIntent);
-                return true;
-            }
-
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 }

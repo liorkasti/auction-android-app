@@ -32,6 +32,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@color/primary_green"
                 android:text="@string/action_sign_in"
+                android:onClick="startMain"
                 android:textStyle="bold" />
             <AutoCompleteTextView
                 android:id="@+id/search"

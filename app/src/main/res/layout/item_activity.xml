@@ -41,7 +41,7 @@
                 android:layout_margin="5dp"
                 android:layout_row="0"
                 android:layout_weight="1"
-                android:text="Iten Name"
+                android:text="Item Name"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextClock
@@ -57,60 +57,10 @@
 
         </LinearLayout>
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="66dp"
-            android:layout_column="0"
-            android:layout_margin="5dp"
-            android:layout_row="40"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/imageButton"
-                style="@style/AuctionAppTheme.ItemImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/art11" />
-
-            <ImageButton
-                android:id="@+id/imageButton9"
-                style="@style/AuctionAppTheme.ItemImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/art11" />
-
-            <ImageButton
-                android:id="@+id/imageButton8"
-                style="@style/AuctionAppTheme.ItemImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/art11" />
-
-            <ImageButton
-                android:id="@+id/imageButton7"
-                style="@style/AuctionAppTheme.ItemImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/art11" />
-
-            <ImageButton
-                android:id="@+id/imageButton6"
-                style="@style/AuctionAppTheme.ItemImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/art11" />
-        </LinearLayout>
-
         <ImageButton
             android:id="@+id/my_item_image"
             android:layout_width="wrap_content"
-            android:layout_height="240dp"
+            android:layout_height="200dp"
             android:layout_column="0"
             android:layout_margin="5dp"
             android:layout_row="50"
@@ -122,30 +72,25 @@
             android:layout_height="wrap_content"
             android:layout_column="0"
             android:layout_row="60"
-            android:orientation="horizontal">
-
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/bid_price"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Place your bid here: (min:)"
+                />
             <Button
                 android:id="@+id/bid_btn"
                 style="@style/AuctionAppTheme.BasicButton"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_column="0"
                 android:layout_margin="5dp"
                 android:layout_row="0"
                 android:layout_weight="1"
                 android:text="BID"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-
-            <Button
-                android:id="@+id/sign_up_btn"
-                style="@style/AuctionAppTheme.BasicButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:text="SIGN IN" />
-
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:onClick="makeBid"/>
         </LinearLayout>
-
     </GridLayout>
 </RelativeLayout>

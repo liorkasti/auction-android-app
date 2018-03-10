@@ -35,6 +35,16 @@
         tools:layout_below="@id/itemDesc" />
 
     <Button
+        android:id="@+id/uploadImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="uploadImage"
+        android:text="Upload Image"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/itemDesc"
+        android:layout_below="@+id/itemPrice" />
+
+    <Button
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
