@@ -38,61 +38,101 @@
         android:textSize="@dimen/size_main_title"
         android:textStyle="bold" />
 
-    <Button
-        style="@style/AuctionAppTheme.BasicButton"
-        android:id="@+id/guest_btn"
-        android:layout_width="@dimen/btn_width"
-        android:layout_above="@+id/sign_in_btn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:text="@string/guest_string"
-        android:onClick="guest_click"/>
-    />
-
-    <Button
-        style="@style/AuctionAppTheme.BasicButton"
-        android:id="@+id/sign_in_btn"
-        android:layout_width="@dimen/btn_width"
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/app_name"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:onClick="sign_in_click"
-        android:text="@string/sign_in_string" />
+        android:layout_column="0"
+        android:layout_marginTop="13dp"
+        android:layout_row="0"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:scrollbars="vertical">
+        <Button
+            android:id="@+id/guest_btn"
+
+            style="@style/AuctionAppTheme.BasicButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/sign_in_btn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="16dp"
+            android:onClick="guest_click"
+            android:text="@string/guest_string" />
+
+        <Button
+            android:id="@+id/addItem"
+            style="@style/AuctionAppTheme.BasicButton"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/sign_up_btn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:text="@string/add_item" />
+
+        <Button
+            android:id="@+id/addAuction"
+            style="@style/AuctionAppTheme.BasicButton"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/addItem"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:text="@string/add_auction" />
+        <Button
+            android:id="@+id/sign_up_btn"
+            style="@style/AuctionAppTheme.BasicButton"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/sign_in_btn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:onClick="sign_up_click"
+            android:text="@string/sign_up_string" />
+
+        <Button
+            android:id="@+id/test_rest"
+            style="@style/AuctionAppTheme.BasicButton"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/sign_up_btn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:text="@string/test_rest" />
+
+        <Button
+            android:id="@+id/sign_in_btn"
+            style="@style/AuctionAppTheme.BasicButton"
+            android:layout_width="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:onClick="sign_in_click"
+            android:text="@string/sign_in_string" />
+
+<![CDATA[
+
+
+
         />
 
-    <Button
-        style="@style/AuctionAppTheme.BasicButton"
-        android:id="@+id/sign_up_btn"
-        android:layout_width="@dimen/btn_width"
-        android:layout_below="@+id/sign_in_btn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="@string/sign_up_string"
-        android:onClick="sign_up_click"/>
 
-    <Button
-        style="@style/AuctionAppTheme.BasicButton"
-        android:id="@+id/test_rest"
-        android:layout_width="@dimen/btn_width"
-        android:layout_below="@+id/sign_up_btn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="@string/test_rest" />
-    />
+        />
 
-    <Button
-        style="@style/AuctionAppTheme.BasicButton"
-        android:id="@+id/addItem"
-        android:layout_width="@dimen/btn_width"
-        android:layout_below="@+id/sign_up_btn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="@string/add_item" />
-    />
 
+
+        />
+
+
+
+
+
+
+
+    ]]>
+    </LinearLayout>linear
 
 </RelativeLayout>

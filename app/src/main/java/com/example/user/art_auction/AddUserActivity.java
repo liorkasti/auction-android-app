@@ -35,13 +35,17 @@ public class AddUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
+        //        userName = (EditText) findViewById(R.id.userName);
+//        dataView = (TextView) findViewById(R.id.userName);
+//        editor.putString("userName", LogInActivity.userName.getText().toString());
+//        String msg = "Hello: " + name;
         userName = (EditText) findViewById(R.id.userNameInput);
         password = (EditText) findViewById(R.id.passwordInput);
         dataView = (TextView) findViewById(R.id.dataTextView);
 
     }
 
-//    // Lesson 64 (buckey)
+//    // Lesson 65 (buckey)
 //    //Save login info
 //    public void addUser(final View view) {
 //

@@ -24,19 +24,17 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "Messeges";
 
     EditText userName;
-    Button bt1, bt2, bt3,bt_add_item;
+    Button bt1, bt2, bt3,bt_add_auction, bt_add_item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         final ServerRestConsumer rest = new ServerRestConsumer(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Log.i(TAG, "onCreate");
 
-//        userName = (EditText) findViewById(R.id.userName);
-//        dataView = (TextView) findViewById(R.id.userName);
-//        editor.putString("userName", LogInActivity.userName.getText().toString());
-//        String msg = "Hello: " + name;
+
 
         bt1 = (Button) findViewById(R.id.guest_btn);
         bt1.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +82,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(MainActivity.this, AddAuctionItemActivity.class);
+                startActivity(myIntent);
+            }
+        });
+
+        bt_add_auction = (Button) findViewById(R.id.addAuction);
+        bt_add_auction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(MainActivity.this, AddAuctionActivity.class);
                 startActivity(myIntent);
             }
         });
@@ -216,7 +223,7 @@ public class MainActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(MainActivity.this, AuctionActivity.class);
+                Intent myIntent = new Intent(MainActivity.this, AddAuctionItemActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -227,11 +234,21 @@ public class MainActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-//                Intent myIntent = new Intent(MainActivity.this, ItemActivity.class);
-//                startActivity(myIntent);
+                Intent myIntent = new Intent(MainActivity.this, AddAuctionActivity.class);
+                startActivity(myIntent);
                 return true;
             }
 
+//            case R.id.menu_leve20: {
+//                if (item.isChecked())
+//                    item.setChecked(false);
+//                else
+//                    item.setChecked(true);
+//
+//                Intent myIntent = new Intent(MainActivity.this, AddAuctionActivity.class);
+//                startActivity(myIntent);
+//                return true;
+//            }
 
                 default:
                     return super.onOptionsItemSelected(item);

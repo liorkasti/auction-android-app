@@ -56,21 +56,34 @@
                 android:orientation="horizontal">
 
                 <Button
+                android:id="@+id/btnGoToCalander"
+                style="@style/AuctionAppTheme.BasicButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Date" />
+
+                <TextView
+                android:id="@+id/tvStartDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="" />
+
+                <Button
                     android:id="@+id/dateButton"
                     style="@style/AuctionAppTheme.BasicButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:onClick="addAuction"
                     android:text="Date" />
 
                 <Button
                     android:id="@+id/timeButton"
                     style="@style/AuctionAppTheme.BasicButton"
-                    android:layout_width="wrap_content"
+                    android:layout_width="77dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:onClick="addAuctionStartDate"
                     android:padding="10dp"
                     android:text="Choose date time" />
             </LinearLayout>
