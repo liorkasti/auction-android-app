@@ -58,7 +58,7 @@ public class AddAuctionActivity extends AppCompatActivity {
                 startActivity(date_intent);
             }
         });
-    //set time (to do)
+    //set time (to do setOnTimeChangedListener)
         tvStartTime = (TextView) findViewById(R.id.tvStartTime);
         btnGoToTimePicker = (Button) findViewById(R.id.btnGoToTimePicker);
         //set the chosen time
@@ -75,77 +75,77 @@ public class AddAuctionActivity extends AppCompatActivity {
     }
 
 
-    public void addAuction(final View view) {
-        final EditText auctionName = (EditText) findViewById(R.id.auctionName);
-        final EditText auctionDesc = (EditText) findViewById(R.id.auctionDesc);
-
-        String url = "http://10.0.2.2:8080/auction/add";
-
-        StringRequest request = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        //set the id from response as session id
-                        UserSessionSingleton.getInstance(AddAuctionActivity.this).loginUser(response);
-                        Toast.makeText(view.getContext(), "ok " + response, Toast.LENGTH_LONG);
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                String body = "";
-                try {
-                    body = new String(error.networkResponse.data, "UTF-8");
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
-                Toast.makeText(view.getContext(), "Error" + body, Toast.LENGTH_LONG).show();
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String, String> params2 = new HashMap<String, String>();
-                params2.put("title", auctionName.getText().toString());
-                params2.put("description", auctionDesc.getText().toString()); //todo: add user ID, get auction id
-                //params2.put("email", userName.getText().toString());
-                //params2.put("password", password.getText().toString());
-                return params2;
-            }
-
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = new HashMap<>();
-                headers.put("Content-Type", "application/x-www-form-urlencoded");
-                return headers;
-            }
-        };
-        RequestQueueSingleton.getInstance(AddAuctionActivity.this).addToRequestQue(request);
-
-        Toast.makeText(this, "Saved", Toast.LENGTH_LONG).show();
-    }
-
-    public void addAuctionStartDate(View view) {
-        setDate(view.getId());
-    }
-
-    private void setDate(final int id) {
-        LayoutInflater inflater = AddAuctionActivity.this.getLayoutInflater();
-        AlertDialog.Builder bl = new AlertDialog.Builder(AddAuctionActivity.this);
-        bl.setView(inflater.inflate(R.layout.datetime_layout, null))
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Calendar c = Calendar.getInstance();
-                        TimePicker tp = (TimePicker) ((Dialog) dialog).findViewById(R.id.timePicker1);
-                        DatePicker dp = (DatePicker) ((Dialog) dialog).findViewById(R.id.datePicker1);
-                        c.set(Calendar.DAY_OF_MONTH, dp.getDayOfMonth());
-                        c.set(Calendar.MONTH, dp.getMonth());
-                        c.set(Calendar.YEAR, dp.getYear());
-                        c.set(Calendar.HOUR_OF_DAY, tp.getCurrentHour());
-                        c.set(Calendar.MINUTE, tp.getCurrentMinute());
-                        TextView tv = (TextView) AddAuctionActivity.this.findViewById(id);
-                        tv.setText(c.getTime().toString());
-                    }
-                });
-        bl.create().show();
-    }
+//    public void addAuction(final View view) {
+//        final EditText auctionName = (EditText) findViewById(R.id.auctionName);
+//        final EditText auctionDesc = (EditText) findViewById(R.id.auctionDesc);
+//
+//        String url = "http://10.0.2.2:8080/auction/add";
+//
+//        StringRequest request = new StringRequest(Request.Method.POST, url,
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        //set the id from response as session id
+//                        UserSessionSingleton.getInstance(AddAuctionActivity.this).loginUser(response);
+//                        Toast.makeText(view.getContext(), "ok " + response, Toast.LENGTH_LONG);
+//                    }
+//                }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                String body = "";
+//                try {
+//                    body = new String(error.networkResponse.data, "UTF-8");
+//                } catch (UnsupportedEncodingException e) {
+//                    e.printStackTrace();
+//                }
+//                Toast.makeText(view.getContext(), "Error" + body, Toast.LENGTH_LONG).show();
+//            }
+//        }) {
+//            @Override
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                HashMap<String, String> params2 = new HashMap<String, String>();
+//                params2.put("title", auctionName.getText().toString());
+//                params2.put("description", auctionDesc.getText().toString()); //todo: add user ID, get auction id
+//                //params2.put("email", userName.getText().toString());
+//                //params2.put("password", password.getText().toString());
+//                return params2;
+//            }
+//
+//            @Override
+//            public Map<String, String> getHeaders() throws AuthFailureError {
+//                Map<String, String> headers = new HashMap<>();
+//                headers.put("Content-Type", "application/x-www-form-urlencoded");
+//                return headers;
+//            }
+//        };
+//        RequestQueueSingleton.getInstance(AddAuctionActivity.this).addToRequestQue(request);
+//
+//        Toast.makeText(this, "Saved", Toast.LENGTH_LONG).show();
+//    }
+//
+//    public void addAuctionStartDate(View view) {
+//        setDate(view.getId());
+//    }
+//
+//    private void setDate(final int id) {
+//        LayoutInflater inflater = AddAuctionActivity.this.getLayoutInflater();
+//        AlertDialog.Builder bl = new AlertDialog.Builder(AddAuctionActivity.this);
+//        bl.setView(inflater.inflate(R.layout.datetime_layout, null))
+//                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        Calendar c = Calendar.getInstance();
+//                        TimePicker tp = (TimePicker) ((Dialog) dialog).findViewById(R.id.timePicker1);
+//                        DatePicker dp = (DatePicker) ((Dialog) dialog).findViewById(R.id.datePicker1);
+//                        c.set(Calendar.DAY_OF_MONTH, dp.getDayOfMonth());
+//                        c.set(Calendar.MONTH, dp.getMonth());
+//                        c.set(Calendar.YEAR, dp.getYear());
+//                        c.set(Calendar.HOUR_OF_DAY, tp.getCurrentHour());
+//                        c.set(Calendar.MINUTE, tp.getCurrentMinute());
+//                        TextView tv = (TextView) AddAuctionActivity.this.findViewById(id);
+//                        tv.setText(c.getTime().toString());
+//                    }
+//                });
+//        bl.create().show();
+//    }
 }
