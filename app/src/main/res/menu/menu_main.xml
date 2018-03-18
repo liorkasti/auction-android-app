@@ -8,11 +8,12 @@
              android:orderInCategory="100" app:showAsAction="never" />
      -->
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/menu_level0"
-            android:orderInCategory="0"
-            android:icon="@mipmap/ic_launcher"
-            app:showAsAction="always" />
+        <!--<item-->
+            <!--android:id="@+id/menu_level0"-->
+            <!--android:orderInCategory="0"-->
+            <!--android:icon="@mipmap/ic_launcher"-->
+            <!--app:showAsAction="always"-->
+            <!--android:title="" />-->
         <item
             android:id="@+id/menu_level1"
             android:orderInCategory="1"
@@ -47,15 +48,16 @@
             android:title="Action"
             app:showAsAction="never" />
 
+        <!--<item-->
+            <!--android:id="@+id/menu_level7"-->
+            <!--android:orderInCategory="7"-->
+            <!--android:title=""-->
+            <!--app:showAsAction="never" />-->
+
         <item
-            android:id="@+id/menu_level8"
-            android:orderInCategory="8"
+            android:id="@+id/menu_level9"
+            android:orderInCategory="17"
             android:title="Exit"
             app:showAsAction="never" />
-        <!--<item-->
-            <!--android:id="@+id/menu_leve20"-->
-            <!--android:orderInCategory="8"-->
-            <!--android:title="Exit"-->
-            <!--app:showAsAction="never" />-->
     </group>
 </menu>

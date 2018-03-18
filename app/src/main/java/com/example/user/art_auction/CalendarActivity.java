@@ -2,11 +2,11 @@ package com.example.user.art_auction;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.CalendarView;
+
 /**
  * Created by user on 14/03/2018.
  */
@@ -15,7 +15,7 @@ class CalendarActivity extends AppCompatActivity{
 
     private static final String TAG = "CalendarActivity";
 
-    private CalendarView mCalenderView;
+    private CalendarView    mCalenderView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ class CalendarActivity extends AppCompatActivity{
                 startActivity(intent);
             }
         });
+
 
     }
 }

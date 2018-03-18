@@ -35,27 +35,41 @@ public class AddAuctionActivity extends AppCompatActivity {
     Date _startDate;
     Date _endDate;
 
-    private TextView tvStartDate;
-    private Button btnGoToCalander;
+    private TextView tvStartDate, tvStartTime;
+    private Button btnGoToCalander, btnGoToTimePicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_auction);
-
+    //set date
         tvStartDate = (TextView) findViewById(R.id.tvStartDate);
         btnGoToCalander = (Button) findViewById(R.id.btnGoToCalander);
 
         Intent incomingIntent = getIntent();
+        //set the chosen date
         String date = incomingIntent.getStringExtra("date");
         tvStartDate.setText(date);
-
         btnGoToCalander.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "ListenerGoToCalander");
-                Intent intent = new Intent(AddAuctionActivity.this, CalendarActivity.class);
-                startActivity(intent);
+                Intent date_intent = new Intent(AddAuctionActivity.this, CalendarActivity.class);
+                startActivity(date_intent);
+            }
+        });
+    //set time (to do)
+        tvStartTime = (TextView) findViewById(R.id.tvStartTime);
+        btnGoToTimePicker = (Button) findViewById(R.id.btnGoToTimePicker);
+        //set the chosen time
+        String time = incomingIntent.getStringExtra("time");
+        tvStartTime.setText(time);
+        btnGoToTimePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "ListenerGoToTimePicker");
+                Intent time_intent = new Intent(AddAuctionActivity.this, TimePickerActivity.class);
+                startActivity(time_intent);
             }
         });
     }

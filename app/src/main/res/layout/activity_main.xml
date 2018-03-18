@@ -63,7 +63,7 @@
             android:text="@string/guest_string" />
 
         <Button
-            android:id="@+id/addItem"
+            android:id="@+id/add_item_btn"
             style="@style/AuctionAppTheme.BasicButton"
             android:layout_width="match_parent"
             android:layout_below="@+id/sign_up_btn"
@@ -73,14 +73,26 @@
             android:text="@string/add_item" />
 
         <Button
-            android:id="@+id/addAuction"
+            android:id="@+id/sign_in_btn"
             style="@style/AuctionAppTheme.BasicButton"
             android:layout_width="match_parent"
-            android:layout_below="@+id/addItem"
             android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:text="@string/add_auction" />
+            android:onClick="sign_in_click"
+            android:text="@string/add_auction"/>
+        <!--<Button-->
+            <!--android:id="@+id/add_auction_btn"-->
+            <!--style="@style/AuctionAppTheme.BasicButton"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginBottom="@dimen/activity_vertical_margin"-->
+            <!--android:layout_marginTop="@dimen/activity_vertical_margin"-->
+            <!--android:onClick="add_auction_btn"-->
+            <!--android:text="@string/add_auction" />-->
+
         <Button
             android:id="@+id/sign_up_btn"
             style="@style/AuctionAppTheme.BasicButton"
@@ -102,16 +114,7 @@
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:text="@string/test_rest" />
 
-        <Button
-            android:id="@+id/sign_in_btn"
-            style="@style/AuctionAppTheme.BasicButton"
-            android:layout_width="match_parent"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:onClick="sign_in_click"
-            android:text="@string/sign_in_string" />
+
 
 <![CDATA[
 

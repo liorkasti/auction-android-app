@@ -39,8 +39,9 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@android:style/Theme.Translucent" />
         <activity android:name=".AddAuctionActivity" />
-        <activity android:name=".AddAuctionItemActivity"></activity>
-        <activity android:name=".CalendarActivity"></activity>
+        <activity android:name=".AddAuctionItemActivity"/>
+        <activity android:name=".CalendarActivity" />
+        <activity android:name=".TimePickerActivity" />
     </application>
 
 </manifest>

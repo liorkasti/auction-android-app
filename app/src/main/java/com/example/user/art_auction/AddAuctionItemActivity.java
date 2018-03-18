@@ -35,7 +35,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AddAuctionItemActivity extends AppCompatActivity {
+
     String auctionId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,9 +49,9 @@ public class AddAuctionItemActivity extends AppCompatActivity {
     }
 
     public void addItem(final View view) {
-        final EditText itemName= (EditText) findViewById(R.id.itemName);
-        final EditText itemDesc = (EditText) findViewById(R.id.itemDesc);
-        final EditText itemPrice = (EditText) findViewById(R.id.itemPrice);
+        final EditText itemName=    (EditText) findViewById(R.id.itemName);
+        final EditText itemDesc =   (EditText) findViewById(R.id.itemDesc);
+        final EditText itemPrice =  (EditText) findViewById(R.id.itemPrice);
 
         String url = "http://10.0.2.2:8080/" + auctionId.toString() + "/addItem";
 
