@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText userName;
 
-    Button bt1, bt2, bt3, bt_add_auction, bt_add_item;
+    Button bt_go_to_auctions, bt2, bt_log_in, bt_add_auction, bt_add_item, bt_test_rest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,20 +35,36 @@ public class MainActivity extends AppCompatActivity {
 
         Log.i(TAG, "onCreate");
 
-        //        userName = (EditText) findViewById(R.id.userName);
-        //        dataView = (TextView) findViewById(R.id.userName);
-        //        editor.putString("userName", LogInActivity.userName.getText().toString());
-        //        String msg = "Hello: " + name;
-
-        bt1 = (Button) findViewById(R.id.guest_btn);
-        bt1.setOnClickListener(new View.OnClickListener() {
+        userName = (EditText) findViewById(R.id.userName);
+        Intent incomingIntent = getIntent();
+//        set the userName
+        String MSGuserName = incomingIntent.getStringExtra("userName");
+        if (MSGuserName == null) {
+        } else {
+            MSGuserName = "Hello: " + incomingIntent.getStringExtra("userName");
+            userName.setText(MSGuserName);
+        }
+        bt_go_to_auctions = (Button) findViewById(R.id.guest_btn);
+        bt_go_to_auctions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, HomeActivity.class);
+                Intent myIntent = new Intent(MainActivity.this, AuctionsActivity.class);
                 startActivity(myIntent);
             }
         });
-        bt_add_auction = (Button) findViewById(R.id.sign_in_btn);
+
+
+        bt_add_item = (Button) findViewById(R.id.add_item_btn);
+        bt_add_item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(MainActivity.this, AddAuctionItemActivity.class);
+                startActivity(myIntent);
+            }
+        });
+
+
+        bt_add_auction = (Button) findViewById(R.id.add_auction_btn);
         bt_add_auction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,16 +72,20 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
-        bt3 = (Button) findViewById(R.id.sign_up_btn);
-        bt3.setOnClickListener(new View.OnClickListener() {
+
+
+        bt_log_in = (Button) findViewById(R.id.log_in_btn);
+        bt_log_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, SignUpActivity.class);
+                Intent myIntent = new Intent(MainActivity.this, LogInActivity.class);
                 startActivity(myIntent);
             }
         });
-        Button bt4 = (Button) findViewById(R.id.test_rest);
-        bt4.setOnClickListener(new View.OnClickListener() {
+
+
+        bt_test_rest = (Button) findViewById(R.id.test_rest_btn);
+        bt_test_rest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -82,14 +102,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        bt_add_item = (Button) findViewById(R.id.add_item_btn);
-        bt_add_item.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, AddAuctionItemActivity.class);
-                startActivity(myIntent);
-            }
-        });
 
 //        bt_add_auction = (Button) findViewById(R.id.add_auction_btn);
 //        Log.i(TAG, "add_auction_btn");
@@ -188,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(MainActivity.this, HomeActivity.class);
+                Intent myIntent = new Intent(MainActivity.this, AuctionsActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -199,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(MainActivity.this, AddUserActivity.class);
+                Intent myIntent = new Intent(MainActivity.this, LogInActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -219,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(MainActivity.this, ItemActivity.class);
+                Intent myIntent = new Intent(MainActivity.this, AddAuctionItemActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -235,19 +247,31 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
 
-            case R.id.menu_level9: {
-                if (item.isChecked())
-                    item.setChecked(false);
-                else
-                    item.setChecked(true);
-
-//                Intent myIntent = new Intent(MainActivity.this, );
+//            case R.id.menu_level7: {
+//                if (item.isChecked())
+//                    item.setChecked(false);
+//                else
+//                    item.setChecked(true);
+//
+//                Intent myIntent = new Intent(MainActivity.this, LogInActivity.class);
 //                startActivity(myIntent);
-                return true;
-            }
+//                return true;
+//            }
+
+//            case R.id.menu_level9: {
+//                if (item.isChecked())
+//                    item.setChecked(false);
+//                else
+//                    item.setChecked(true);
+//
+//                Intent myIntent = new Intent(MainActivity.this, LogInActivity.class); //todo: EXIT
+//                startActivity(myIntent);
+//                return true;
+//            }
 
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
 }

@@ -28,8 +28,10 @@ import java.util.Map;
 public class SignUpActivity extends AppCompatActivity {
 
 
-    EditText userName;
-    EditText password;
+//    EditText userName;
+//    EditText password;
+//    TextView dataView;
+    EditText firstName, lastName, eMail, password;
     TextView dataView;
     RequestQueue requestQueue;
 
@@ -37,9 +39,13 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
+
         requestQueue = Volley.newRequestQueue(this);
         requestQueue.start();
-        userName = (EditText) findViewById(R.id.userNameInput);
+
+        firstName = (EditText) findViewById(R.id.firstNameInput);
+        lastName = (EditText) findViewById(R.id.lastNameInput);
+        eMail = (EditText) findViewById(R.id.eMailInput);
         password = (EditText) findViewById(R.id.passwordInput);
         dataView = (TextView) findViewById(R.id.dataTextView);
 
@@ -50,7 +56,9 @@ public class SignUpActivity extends AppCompatActivity {
     public void saveData(final View view) {
         SharedPreferences loginData = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = loginData.edit();
-        editor.putString("userName", userName.getText().toString());
+        editor.putString("First Name", firstName.getText().toString());
+        editor.putString("Last Name", lastName.getText().toString());
+        editor.putString("email", eMail.getText().toString());
         editor.putString("password", password.getText().toString());
         editor.apply();
 
@@ -77,9 +85,11 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> params2 = new HashMap<String, String>();
-                params2.put("fName", "Anton");
-                params2.put("lName", "Lerner");
-                params2.put("email", userName.getText().toString());
+//                params2.put("fName", "Anton");
+//                params2.put("lName", "Lerner");
+                params2.put("First Name", firstName.getText().toString());
+                params2.put("Last Name", lastName.getText().toString());
+                params2.put("email", eMail.getText().toString());
                 params2.put("password", password.getText().toString());
                 return params2;
             }
@@ -95,9 +105,11 @@ public class SignUpActivity extends AppCompatActivity {
     }
     public void getData(View view) {
         SharedPreferences loginData = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
-        String name = loginData.getString("userName", "");
+        String name = loginData.getString("First Name", "");
+        name += " " + loginData.getString("Last Name", " ");
+        String email = loginData.getString("email", "");
         String pw = loginData.getString("password", "");
-        String msg = "Saved User Name: " + name + "\nSaved Password: " + pw;
+        String msg = "Saved User Name: " + name + "\nSaved email: " + email + "\nSaved Password: " + pw;
         dataView.setText(msg);
     }
 
@@ -131,7 +143,7 @@ public class SignUpActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(SignUpActivity.this, HomeActivity.class);
+                Intent myIntent = new Intent(SignUpActivity.this, AuctionsActivity.class);
                 startActivity(myIntent);
                 return true;
             }

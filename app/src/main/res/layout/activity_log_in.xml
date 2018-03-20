@@ -29,7 +29,7 @@
         android:layout_below="@+id/textView2"
         android:layout_marginTop="16dp"
         android:width="300dp"
-        android:hint="User Name"
+        android:hint="User Name (email)"
          />
 
     <EditText
@@ -45,25 +45,37 @@
          />
 
     <Button
-        android:id="@+id/saveButton"
+        android:id="@+id/btLogIN"
         style="@style/AuctionAppTheme.BasicButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
 
-        android:layout_centerVertical="true"
+        android:layout_alignBaseline="@+id/btSignUP"
+        android:layout_alignBottom="@+id/btSignUP"
+        android:layout_alignLeft="@+id/passwordInput"
+        android:layout_alignStart="@+id/passwordInput"
         android:onClick="doLogin"
         android:text="Login" />
+
+    <Button
+        android:id="@+id/btSignUP"
+        style="@style/AuctionAppTheme.BasicButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignEnd="@+id/passwordInput"
+        android:layout_alignRight="@+id/passwordInput"
+        android:layout_centerVertical="true"
+        android:onClick="goSignUP"
+        android:text="Sign UP" />
 
     <TextView
         android:id="@+id/dataTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/saveButton"
+        android:layout_below="@+id/btLogIN"
         android:layout_marginTop="61dp"
-        android:layout_toLeftOf="@+id/displayButton"
-        android:layout_toStartOf="@+id/displayButton"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

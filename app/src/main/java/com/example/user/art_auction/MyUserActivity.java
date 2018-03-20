@@ -53,7 +53,7 @@ class MyUserActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(MyUserActivity.this, HomeActivity.class);
+                Intent myIntent = new Intent(MyUserActivity.this, AuctionsActivity.class);
                 startActivity(myIntent);
                 return true;
             }

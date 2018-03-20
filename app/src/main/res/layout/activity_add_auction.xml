@@ -61,6 +61,7 @@
                 android:layout_height="30dp"
                 android:layout_margin="5dp"
                 android:text="Date" />
+            //android:onClick="btnGoToCalander"
 
             <Button
                 android:id="@+id/btnGoToTimePicker"
@@ -69,6 +70,8 @@
                 android:layout_height="30dp"
                 android:layout_margin="5dp"
                 android:text="Time" />
+            //android:onClick="btnGoToTimePicker"
+
 
             <TextView
                 android:id="@+id/tvStartDate"
@@ -95,67 +98,8 @@
             android:layout_row="50"
             android:text="Choose end date and time" />
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/dateButton"
-                style="@style/AuctionAppTheme.BasicButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="Date" />
-
-            <Button
-                android:id="@+id/timeButton"
-                style="@style/AuctionAppTheme.BasicButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:padding="10dp"
-                android:text="Choose date time" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_row="60"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/date2Button"
-                style="@style/AuctionAppTheme.BasicButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:onClick="addAuction"
-                android:text="Date" />
-
-            <Button
-                android:id="@+id/time2Button"
-                style="@style/AuctionAppTheme.BasicButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:onClick="addAuction"
-                android:padding="10dp"
-                android:text="Choose date time" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/saveText"
-            android:layout_width="match_parent"
-            android:layout_height="16dp"
-            android:layout_margin="5dp"
-            android:layout_row="90"
-            android:text="press to save your auction" />
-
         <Button
-            android:id="@+id/saveButton"
+            android:id="@+id/btLogIN"
             style="@style/AuctionAppTheme.BasicButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -166,7 +110,65 @@
             android:padding="10dp"
             android:text="Add Auction" />
 
-    </LinearLayout>
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--<Button-->
+                <!--android:id="@+id/dateButton"-->
+                <!--style="@style/AuctionAppTheme.BasicButton"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="5dp"-->
+                <!--android:text="Date" />-->
+
+            <!--<Button-->
+                <!--android:id="@+id/timeButton"-->
+                <!--style="@style/AuctionAppTheme.BasicButton"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="5dp"-->
+                <!--android:padding="10dp"-->
+                <!--android:text="Choose date time" />-->
+        <!--</LinearLayout>-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_row="60"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--<Button-->
+                <!--android:id="@+id/date2Button"-->
+                <!--style="@style/AuctionAppTheme.BasicButton"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="5dp"-->
+                <!--android:onClick="addAuction"-->
+                <!--android:text="Date" />-->
+
+            <!--<Button-->
+                <!--android:id="@+id/time2Button"-->
+                <!--style="@style/AuctionAppTheme.BasicButton"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="5dp"-->
+                <!--android:onClick="addAuction"-->
+                <!--android:padding="10dp"-->
+                <!--android:text="Choose date time" />-->
+        <!--</LinearLayout>-->
+
+        <TextView
+            android:id="@+id/saveText"
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:layout_margin="5dp"
+            android:layout_row="90"
+            android:text="press to save your auction" />
+
+</LinearLayout>
 
 
 </RelativeLayout>

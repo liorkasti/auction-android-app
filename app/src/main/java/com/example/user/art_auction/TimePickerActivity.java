@@ -1,5 +1,6 @@
 package com.example.user.art_auction;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,23 +25,28 @@ class TimePickerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.time_picker_layout);
 
-        Log.d(TAG, "on creat");
+        Log.d(TAG, "on creat time_picker_layout");
 
-//        mTimePicker = (TimePicker) mTimePicker.findViewById(R.id.timePicker2);
-//        mTimePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
-//            @RequiresApi(api = Build.VERSION_CODES.M)
-//            @Override
-//            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-//                mTimePicker.setHour(hourOfDay);
-//                mTimePicker.setMinute(minute);
-//
-//                String time = hourOfDay + ":" + minute;
-//
-//
-//                Intent intent = new Intent(TimePickerActivity.this, AddAuctionActivity.class);
+        mTimePicker = (TimePicker) mTimePicker.findViewById(R.id.timePicker2);
+        mTimePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                mTimePicker.setHour(hourOfDay);
+                mTimePicker.setMinute(minute);
+
+                String time = hourOfDay + ":" + minute;
+                Log.i(TAG, "onSelectedDayChange: mm:hh : " + time);
+
+                Intent returnIntent = new Intent(TimePickerActivity.this, AddAuctionActivity.class);
+                returnIntent.putExtra("time",time);
+                setResult(Activity.RESULT_OK,returnIntent);
+                finish();
+
+//                Intent intent = new Intent(CalendarView.this, AddAuctionActivity.class);
 //                intent.putExtra("time", time);
 //                startActivity(intent);
-//            }
-//        });
+            }
+        });
     }
 }

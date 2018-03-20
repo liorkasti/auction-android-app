@@ -15,7 +15,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class HomeActivity extends AppCompatActivity {
+public class AuctionsActivity extends AppCompatActivity {
 
     @Override
     public boolean onMenuOpened(int featureId, Menu menu) {
@@ -38,7 +38,7 @@ public class HomeActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         String auctions = String.valueOf(parent.getItemAtPosition(position));
-                        Toast.makeText(HomeActivity.this, "Hi", Toast.LENGTH_LONG).show();
+                        Toast.makeText(AuctionsActivity.this, "Hi", Toast.LENGTH_LONG).show();
                     }
                 }
         );
@@ -63,7 +63,7 @@ public class HomeActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(HomeActivity.this, MainActivity.class);
+                Intent myIntent = new Intent(AuctionsActivity.this, MainActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -74,7 +74,7 @@ public class HomeActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(HomeActivity.this, HomeActivity.class);
+                Intent myIntent = new Intent(AuctionsActivity.this, AuctionsActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -85,7 +85,7 @@ public class HomeActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(HomeActivity.this, SignUpActivity.class);
+                Intent myIntent = new Intent(AuctionsActivity.this, SignUpActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -95,7 +95,7 @@ public class HomeActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(HomeActivity.this, MyUserActivity.class);
+                Intent myIntent = new Intent(AuctionsActivity.this, MyUserActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -105,7 +105,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void startMain(View view) {
-        Intent myIntent = new Intent(HomeActivity.this, MainActivity.class);
+        Intent myIntent = new Intent(AuctionsActivity.this, MainActivity.class);
         startActivity(myIntent);
     }
 }

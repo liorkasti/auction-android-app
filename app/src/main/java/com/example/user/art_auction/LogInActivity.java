@@ -1,10 +1,14 @@
 package com.example.user.art_auction;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -15,9 +19,11 @@ import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
@@ -25,25 +31,42 @@ import java.util.Map;
 
 public class LogInActivity extends AppCompatActivity {
 
+    private static final String TAG = "Messeges";
 
     EditText userName;
     EditText password;
     TextView dataView;
+    Button btSignUp, btGoBackToMain;
+    RequestQueue requestQueue;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
+        Log.i(TAG, "onCreate LogInActivity");
+
+        requestQueue = Volley.newRequestQueue(this);
+        requestQueue.start();
 
         userName = (EditText) findViewById(R.id.userNameInput);
         password = (EditText) findViewById(R.id.passwordInput);
         dataView = (TextView) findViewById(R.id.dataTextView);
-
+        btSignUp = (Button) findViewById(R.id.btSignUP);
+        Log.i(TAG, "goSignUP");
+        btSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(LogInActivity.this, SignUpActivity.class);
+                startActivity(myIntent);
+            }
+        });
     }
 
-    // Lesson 64
     //Save login info
     public void doLogin(final View view) {
+        Log.i(TAG, "doLogin");
+
         SharedPreferences loginData = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = loginData.edit();
         editor.putString("userName", userName.getText().toString());
@@ -65,7 +88,7 @@ public class LogInActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 String body = "";
                 try {
-                    body = new String(error.networkResponse.data,"UTF-8");
+                    body = new String(error.networkResponse.data, "UTF-8");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -86,16 +109,41 @@ public class LogInActivity extends AppCompatActivity {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<>();
-                headers.put("Content-Type","application/x-www-form-urlencoded");
+                headers.put("Content-Type", "application/x-www-form-urlencoded");
                 return headers;
             }
         };
         RequestQueueSingleton.getInstance(LogInActivity.this).addToRequestQue(request);
 
         Toast.makeText(this, "Saved", Toast.LENGTH_LONG).show();
+
+        btGoBackToMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent returnIntent = new Intent(LogInActivity.this, MainActivity.class);
+                returnIntent.putExtra("userName", (Parcelable) userName);
+                setResult(Activity.RESULT_OK,returnIntent);
+                finish();
+                Log.i(TAG, "sign in and go to main");
+            }
+        });
+    }
+
+    public void goSignUP(View view) {
+
+        Log.i(TAG, "goSignUP");
+        btSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(LogInActivity.this, SignUpActivity.class);
+                startActivity(myIntent);
+            }
+        });
     }
 
     public void getData(View view) {
+
+        Log.i(TAG, "getData");
         SharedPreferences loginData = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
         String name = loginData.getString("userName", "");
         String pw = loginData.getString("password", "");
@@ -133,7 +181,7 @@ public class LogInActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(LogInActivity.this, HomeActivity.class);
+                Intent myIntent = new Intent(LogInActivity.this, AuctionsActivity.class);
                 startActivity(myIntent);
                 return true;
             }
@@ -184,4 +232,5 @@ public class LogInActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
 }
