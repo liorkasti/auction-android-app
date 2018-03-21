@@ -69,8 +69,9 @@
                 android:layout_width="50dp"
                 android:layout_height="30dp"
                 android:layout_margin="5dp"
+                android:onClick="btnGoToTimePicker"
                 android:text="Time" />
-            //android:onClick="btnGoToTimePicker"
+
 
 
             <TextView
@@ -97,7 +98,48 @@
             android:layout_margin="5dp"
             android:layout_row="50"
             android:text="Choose end date and time" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_row="40"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
+            <Button
+                android:id="@+id/btnGoToCalander2"
+                style="@style/AuctionAppTheme.BasicButton"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
+                android:text="Date" />
+            //android:onClick="btnGoToCalander"
+
+            <Button
+                android:id="@+id/btnGoToTimePicker2"
+                style="@style/AuctionAppTheme.BasicButton"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
+                android:onClick="btnGoToTimePicker"
+                android:text="Time" />
+
+
+
+            <TextView
+                android:id="@+id/tvEndtDate"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tvEndTime"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:text="" />
+
+        </LinearLayout>
         <Button
             android:id="@+id/btLogIN"
             style="@style/AuctionAppTheme.BasicButton"

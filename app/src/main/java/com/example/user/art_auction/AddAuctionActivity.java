@@ -88,8 +88,6 @@ public class AddAuctionActivity extends AppBasicMenuActivity {
                 startDate = pickIntent.getStringExtra("date");
                 Log.i(TAG, "-----------------startDate" + startDate);
                 tvStartDate.setText(startDate);
-
-
             }
         } else if(requestCode == PICK_TIME_REQUEST){
 
@@ -97,12 +95,16 @@ public class AddAuctionActivity extends AppBasicMenuActivity {
                 startTime = pickIntent.getStringExtra("time");
                 tvStartTime.setText(startTime);
             }
+
+        startTime = startDate + ":" + startTime;
+        endTime = endDate + ":" + endTime;
+
         }
-////TimePicker with DialogFragment
-//    public void btnGoToTimePicker(View v) {
-//        DialogFragment newFragment = new TimePickerFragment();
-//        newFragment.show(getSupportFragmentManager(), "timePicker");
-//    }
+//TimePicker with DialogFragment
+    public void btnGoToTimePicker(View v) {
+        DialogFragment newFragment = new TimePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "timePicker");
+    }
 
 
     // anton
@@ -137,8 +139,8 @@ public class AddAuctionActivity extends AppBasicMenuActivity {
                     HashMap<String, String> params2 = new HashMap<String, String>();
                     params2.put("title", auctionName.getText().toString());
                     params2.put("description", auctionDesc.getText().toString()); //todo: add user ID, get auction id
-//                params2.put("startTime", startDate);
-//                params2.put("endTime", endDate);
+                params2.put("startTime", startTime);
+                params2.put("endTime", endTime);
                     //params2.put("email", userName.getText().toString());
                     //params2.put("password", password.getText().toString());
                     return params2;
