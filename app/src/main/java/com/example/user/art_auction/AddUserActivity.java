@@ -23,7 +23,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddUserActivity extends AppCompatActivity {
+public class AddUserActivity extends AppBasicMenuActivity {
 
 
 //    EditText firstName, lastName, eMail, password;

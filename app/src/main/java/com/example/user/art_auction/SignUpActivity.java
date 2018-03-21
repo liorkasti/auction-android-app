@@ -25,7 +25,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SignUpActivity extends AppCompatActivity {
+public class SignUpActivity extends AppBasicMenuActivity {
 
 
 //    EditText userName;
@@ -114,6 +114,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
 
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -194,6 +195,7 @@ public class SignUpActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+*/
 
     public void signUp(View view) {
     }

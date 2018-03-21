@@ -34,7 +34,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddAuctionItemActivity extends AppCompatActivity {
+public class AddAuctionItemActivity extends AppBasicMenuActivity {
 
     String auctionId;
 

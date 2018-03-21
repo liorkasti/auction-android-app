@@ -29,7 +29,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LogInActivity extends AppCompatActivity {
+public class LogInActivity extends AppBasicMenuActivity {
 
     private static final String TAG = "Messeges";
 

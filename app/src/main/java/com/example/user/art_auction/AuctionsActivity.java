@@ -15,7 +15,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class AuctionsActivity extends AppCompatActivity {
+public class AuctionsActivity extends AppBasicMenuActivity {
 
     @Override
     public boolean onMenuOpened(int featureId, Menu menu) {

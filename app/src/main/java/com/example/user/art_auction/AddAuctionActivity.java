@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -29,7 +31,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddAuctionActivity extends AppCompatActivity {
+public class AddAuctionActivity extends AppBasicMenuActivity {
 
     private static final String TAG = "Messeges";
 
@@ -60,20 +62,20 @@ public class AddAuctionActivity extends AppCompatActivity {
         });
 
         //set time (to do setOnTimeChangedListener)
-        //ui for time
-        tvStartTime = (TextView) findViewById(R.id.tvStartTime);
-        btnGoToTimePicker = (Button) findViewById(R.id.btnGoToTimePicker);
-        //set the chosen time
-//        String time = incomingIntent.getStringExtra("time");
-        btnGoToTimePicker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                Intent time_intent = new Intent(AddAuctionActivity.this, CalendarActivity.class);
-//                startActivity(time_intent);
-                Intent pickTimeIntent = new Intent(AddAuctionActivity.this, TimePickerActivity.class);
-                startActivityForResult(pickTimeIntent, PICK_TIME_REQUEST);
-            }
-        });
+//        //ui for time
+//        tvStartTime = (TextView) findViewById(R.id.tvStartTime);
+//        btnGoToTimePicker = (Button) findViewById(R.id.btnGoToTimePicker);
+//        //set the chosen time
+////        String time = incomingIntent.getStringExtra("time");
+//        btnGoToTimePicker.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                Intent time_intent = new Intent(AddAuctionActivity.this, CalendarActivity.class);
+////                startActivity(time_intent);
+//                Intent pickTimeIntent = new Intent(AddAuctionActivity.this, TimePickerActivity.class);
+//                startActivityForResult(pickTimeIntent, PICK_TIME_REQUEST);
+//            }
+//        });
     }
 
     @Override
@@ -96,8 +98,14 @@ public class AddAuctionActivity extends AppCompatActivity {
                 tvStartTime.setText(startTime);
             }
         }
+////TimePicker with DialogFragment
+//    public void btnGoToTimePicker(View v) {
+//        DialogFragment newFragment = new TimePickerFragment();
+//        newFragment.show(getSupportFragmentManager(), "timePicker");
+//    }
 
 
+    // anton
         public void addAuction ( final View view){
             final EditText auctionName = (EditText) findViewById(R.id.auctionName);
             final EditText auctionDesc = (EditText) findViewById(R.id.auctionDesc);

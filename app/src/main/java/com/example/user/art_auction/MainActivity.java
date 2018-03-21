@@ -19,7 +19,7 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppBasicMenuActivity{
 
     private static final String TAG = "Messeges";
 
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Log.i(TAG, "onCreate");
+//        Log.i(TAG, "onCreate");
 
         userName = (EditText) findViewById(R.id.userName);
         Intent incomingIntent = getIntent();
@@ -171,6 +171,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -273,5 +274,6 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+*/
 
 }

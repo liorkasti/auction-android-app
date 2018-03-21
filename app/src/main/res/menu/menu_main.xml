@@ -51,7 +51,7 @@
         <item
             android:id="@+id/menu_level7"
             android:orderInCategory="7"
-            android:title="Login"
+            android:title="About"
             app:showAsAction="never" />
 
         <item

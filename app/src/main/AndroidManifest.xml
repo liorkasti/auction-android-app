@@ -43,6 +43,8 @@
         <activity android:name=".AddAuctionItemActivity"/>
         <activity android:name=".CalendarActivity" />
         <activity android:name=".TimePickerActivity" />
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".MyUserActivity" />
     </application>
 
 </manifest>
