@@ -40,5 +40,8 @@
     <string name="home">Home</string>
     <string name="add_item">add item</string>
     <string name="add_auction">Add Auction</string>
+    <string name="press_to_save_your_auction">Press to save your auction</string>
+    <string name="choose_start_data_and_time">Choose start data and time</string>
+    <string name="auction_name">Auction Name</string>
 
 </resources>

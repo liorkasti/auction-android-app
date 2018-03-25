@@ -1,22 +1,25 @@
 package com.example.user.art_auction;
 
 
-        import android.app.Dialog;
-        import android.app.TimePickerDialog;
-        import android.os.Bundle;
-        import android.support.v4.app.DialogFragment;
-        import android.text.format.DateFormat;
-        import android.widget.TextView;
-        import android.widget.TimePicker;
+import android.app.Dialog;
+import android.app.TimePickerDialog;
+import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.text.format.DateFormat;
+import android.util.Log;
+import android.widget.TextView;
+import android.widget.TimePicker;
 
-        import java.util.Calendar;
+import java.util.Calendar;
 
 /**
  * Created by user on 21/03/2018.
  */
 
-public class TimePickerFragment extends DialogFragment
+public class TPFragmentEnd extends DialogFragment
         implements TimePickerDialog.OnTimeSetListener {
+
+    private static final String TAG = "Messeges";
 
     @Override
     public Dialog onCreateDialog (Bundle savedInstanceState){
@@ -32,7 +35,7 @@ public class TimePickerFragment extends DialogFragment
 
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         // time chosen by the user
-        TextView tv1 = (TextView) getActivity().findViewById(R.id.tvStartTime);
+        TextView tv1 = (TextView) getActivity().findViewById(R.id.tvEndTime);
         String time = "";
         if (hourOfDay < 10){
             time = "0";
@@ -44,6 +47,6 @@ public class TimePickerFragment extends DialogFragment
         time += minute;
 
         tv1.setText(time);
-
+        Log.i(TAG, "HH:mm---------------endTime " + time);
     }
 }
