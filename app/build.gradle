@@ -10,6 +10,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -32,12 +33,16 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     compile 'com.mcxiaoke.volley:library:1.0.19'
-    compile('org.apache.httpcomponents:httpmime:4.+') {
-        exclude module: "httpclient"
+    compile 'org.apache.httpcomponents:httpcore:4.4.9'
+    compile('org.apache.httpcomponents:httpmime:4.3.6') {
+        exclude module: 'httpclient'
     }
-    compile('org.apache.httpcomponents:httpcore:4.+') {
-        exclude module: "httpclient"
-    }
+    //compile group: 'org.apache.httpcomponents' , name: 'httpclient-android' , version: '4.3.5.1'
+    //compile 'org.apache.httpcomponents:httpclient-android:4.3.5'
+
+    compile 'com.fasterxml.jackson.core:jackson-core:2.9.4'
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.9.4'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.9.4'
     compile 'com.android.support:design:25.3.1'
 //    compile 'com.android.support:design:24.2.1'
 }

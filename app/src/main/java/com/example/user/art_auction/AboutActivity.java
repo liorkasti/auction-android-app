@@ -9,7 +9,7 @@ import android.widget.EditText;
  * Created by user on 21/03/2018.
  */
 
-class AboutActivity extends AppBasicMenuActivity {
+public class AboutActivity extends AppBasicMenuActivity {
 
 
     private static final String TAG = "Messeges";

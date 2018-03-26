@@ -96,8 +96,8 @@ public class AddAuctionActivity extends AppBasicMenuActivity {
                 tvStartTime.setText(startTime);
             }
 
-        startTime = startDate + ":" + startTime;
-        endTime = endDate + ":" + endTime;
+        startTime = startDate + " " + startTime;
+        endTime = endDate + " " + endTime;
 
         }
 //TimePicker with DialogFragment
@@ -139,8 +139,10 @@ public class AddAuctionActivity extends AppBasicMenuActivity {
                     HashMap<String, String> params2 = new HashMap<String, String>();
                     params2.put("title", auctionName.getText().toString());
                     params2.put("description", auctionDesc.getText().toString()); //todo: add user ID, get auction id
-                params2.put("startTime", startTime);
-                params2.put("endTime", endTime);
+                    params2.put("startTime", "11-11-2018 16:43");
+                    params2.put("endTime", "11-11-2018 16:55");
+                    params2.put("isSilent", "False");
+                    params2.put("user", "1");
                     //params2.put("email", userName.getText().toString());
                     //params2.put("password", password.getText().toString());
                     return params2;

@@ -22,7 +22,7 @@ import java.util.concurrent.TimeoutException;
  * Created by user on 24/10/2017.
  */
 
-class MyUserActivity extends AppBasicMenuActivity {
+public class MyUserActivity extends AppBasicMenuActivity {
 
 
     private static final String TAG = "Messeges";

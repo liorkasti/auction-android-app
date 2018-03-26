@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Art_auction.iml" filepath="$PROJECT_DIR$/Art_auction.iml" />
-      <module fileurl="file://C:\Users\USER\workspace\Art_auction\.idea\Art_auction.iml" filepath="C:\Users\USER\workspace\Art_auction\.idea\Art_auction.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

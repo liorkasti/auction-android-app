@@ -59,6 +59,7 @@ public class MainActivity extends AppBasicMenuActivity{
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(MainActivity.this, AddAuctionItemActivity.class);
+                myIntent.putExtra("auctionId", "1");
                 startActivity(myIntent);
             }
         });
@@ -88,31 +89,11 @@ public class MainActivity extends AppBasicMenuActivity{
         bt_test_rest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Future<JSONArray> a = rest.getAuctionsList();
-                try {
-                    JSONArray arr = a.get(2, TimeUnit.SECONDS);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                } catch (TimeoutException e) {
-                    e.printStackTrace();
-                }
+                //Intent myIntent = new Intent(MainActivity.this, AddAuctionActivity.class);
+                //startActivity(myIntent);
             }
         });
 
-
-//        bt_add_auction = (Button) findViewById(R.id.add_auction_btn);
-//        Log.i(TAG, "add_auction_btn");
-//        bt_add_auction.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.i(TAG, "add_auction_btn");
-//                Intent myIntent = new Intent(MainActivity.this, AddAuctionActivity.class);
-//                startActivity(myIntent);
-//            }
-//        });
     }
 
     public void getData(View view) {
@@ -169,111 +150,5 @@ public class MainActivity extends AppBasicMenuActivity{
         super.onRestoreInstanceState(savedInstanceState);
         Log.i(TAG, "onRestoreInstanceState");
     }
-
-
-/*
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        RelativeLayout main_view = (RelativeLayout) findViewById(R.id.main_view);
-
-        switch (item.getItemId()) {
-            case R.id.menu_level1: {
-                if (item.isChecked())
-                    item.setChecked(false);
-                else
-                    item.setChecked(true);
-
-                Intent myIntent = new Intent(MainActivity.this, MainActivity.class);
-                startActivity(myIntent);
-                return true;
-            }
-
-            case R.id.menu_level2: {
-                if (item.isChecked())
-                    item.setChecked(false);
-                else
-                    item.setChecked(true);
-
-                Intent myIntent = new Intent(MainActivity.this, AuctionsActivity.class);
-                startActivity(myIntent);
-                return true;
-            }
-
-            case R.id.menu_level3: {
-                if (item.isChecked())
-                    item.setChecked(false);
-                else
-                    item.setChecked(true);
-
-                Intent myIntent = new Intent(MainActivity.this, LogInActivity.class);
-                startActivity(myIntent);
-                return true;
-            }
-            case R.id.menu_level4: {
-                if (item.isChecked())
-                    item.setChecked(false);
-                else
-                    item.setChecked(true);
-
-                Intent myIntent = new Intent(MainActivity.this, MyUserActivity.class);
-                startActivity(myIntent);
-                return true;
-            }
-            case R.id.menu_level5: {
-                if (item.isChecked())
-                    item.setChecked(false);
-                else
-                    item.setChecked(true);
-
-                Intent myIntent = new Intent(MainActivity.this, AddAuctionItemActivity.class);
-                startActivity(myIntent);
-                return true;
-            }
-
-            case R.id.menu_level6: {
-                if (item.isChecked())
-                    item.setChecked(false);
-                else
-                    item.setChecked(true);
-
-                Intent myIntent = new Intent(MainActivity.this, AddAuctionActivity.class);
-                startActivity(myIntent);
-                return true;
-            }
-
-//            case R.id.menu_level7: {
-//                if (item.isChecked())
-//                    item.setChecked(false);
-//                else
-//                    item.setChecked(true);
-//
-//                Intent myIntent = new Intent(MainActivity.this, LogInActivity.class);
-//                startActivity(myIntent);
-//                return true;
-//            }
-
-//            case R.id.menu_level9: {
-//                if (item.isChecked())
-//                    item.setChecked(false);
-//                else
-//                    item.setChecked(true);
-//
-//                Intent myIntent = new Intent(MainActivity.this, LogInActivity.class); //todo: EXIT
-//                startActivity(myIntent);
-//                return true;
-//            }
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-*/
 
 }

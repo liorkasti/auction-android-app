@@ -16,7 +16,10 @@ class Auction implements Serializable{
 //        private String type;
         private Date startAuction;
         private Date endAuction;
-        private AuctionItemImage image;
+        private String auctionType;
+        private String imageUrl;
+        private User owner;
+        private boolean silentAuction;
 
         //list of bidders?
 
@@ -73,11 +76,35 @@ class Auction implements Serializable{
                 this.endAuction = endAuction;
         }
 
-        public AuctionItemImage getImage() {
-                return image;
+        public String getAuctionType() {
+                return auctionType;
         }
 
-        public void setImage(AuctionItemImage image) {
-                this.image = image;
+        public void setAuctionType(String auctionType) {
+                this.auctionType = auctionType;
+        }
+
+        public String getImageUrl() {
+                return imageUrl;
+        }
+
+        public void setImageUrl(String imageUrl) {
+                this.imageUrl = imageUrl;
+        }
+
+        public User getOwner() {
+                return owner;
+        }
+
+        public void setOwner(User owner) {
+                this.owner = owner;
+        }
+
+        public boolean isSilentAuction() {
+                return silentAuction;
+        }
+
+        public void setSilentAuction(boolean silentAuction) {
+                this.silentAuction = silentAuction;
         }
 }

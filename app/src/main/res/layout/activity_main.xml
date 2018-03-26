@@ -75,21 +75,9 @@
             android:id="@+id/add_auction_btn"
             style="@style/AuctionAppTheme.BasicButton"
             android:layout_width="match_parent"
-
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:text="@string/add_auction"
- />
-        <!--<Button-->
-            <!--android:id="@+id/add_auction_btn"-->
-            <!--style="@style/AuctionAppTheme.BasicButton"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--android:layout_centerVertical="true"-->
-            <!--android:layout_marginBottom="@dimen/activity_vertical_margin"-->
-            <!--android:layout_marginTop="@dimen/activity_vertical_margin"-->
-            <!--android:onClick="add_auction_btn"-->
-            <!--android:text="@string/add_auction" />-->
+            android:text="@string/add_auction" />
 
         <Button
             android:id="@+id/log_in_btn"
@@ -110,26 +98,6 @@
 
 
 
-<![CDATA[
-
-
-
-        />
-
-
-        />
-
-
-
-        />
-
-
-
-
-
-
-
-    ]]>
-    </LinearLayout>linear
+    </LinearLayout>
 
 </RelativeLayout>

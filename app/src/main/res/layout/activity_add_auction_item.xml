@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="number"
-            android:text="Item Price"
+            android:hint="Item Price"
             tools:layout_below="@id/itemDesc" />
 
         <EditText
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text"
-            android:text="Item Name"
+            android:hint="Item Name"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="16dp" />
 
@@ -51,7 +51,7 @@
             android:ems="10"
             android:gravity="top"
             android:inputType="text"
-            android:text="Item Description"
+            android:hint="Item Description"
             tools:layout_below="@id/itemName" />
 
         <Button

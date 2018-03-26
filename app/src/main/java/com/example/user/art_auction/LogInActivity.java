@@ -81,7 +81,9 @@ public class LogInActivity extends AppBasicMenuActivity {
                     public void onResponse(String response) {
                         //set the id from response as session id
                         UserSessionSingleton.getInstance(LogInActivity.this).loginUser(response);
-                        Toast.makeText(view.getContext(), "ok " + response, Toast.LENGTH_LONG);
+                        Intent myIntent = new Intent(LogInActivity.this, AuctionActivity.class);
+                        startActivity(myIntent);
+                        //Toast.makeText(view.getContext(), "ok " + response, Toast.LENGTH_LONG);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -117,7 +119,7 @@ public class LogInActivity extends AppBasicMenuActivity {
 
         Toast.makeText(this, "Saved", Toast.LENGTH_LONG).show();
 
-        btGoBackToMain.setOnClickListener(new View.OnClickListener() {
+        /*btGoBackToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent returnIntent = new Intent(LogInActivity.this, MainActivity.class);
@@ -126,7 +128,7 @@ public class LogInActivity extends AppBasicMenuActivity {
                 finish();
                 Log.i(TAG, "sign in and go to main");
             }
-        });
+        });*/
     }
 
     public void goSignUP(View view) {

@@ -37,6 +37,7 @@ import java.util.Map;
 public class AddAuctionItemActivity extends AppBasicMenuActivity {
 
     String auctionId;
+    String imagePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,7 @@ public class AddAuctionItemActivity extends AppBasicMenuActivity {
         final EditText itemDesc =   (EditText) findViewById(R.id.itemDesc);
         final EditText itemPrice =  (EditText) findViewById(R.id.itemPrice);
 
-        String url = "http://10.0.2.2:8080/" + auctionId.toString() + "/addItem";
+        String url = "http://10.0.2.2:8080/auction/" + auctionId.toString() + "/additem";
 
         StringRequest request = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -62,15 +63,18 @@ public class AddAuctionItemActivity extends AppBasicMenuActivity {
                         //set the id from response as session id
                         String itemId = response;
                         //UserSessionSingleton.getInstance(AddAuctionItemActivity.this).loginUser(response);
-
                         Toast.makeText(view.getContext(), "ok " + response, Toast.LENGTH_LONG);
+                        if(!imagePath.isEmpty()) {
+                            imageUpload(imagePath, itemId);
+                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 String body = "";
                 try {
-                    body = new String(error.networkResponse.data,"UTF-8");
+                    if (error.networkResponse.data != null)
+                        body = new String(error.networkResponse.data,"UTF-8");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -80,7 +84,7 @@ public class AddAuctionItemActivity extends AppBasicMenuActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> params2 = new HashMap<String, String>();
-                params2.put("title", itemName.getText().toString());
+                params2.put("itemName", itemName.getText().toString());
                 params2.put("description", itemDesc.getText().toString());
                 params2.put("price", itemPrice.getText().toString());
                 return params2;
@@ -112,10 +116,10 @@ public class AddAuctionItemActivity extends AppBasicMenuActivity {
             if(requestCode == 1){
                 Uri picUri = data.getData();
 
-                String filePath = getPath(picUri);
+                imagePath = getPath(picUri);
 
                 Log.d("picUri", picUri.toString());
-                Log.d("filePath", filePath);
+                Log.d("filePath", imagePath);
 
             }
 
@@ -127,14 +131,14 @@ public class AddAuctionItemActivity extends AppBasicMenuActivity {
         MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
         File f  = new File(imagePath);
-        String url = "http://10.0.2.2:8080/" + auctionId.toString() + "/" + itemID + "/uploadImage";
+        String url = "http://10.0.2.2:8080/auction/" + auctionId.toString() + "/" + itemID + "/uploadImage";
         //FileBody fileBody = new FileBody(new File(imagePath)); //image should be a String
         MultipartRequest multipartRequest = null;
         try {
             multipartRequest = new MultipartRequest(Request.Method.POST, url, f, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-                    // parse success output
+                    Toast.makeText(AddAuctionItemActivity.this, "Cool", Toast.LENGTH_LONG).show();
                 }
             }, new Response.ErrorListener() {
                 @Override

@@ -14,7 +14,7 @@ import android.widget.CalendarView;
  * Created by user on 14/03/2018.
  */
 
-class CalendarActivity extends AppBasicMenuActivity{
+public class CalendarActivity extends AppBasicMenuActivity{
 
     private static final String TAG = "Messeges";
 

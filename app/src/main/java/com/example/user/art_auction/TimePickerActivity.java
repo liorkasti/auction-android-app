@@ -15,7 +15,7 @@ import android.widget.TimePicker;
  * Created by user on 17/03/2018.
  */
 
-class TimePickerActivity extends AppBasicMenuActivity {
+public class TimePickerActivity extends AppBasicMenuActivity {
 
     private static final String TAG = "TimePickerActivity";
 

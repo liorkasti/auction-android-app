@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Map;
 
 import org.apache.http.HttpEntity;
+import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.FileBody;
@@ -15,8 +16,9 @@ import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.StringRequest;
 
-public class MultipartRequest extends Request<String> {
+public class MultipartRequest extends StringRequest {
 
     MultipartEntityBuilder entity = MultipartEntityBuilder.create();
     HttpEntity httpentity;
@@ -29,7 +31,7 @@ public class MultipartRequest extends Request<String> {
     public MultipartRequest(int method ,String url, File f,
                             Response.Listener<String> listener,
                             Response.ErrorListener errorListener) throws AuthFailureError {
-        super(method, url, errorListener);
+        super(method, url,listener, errorListener);
 
         mListener = listener;
         mFilePart = f;
@@ -43,9 +45,9 @@ public class MultipartRequest extends Request<String> {
     private void buildMultipartEntity() throws AuthFailureError {
         entity.addPart(FILE_PART_NAME, new FileBody(mFilePart));
         Map<String, String> params = getParams();
-        for (Map.Entry<String, String> entry : params.entrySet()) {
-            entity.addTextBody(entry.getKey(), entry.getValue());
-        }
+        /*for (Map.Entry<String, String> entry : params.entrySet()) {
+            entity.addTextBody(entry.getKey(), entry.getValue(),  ContentType.TEXT_PLAIN);
+        }*/
     }
 
     @Override

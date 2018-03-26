@@ -68,7 +68,9 @@ public class SignUpActivity extends AppBasicMenuActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(view.getContext(), "ok " + response, Toast.LENGTH_LONG);
+                        Intent myIntent = new Intent(SignUpActivity.this, AuctionActivity.class);
+                        startActivity(myIntent);
+                        //Toast.makeText(view.getContext(), "ok " + response, Toast.LENGTH_LONG);
                     }
                 }, new Response.ErrorListener() {
             @Override
