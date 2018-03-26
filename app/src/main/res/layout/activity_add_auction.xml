@@ -20,10 +20,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:layout_row="10"
             android:ems="10"
             android:inputType="text"
-            android:text="Auction Name"
+            android:hint="@string/auction_name"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="16dp" />
 
@@ -32,19 +31,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:layout_row="20"
             android:ems="10"
             android:inputType="text"
-            android:text="Auction Description" />
+            android:hint="Auction Description" />
 
         <TextView
             android:id="@+id/startText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/auctionDesc"
             android:layout_margin="5dp"
             android:layout_row="30"
-            android:text="Choose start data and time" />
+            android:text="@string/choose_start_data_and_time" />
 
 
         <LinearLayout
@@ -86,7 +83,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_weight="1"
-                android:text="" />
+                android:gravity="left"
+                android:text=""
+                android:textAlignment="viewStart" />
 
         </LinearLayout>
 
@@ -96,8 +95,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/btnGoToCalander"
             android:layout_margin="5dp"
-            android:layout_row="50"
             android:text="Choose end date and time" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -120,13 +119,12 @@
                 android:layout_width="50dp"
                 android:layout_height="30dp"
                 android:layout_margin="5dp"
-                android:onClick="btnGoToTimePicker"
+                android:onClick="btnGoToTimePicker2"
                 android:text="Time" />
 
 
-
             <TextView
-                android:id="@+id/tvEndtDate"
+                android:id="@+id/tvEndDate"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_weight="1"
@@ -137,21 +135,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textAlignment="viewStart" />
 
         </LinearLayout>
-        <Button
-            android:id="@+id/btLogIN"
-            style="@style/AuctionAppTheme.BasicButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_margin="5dp"
-            android:layout_row="80"
-            android:onClick="addAuction"
-            android:padding="10dp"
-            android:text="Add Auction" />
-
 
         <!--<LinearLayout-->
             <!--android:layout_width="match_parent"-->
@@ -207,9 +194,18 @@
             android:layout_width="match_parent"
             android:layout_height="16dp"
             android:layout_margin="5dp"
-            android:layout_row="90"
-            android:text="press to save your auction" />
+            android:text="@string/press_to_save_your_auction" />
 
+        <Button
+            android:id="@+id/btLogIN"
+            style="@style/AuctionAppTheme.BasicButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_margin="5dp"
+            android:onClick="addAuction"
+            android:padding="10dp"
+            android:text="@string/add_auction" />
 </LinearLayout>
 
 
