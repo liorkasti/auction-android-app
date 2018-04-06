@@ -1,10 +1,18 @@
 package com.example.user.art_auction;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.CursorLoader;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +36,7 @@ import org.apache.http.entity.mime.content.FileBody;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
@@ -38,6 +47,8 @@ public class AddAuctionItemActivity extends AppBasicMenuActivity {
 
     String auctionId;
     String imagePath;
+
+    final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,10 +113,47 @@ public class AddAuctionItemActivity extends AppBasicMenuActivity {
         Toast.makeText(this, "Saved", Toast.LENGTH_LONG).show();
     }
 
+    @SuppressLint("WrongConstant")
     private void imageBrowse() {
-        Intent galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        int hasWriteContactsPermission = 0;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            hasWriteContactsPermission = checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE);
+        }
+        if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (!shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                    showMessageOKCancel("You need to allow access to Contacts",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                        requestPermissions(new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},
+                                                REQUEST_CODE_ASK_PERMISSIONS);
+                                    }
+                                }
+                            });
+                    return;
+                }
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},
+                        REQUEST_CODE_ASK_PERMISSIONS);
+            }
+            return;
+        }
+
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         // Start the Intent
         startActivityForResult(galleryIntent, 1);
+    }
+
+    private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
+        new AlertDialog.Builder(AddAuctionItemActivity.this)
+                .setMessage(message)
+                .setPositiveButton("OK", okListener)
+                .setNegativeButton("Cancel", null)
+                .create()
+                .show();
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -133,28 +181,50 @@ public class AddAuctionItemActivity extends AppBasicMenuActivity {
         File f  = new File(imagePath);
         String url = "http://10.0.2.2:8080/auction/" + auctionId.toString() + "/" + itemID + "/uploadImage";
         //FileBody fileBody = new FileBody(new File(imagePath)); //image should be a String
-        MultipartRequest multipartRequest = null;
+        VolleyMultipartRequest multipartRequest = null;
         try {
-            multipartRequest = new MultipartRequest(Request.Method.POST, url, f, new Response.Listener<String>() {
+            multipartRequest = new VolleyMultipartRequest(Request.Method.POST, url, new Response.Listener<NetworkResponse>() {
                 @Override
-                public void onResponse(String response) {
+                public void onResponse(NetworkResponse response) {
                     Toast.makeText(AddAuctionItemActivity.this, "Cool", Toast.LENGTH_LONG).show();
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    error.printStackTrace();
+                    String body = "";
+                    try {
+                        body = new String(error.networkResponse.data, "UTF-8");
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
+                    Log.e("AddAuctionItemActivity", body);
+                    //Toast.makeText(ctx, "Error" + body + "\nWTF", Toast.LENGTH_LONG).show();
                 }
             }) {
                 @Override
                 protected Map<String, String> getParams() {
                     Map<String, String> params = new HashMap<>();
                     params.put("itemId", itemID);
+                    params.put("desc", "");
+                    return params;
+                }
+
+                @Override
+                protected Map<String, DataPart> getByteData() {
+                    Map<String, DataPart> params = new HashMap<>();
+                    Bitmap bm = BitmapFactory.decodeFile(imagePath);
+                    ByteArrayOutputStream bao = new ByteArrayOutputStream();
+                    bm.compress(Bitmap.CompressFormat.JPEG, 90, bao);
+                    byte[] ba = bao.toByteArray();
+                    // file name could found file base or direct access from real path
+                    // for now just get bitmap data from ImageView
+                    params.put("file", new DataPart("file.jpg", ba, "image/jpeg"));
+
                     return params;
                 }
 
             };
-        } catch (AuthFailureError authFailureError) {
+        } catch (Exception authFailureError) {
             authFailureError.printStackTrace();
         }
 

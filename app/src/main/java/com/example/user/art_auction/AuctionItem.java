@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 
 
 import java.io.Serializable;
+import java.util.Set;
 
 
 public class AuctionItem implements Serializable {
@@ -16,15 +17,19 @@ public class AuctionItem implements Serializable {
         private String name;
         private String description;
         private int minimumPrice;
-        private String promtBid;
+        private Auction auction;
+        private Set<AuctionItemImage> images;
 
-        public AuctionItem(long id, String name, String description, int minimumPrice) {
+    public AuctionItem(){
 
+    }
+
+    public AuctionItem(Auction a, long id, String name, String description, int minimumPrice) {
             this.id = id;
+            this.setAuction(a);
             this.name = name;
             this.description = description;
             this.minimumPrice = minimumPrice;
-            this.promtBid = "YOUR BID SUCCESS";
         }
 
 
@@ -59,4 +64,20 @@ public class AuctionItem implements Serializable {
         public void setMinimumPrice(int minimumPrice) {
             this.minimumPrice = minimumPrice;
         }
+
+    public Set<AuctionItemImage> getImages() {
+        return images;
     }
+
+    public void setImages(Set<AuctionItemImage> images) {
+        this.images = images;
+    }
+
+    public Auction getAuction() {
+        return auction;
+    }
+
+    public void setAuction(Auction auction) {
+        this.auction = auction;
+    }
+}

@@ -158,7 +158,7 @@ public class AddAuctionActivity extends AppBasicMenuActivity {
                     @Override
                     public void onResponse(String response) {
                         //set the id from response as session id
-                        UserSessionSingleton.getInstance(AddAuctionActivity.this).loginUser(response);
+                        //UserSessionSingleton.getInstance(AddAuctionActivity.this).loginUser(response);
                         Toast.makeText(view.getContext(), "ok " + response, Toast.LENGTH_LONG);
                     }
                 }, new Response.ErrorListener() {

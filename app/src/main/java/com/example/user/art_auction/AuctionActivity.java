@@ -41,15 +41,16 @@ public class AuctionActivity extends AppCompatActivity {
         Auction a = (Auction)b.get("Auction");
 
         ArrayList<AuctionItem> items = new ArrayList<>();
-        items.add(new AuctionItem(1, "Anton Item", "This is item", 1000));
-        items.add(new AuctionItem(2, "Anton Item2", "This is item", 1000));
+        items.add(new AuctionItem(a,1, "Anton Item", "This is item", 1000));
+        items.add(new AuctionItem(a,2, "Anton Item2", "This is item", 1000));
 
         ListAdapter customListAdapter = new AuctionItemsCustomAdapter(this, items.toArray(new AuctionItem[items.size()]));// Pass the auction arrary to the constructor.
         ListView customListView = (ListView) findViewById(R.id.auction_items_ListView);
         customListView.setAdapter(customListAdapter);
+        getAuctionItems(this.getApplicationContext(), a);
     }
 
-    protected void getAuctions(final Context ctx, Auction a){
+    protected void getAuctionItems(final Context ctx, final Auction a){
         String url = "http://10.0.2.2:8080/auction/" + a.getId() + "/items";
         final StringRequest request = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -66,7 +67,7 @@ public class AuctionActivity extends AppCompatActivity {
                                 JSONObject c = contacts.getJSONObject(i);
 
                                 AuctionItem obj = mapper.readValue(c.toString(), AuctionItem.class);
-
+                                obj.setAuction(a);
                                 auctions.add(obj);
 
                                 ListAdapter customListAdapter = new AuctionItemsCustomAdapter(ctx, auctions.toArray(new AuctionItem[auctions.size()]));// Pass the auction arrary to the constructor.
