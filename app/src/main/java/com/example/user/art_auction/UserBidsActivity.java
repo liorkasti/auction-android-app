@@ -3,14 +3,10 @@ package com.example.user.art_auction;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -26,16 +22,14 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 
-public class AuctionActivity extends AppBasicMenuActivity {
+public class UserBidsActivity extends AppBasicMenuActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.auction_activity);
+        setContentView(R.layout.user_bids_activitys);
 
         Bundle b = getIntent().getExtras();
         Auction a = (Auction)b.get("Auction");
@@ -44,8 +38,8 @@ public class AuctionActivity extends AppBasicMenuActivity {
         items.add(new AuctionItem(a,1, "Anton Item", "This is item", 1000));
         items.add(new AuctionItem(a,2, "Anton Item2", "This is item", 1000));
 
-        ListAdapter customListAdapter = new AuctionItemsCustomAdapter(this, items.toArray(new AuctionItem[items.size()]));// Pass the auction arrary to the constructor.
-        ListView customListView = (ListView) findViewById(R.id.auction_items_ListView);
+        ListAdapter customListAdapter = new UserBidsCustomAdapter(this, items.toArray(new AuctionItem[items.size()]));// Pass the auction arrary to the constructor.
+        ListView customListView = (ListView) findViewById(R.id.my_bids_ListView);
         customListView.setAdapter(customListAdapter);
         getAuctionItems(this.getApplicationContext(), a);
     }
@@ -70,8 +64,8 @@ public class AuctionActivity extends AppBasicMenuActivity {
                                 obj.setAuction(a);
                                 auctions.add(obj);
 
-                                ListAdapter customListAdapter = new AuctionItemsCustomAdapter(ctx, auctions.toArray(new AuctionItem[auctions.size()]));// Pass the auction arrary to the constructor.
-                                ListView customListView = (ListView) findViewById(R.id.auction_items_ListView);
+                                ListAdapter customListAdapter = new UserBidsCustomAdapter(ctx, auctions.toArray(new AuctionItem[auctions.size()]));// Pass the auction arrary to the constructor.
+                                ListView customListView = (ListView) findViewById(R.id.my_bids_ListView);
                                 customListView.setAdapter(customListAdapter);
                                 customListView.invalidateViews();
                             }
@@ -97,6 +91,6 @@ public class AuctionActivity extends AppBasicMenuActivity {
                 Toast.makeText(ctx, "Error" + body + "\nWTF", Toast.LENGTH_LONG).show();
             }
         });
-        RequestQueueSingleton.getInstance(AuctionActivity.this).addToRequestQue(request);
+        RequestQueueSingleton.getInstance(UserBidsActivity.this).addToRequestQue(request);
     }
 }

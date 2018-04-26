@@ -11,8 +11,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,17 +22,15 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 
-class AuctionItemsCustomAdapter extends ArrayAdapter<AuctionItem> {
-    public AuctionItemsCustomAdapter(Context context, AuctionItem[] auctions) {
-        super(context, R.layout.hp_row, auctions);
+class UserBidsCustomAdapter extends ArrayAdapter<AuctionItem> {
+    public UserBidsCustomAdapter(Context context, AuctionItem[] auctions) {
+        super(context, R.layout.user_bids_row, auctions);
     }
 
     @Override
@@ -42,7 +38,7 @@ class AuctionItemsCustomAdapter extends ArrayAdapter<AuctionItem> {
         // default -  return super.getView(position, convertView, parent);
         // add the layout
         LayoutInflater myCustomInflater = LayoutInflater.from(getContext());
-        View customView = myCustomInflater.inflate(R.layout.hp_row, parent, false);
+        View customView = myCustomInflater.inflate(R.layout.user_bids_row, parent, false);
         // get references.
         AuctionItem singleAuctionItem = getItem(position);
         TextView itemText = (TextView) customView.findViewById(R.id.item_text);
@@ -54,7 +50,7 @@ class AuctionItemsCustomAdapter extends ArrayAdapter<AuctionItem> {
                 AuctionItem a = (AuctionItem)v.getTag();
                 //Toast.makeText(v.getContext(), "Hi2" + a.getName(), Toast.LENGTH_LONG).show();
                 Intent myIntent = new Intent(v.getContext(), ItemActivity.class);
-                myIntent.putExtra("AuctionItem", a);
+                myIntent.putExtra("{userId}/bids", a);
                 v.getContext().startActivity(myIntent);
             }
         });

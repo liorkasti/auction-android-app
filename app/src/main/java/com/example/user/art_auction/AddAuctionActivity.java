@@ -144,14 +144,20 @@ public class AddAuctionActivity extends AppBasicMenuActivity {
         if (startDate != null && startTime != null) {
             startTime = startDate + " " + startTime;
             Log.i(TAG, "dd-MM-yyyy:HH:mm-startTime Param to send: " + startTime);
+        } else {
+            Toast.makeText(this, "Missing Start Date", Toast.LENGTH_SHORT).show();
+            btnGoToCalander.setError("Please enter Start Date");
         }
         if (endDate != null && endTime != null) {
             endTime = endDate + " " + endTime;
             Log.i(TAG, "dd-MM-yyyy:HH:mm-endTime Param to send: " + endTime);
+        } else {
+            Toast.makeText(this, "Missing End Date", Toast.LENGTH_SHORT).show();
+            btnGoToCalander.setError("Please enter End Date");
         }
 
 
-//validateDate();
+//        validateDate();
 
         StringRequest request = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -181,6 +187,8 @@ public class AddAuctionActivity extends AppBasicMenuActivity {
                 params2.put("startTime", startTime);
                 params2.put("endTime", endTime);
                 params2.put("user", "1");
+                params2.put("isSilent", "false");
+
                 //params2.put("email", userName.getText().toString());
                 //params2.put("password", password.getText().toString());
                 return params2;
@@ -196,6 +204,9 @@ public class AddAuctionActivity extends AppBasicMenuActivity {
         RequestQueueSingleton.getInstance(AddAuctionActivity.this).addToRequestQue(request);
 
         Toast.makeText(this, "Saved", Toast.LENGTH_LONG).show();
+
+        Intent myIntent = new Intent(AddAuctionActivity.this, AddAuctionItemActivity.class);
+        startActivity(myIntent);
     }
 
 //    private void validateDate() {

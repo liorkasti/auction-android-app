@@ -24,7 +24,7 @@
         android:layout_below="@id/datePicker1"
         android:layout_height="wrap_content" >
     </TimePicker>
-    <!--     <Button
+    <Button
    android:id="@+id/cancelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,5 +43,5 @@
         android:layout_below="@id/timePicker1"
         android:layout_alignRight="@+id/timePicker1"
         android:layout_alignEnd="@+id/timePicker1" />
--->
+
 </RelativeLayout>

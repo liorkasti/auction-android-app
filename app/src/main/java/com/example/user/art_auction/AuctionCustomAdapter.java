@@ -44,7 +44,7 @@ class AuctionCustomAdapter extends ArrayAdapter<Auction> {
                 v.getContext().startActivity(myIntent);
             }
         });
-        Button b2 = (Button) customView.findViewById(R.id.sign_up_btn);
+        Button b2 = (Button) customView.findViewById(R.id.enter_btn);
         ImageView auctionImage = (ImageView) customView.findViewById(R.id.hp_main_image);
 
         // dynamically update the text from the array

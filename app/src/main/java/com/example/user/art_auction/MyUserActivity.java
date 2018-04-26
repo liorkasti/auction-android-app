@@ -66,6 +66,29 @@ public class MyUserActivity extends AppBasicMenuActivity {
             }
         });
 
+        bt_user_history = (Button) findViewById(R.id.history_btn);
+        Log.i(TAG, "bt_user_history");
+        bt_user_history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "getUserAuctionItems");
+
+                Intent myIntent = new Intent(MyUserActivity.this, UserHistoryActivity.class);
+                startActivity(myIntent);
+            }
+        });
+
+        bt_my_active_auctions = (Button) findViewById(R.id.active_auction_btn);
+        Log.i(TAG, "bt_my_active_auctions");
+        bt_my_active_auctions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "getUserAuctionItems");
+
+                Intent myIntent = new Intent(MyUserActivity.this, UserBidsActivity.class);
+                startActivity(myIntent);
+            }
+        });
 
 /*
         userName = (EditText) findViewById(R.id.userName);

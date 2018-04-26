@@ -20,7 +20,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ItemActivity extends AppCompatActivity {
+public class ItemActivity extends AppBasicMenuActivity {
 
     @Override
     public boolean onMenuOpened(int featureId, Menu menu) {

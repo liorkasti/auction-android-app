@@ -25,7 +25,7 @@ public class MainActivity extends AppBasicMenuActivity{
 
     EditText userName;
 
-    Button bt_go_to_auctions, bt2, bt_log_in, bt_add_auction, bt_add_item, bt_test_rest;
+    Button bt_go_to_auctions, bt2, bt_log_in, bt_add_auction, bt_add_item, bt_test_rest,bt_my_active_auctions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,10 +89,22 @@ public class MainActivity extends AppBasicMenuActivity{
         bt_test_rest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent myIntent = new Intent(MainActivity.this, AddAuctionActivity.class);
-                //startActivity(myIntent);
+//                Intent myIntent = new Intent(MainActivity.this, AddAuctionActivity.class);
+//                startActivity(myIntent);
             }
         });
+
+//        bt_my_active_auctions = (Button) findViewById(R.id.active_auction_btn);
+//        Log.i(TAG, "onCreate bt_my_active_auctions");
+//        bt_my_active_auctions.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.i(TAG, "onCreate getUserAuctionItems");
+//
+//                Intent myIntent = new Intent(MainActivity.this, UserHistoryActivity.class);
+//                startActivity(myIntent);
+//            }
+//        });
 
     }
 
