@@ -22,6 +22,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class UserBidsActivity extends AppBasicMenuActivity {
@@ -29,23 +30,25 @@ public class UserBidsActivity extends AppBasicMenuActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_bids_activitys);
+        setContentView(R.layout.user_bids_activity);
+
+        AuctionItem auctionitem = new AuctionItem(null,1, "art entiqe", "This is item", 1000);
+
 
         Bundle b = getIntent().getExtras();
-        Auction a = (Auction)b.get("Auction");
+//        AuctionItemBid a = (AuctionItemBid)b.get("AuctionItemBid");
+        AuctionItemBid bids = new AuctionItemBid(1,new User(),auctionitem,2222,new Date());
 
-        ArrayList<AuctionItem> items = new ArrayList<>();
-        items.add(new AuctionItem(a,1, "Anton Item", "This is item", 1000));
-        items.add(new AuctionItem(a,2, "Anton Item2", "This is item", 1000));
+        ArrayList<AuctionItemBid> userBid = new ArrayList<>();
+        userBid.add(bids);
 
-        ListAdapter customListAdapter = new UserBidsCustomAdapter(this, items.toArray(new AuctionItem[items.size()]));// Pass the auction arrary to the constructor.
+        ListAdapter customListAdapter = new UserBidsCustomAdapter(this, userBid.toArray(new AuctionItemBid[userBid.size()]));// Pass the auction arrary to the constructor.
         ListView customListView = (ListView) findViewById(R.id.my_bids_ListView);
         customListView.setAdapter(customListAdapter);
-        getAuctionItems(this.getApplicationContext(), a);
+        getAuctionItems(this.getApplicationContext(), bids);
     }
-
-    protected void getAuctionItems(final Context ctx, final Auction a){
-        String url = "http://10.0.2.2:8080/auction/" + a.getId() + "/items";
+    protected void getAuctionItems(final Context ctx, final AuctionItemBid a){
+        String url = "http://10.0.2.2:8080/user/" + a.getId()+ "/bids";
         final StringRequest request = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
@@ -55,16 +58,16 @@ public class UserBidsActivity extends AppBasicMenuActivity {
                         ObjectMapper mapper = new ObjectMapper();
                         try {
                             JSONArray contacts = new JSONArray(response);
-                            ArrayList<AuctionItem> auctions = new ArrayList<>();
+                            ArrayList<AuctionItemBid> userBids = new ArrayList<>();
                             // looping through All Contacts
                             for (int i = 0; i < contacts.length(); i++) {
                                 JSONObject c = contacts.getJSONObject(i);
 
-                                AuctionItem obj = mapper.readValue(c.toString(), AuctionItem.class);
-                                obj.setAuction(a);
-                                auctions.add(obj);
+                                AuctionItemBid obj = mapper.readValue(c.toString(), AuctionItemBid.class);
+                               obj.setAuctionItemBid(a);
+                                userBids.add(obj);
 
-                                ListAdapter customListAdapter = new UserBidsCustomAdapter(ctx, auctions.toArray(new AuctionItem[auctions.size()]));// Pass the auction arrary to the constructor.
+                                ListAdapter customListAdapter = new UserBidsCustomAdapter(ctx, userBids.toArray(new AuctionItemBid[userBids.size()]));// Pass the auction arrary to the constructor.
                                 ListView customListView = (ListView) findViewById(R.id.my_bids_ListView);
                                 customListView.setAdapter(customListAdapter);
                                 customListView.invalidateViews();

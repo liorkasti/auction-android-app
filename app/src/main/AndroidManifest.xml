@@ -45,7 +45,7 @@
         <activity android:name=".TimePickerActivity" />
         <activity android:name=".AboutActivity" />
         <activity android:name=".MyUserActivity" />
-        <activity android:name=".UserHistoryActivity" />
+        <!--<activity android:name=".UserHistoryActivity" />-->
         <activity android:name=".UserBidsActivity" />
     </application>
 

@@ -29,7 +29,7 @@ public class MyUserActivity extends AppBasicMenuActivity {
 
     EditText userName;
 
-    Button bt_acount_info, bt_go_to_auctions, bt_user_history, bt_my_active_auctions, bt_add_auction, bt_add_item, bt_log_out;
+    Button bt_acount_info, bt_go_to_auctions, bt_user_history, bt_my_bids, bt_add_auction, bt_add_item, bt_log_out;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +38,14 @@ public class MyUserActivity extends AppBasicMenuActivity {
         setContentView(R.layout.my_account_activity);
 
 
-        bt_add_item = (Button) findViewById(R.id.add_item_btn);
-        bt_add_item.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(MyUserActivity.this, AddAuctionItemActivity.class);
-                startActivity(myIntent);
-            }
-        });
+//        bt_add_item = (Button) findViewById(R.id.add_item_btn);
+//        bt_add_item.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent myIntent = new Intent(MyUserActivity.this, AddAuctionItemActivity.class);
+//                startActivity(myIntent);
+//            }
+//        });
 
 
         bt_add_auction = (Button) findViewById(R.id.add_auction_btn);
@@ -57,30 +57,30 @@ public class MyUserActivity extends AppBasicMenuActivity {
             }
         });
 
-        bt_go_to_auctions = (Button) findViewById(R.id.all_auctions_btn);
-        bt_go_to_auctions.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(MyUserActivity.this, AuctionsActivity.class);
-                startActivity(myIntent);
-            }
-        });
+//        bt_go_to_auctions = (Button) findViewById(R.id.all_auctions_btn);
+//        bt_go_to_auctions.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent myIntent = new Intent(MyUserActivity.this, AuctionsActivity.class);
+//                startActivity(myIntent);
+//            }
+//        });
+//
+//        bt_user_history = (Button) findViewById(R.id.history_btn);
+//        Log.i(TAG, "bt_user_history");
+//        bt_user_history.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.i(TAG, "getUserAuctionItems");
+//
+//                Intent myIntent = new Intent(MyUserActivity.this, UserHistoryActivity.class);
+//                startActivity(myIntent);
+//            }
+//        });
 
-        bt_user_history = (Button) findViewById(R.id.history_btn);
-        Log.i(TAG, "bt_user_history");
-        bt_user_history.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG, "getUserAuctionItems");
-
-                Intent myIntent = new Intent(MyUserActivity.this, UserHistoryActivity.class);
-                startActivity(myIntent);
-            }
-        });
-
-        bt_my_active_auctions = (Button) findViewById(R.id.active_auction_btn);
+        bt_my_bids= (Button) findViewById(R.id.bids_auction_btn);
         Log.i(TAG, "bt_my_active_auctions");
-        bt_my_active_auctions.setOnClickListener(new View.OnClickListener() {
+        bt_my_bids.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "getUserAuctionItems");
@@ -100,6 +100,7 @@ public class MyUserActivity extends AppBasicMenuActivity {
             MSGuserName = "Hello: " + incomingIntent.getStringExtra("userName");
             userName.setText(MSGuserName);
         }
+
         bt_go_to_auctions = (Button) findViewById(R.id.guest_btn);
         bt_go_to_auctions.setOnClickListener(new View.OnClickListener() {
             @Override

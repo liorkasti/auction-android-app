@@ -78,21 +78,21 @@
                 android:layout_marginBottom="16dp"
                 android:text="@string/guest_string" />
 
-            <Button
-                android:id="@+id/add_item_btn"
-                style="@style/AuctionAppTheme.BasicButton"
-                android:layout_width="match_parent"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/add_item" />
+            <!--<Button-->
+                <!--android:id="@+id/add_item_btn"-->
+                <!--style="@style/AuctionAppTheme.BasicButton"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_marginBottom="@dimen/activity_vertical_margin"-->
+                <!--android:layout_marginTop="@dimen/activity_vertical_margin"-->
+                <!--android:text="@string/add_item" />-->
 
-            <Button
-                android:id="@+id/add_auction_btn"
-                style="@style/AuctionAppTheme.BasicButton"
-                android:layout_width="match_parent"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/add_auction" />
+            <!--<Button-->
+                <!--android:id="@+id/add_auction_btn"-->
+                <!--style="@style/AuctionAppTheme.BasicButton"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_marginBottom="@dimen/activity_vertical_margin"-->
+                <!--android:layout_marginTop="@dimen/activity_vertical_margin"-->
+                <!--android:text="@string/add_auction" />-->
 
             <Button
                 android:id="@+id/log_in_btn"
@@ -107,13 +107,13 @@
                 <!--android:layout_width="match_parent"-->
                 <!--android:text="My Active Auctions" />-->
 
-            <Button
-                android:id="@+id/test_rest_btn"
-                style="@style/AuctionAppTheme.BasicButton"
-                android:layout_width="match_parent"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/test_rest" />
+            <!--<Button-->
+                <!--android:id="@+id/test_rest_btn"-->
+                <!--style="@style/AuctionAppTheme.BasicButton"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_marginBottom="@dimen/activity_vertical_margin"-->
+                <!--android:layout_marginTop="@dimen/activity_vertical_margin"-->
+                <!--android:text="@string/test_rest" />-->
 
 
         </LinearLayout>

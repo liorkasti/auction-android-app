@@ -28,8 +28,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
-class UserBidsCustomAdapter extends ArrayAdapter<AuctionItem> {
-    public UserBidsCustomAdapter(Context context, AuctionItem[] auctions) {
+class UserBidsCustomAdapter extends ArrayAdapter<AuctionItemBid> {
+    public UserBidsCustomAdapter(Context context, AuctionItemBid[] auctions) {
         super(context, R.layout.user_bids_row, auctions);
     }
 
@@ -40,30 +40,15 @@ class UserBidsCustomAdapter extends ArrayAdapter<AuctionItem> {
         LayoutInflater myCustomInflater = LayoutInflater.from(getContext());
         View customView = myCustomInflater.inflate(R.layout.user_bids_row, parent, false);
         // get references.
-        AuctionItem singleAuctionItem = getItem(position);
-        TextView itemText = (TextView) customView.findViewById(R.id.item_text);
-        Button b1 = (Button) customView.findViewById(R.id.enter_btn);
-        b1.setTag(singleAuctionItem);
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AuctionItem a = (AuctionItem)v.getTag();
-                //Toast.makeText(v.getContext(), "Hi2" + a.getName(), Toast.LENGTH_LONG).show();
-                Intent myIntent = new Intent(v.getContext(), ItemActivity.class);
-                myIntent.putExtra("{userId}/bids", a);
-                v.getContext().startActivity(myIntent);
-            }
-        });
-//        Button b2 = (Button) customView.findViewById(R.id.sign_up_btn);
-        ImageView auctionImage = (ImageView) customView.findViewById(R.id.hp_main_image);
+        AuctionItemBid singleUserBidItem = getItem(position);
+        TextView itemNameText = (TextView) customView.findViewById(R.id.item_name_text);
+        TextView bidDateText = (TextView) customView.findViewById(R.id.bid_date_text);
+        TextView itemBidPriceText = (TextView) customView.findViewById(R.id.item_bid_text);
 
+        itemNameText.setText(singleUserBidItem.getAuctionItem().getName());
+        bidDateText.setText(singleUserBidItem.getBidTs().toString());
+        itemBidPriceText.setText(String.valueOf(singleUserBidItem.getBidPrice()));
 
-        // dynamically update the text from the array
-        itemText.setText(singleAuctionItem.getName());
-        // using the same image every time
-        //getAuctionItemImage()
-        auctionImage.setImageResource(R.drawable.art10);
-        getAuctionItemImage(getContext(), singleAuctionItem.getAuction(), singleAuctionItem, auctionImage);
         // Now we can finally return our custom View or custom item
         return customView;
     }

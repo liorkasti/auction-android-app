@@ -46,6 +46,9 @@ class AuctionItemsCustomAdapter extends ArrayAdapter<AuctionItem> {
         // get references.
         AuctionItem singleAuctionItem = getItem(position);
         TextView itemText = (TextView) customView.findViewById(R.id.item_text);
+        // dynamically update the text from the array
+        itemText.setText(singleAuctionItem.getName());
+
         Button b1 = (Button) customView.findViewById(R.id.enter_btn);
         b1.setTag(singleAuctionItem);
         b1.setOnClickListener(new View.OnClickListener() {
@@ -59,11 +62,8 @@ class AuctionItemsCustomAdapter extends ArrayAdapter<AuctionItem> {
             }
         });
 //        Button b2 = (Button) customView.findViewById(R.id.sign_up_btn);
+
         ImageView auctionImage = (ImageView) customView.findViewById(R.id.hp_main_image);
-
-
-        // dynamically update the text from the array
-        itemText.setText(singleAuctionItem.getName());
         // using the same image every time
         //getAuctionItemImage()
         auctionImage.setImageResource(R.drawable.art10);

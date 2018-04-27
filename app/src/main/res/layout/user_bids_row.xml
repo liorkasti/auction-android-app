@@ -8,46 +8,117 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_column="0"
         android:layout_margin="10dp"
         android:layout_row="0"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:padding="5dp">
 
-        <TextView
-            android:id="@+id/item_text"
-
-            style="@style/AuctionAppTheme.BasicTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_margin="5dp"
-            android:layout_row="0"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Item Name"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/item_bid"
+            <TextView
+                android:id="@+id/item_name_tv"
+                style="@style/AuctionAppTheme.BasicTextView"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_margin="5dp"
+                android:layout_row="0"
+                android:text="Item Name: "
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
-            style="@style/AuctionAppTheme.BasicTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_margin="5dp"
-            android:layout_row="0"
+            <TextView
+                android:id="@+id/item_name_text"
+
+                style="@style/AuctionAppTheme.BasicTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_margin="5dp"
+                android:layout_row="0"
+                android:layout_weight="1"
+                android:text="Item Name"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <!--<TextView-->
+            <!--android:id="@+id/auction_name_text_text"-->
+
+            <!--style="@style/AuctionAppTheme.BasicTextView"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_column="0"-->
+            <!--android:layout_margin="5dp"-->
+            <!--android:layout_row="0"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="Auction Name"-->
+            <!--android:textAppearance="?android:attr/textAppearanceLarge" />-->
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="The Bid"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/go_to_item_btn"
-            style="@style/AuctionAppTheme.BasicButton"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            <TextView
+                android:id="@+id/bid_date_tv"
+                style="@style/AuctionAppTheme.BasicTextView"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_margin="5dp"
+                android:layout_row="0"
+                android:text="Date: "
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/bid_date_text"
+                style="@style/AuctionAppTheme.BasicTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_margin="5dp"
+                android:layout_row="0"
+                android:layout_weight="1"
+                android:text="date"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Go To Item" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/item_bid_tv"
+                style="@style/AuctionAppTheme.BasicTextView"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_margin="5dp"
+                android:layout_row="0"
+                android:text="The Bid set price: "
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/item_bid_text"
+                style="@style/AuctionAppTheme.BasicTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_margin="5dp"
+                android:layout_row="0"
+                android:layout_weight="1"
+                android:text="price"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+        </LinearLayout>
 
 
     </LinearLayout>
