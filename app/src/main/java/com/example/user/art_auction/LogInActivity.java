@@ -24,7 +24,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
@@ -72,7 +76,7 @@ public class LogInActivity extends AppBasicMenuActivity {
         editor.putString("userName", userName.getText().toString());
         editor.putString("password", password.getText().toString());
         editor.apply();
-
+        final ObjectMapper mapper = new ObjectMapper();
         String url = "http://10.0.2.2:8080/user/login";
 
         StringRequest request = new StringRequest(Request.Method.POST, url,
@@ -80,7 +84,14 @@ public class LogInActivity extends AppBasicMenuActivity {
                     @Override
                     public void onResponse(String response) {
                         //set the id from response as session id
-                        UserSessionSingleton.getInstance(LogInActivity.this).loginUser(response);
+                        //JSONObject c = new JSONObject(response);
+                        User obj = null;
+                        try {
+                            obj = mapper.readValue(response, User.class);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        UserSessionSingleton.getInstance(LogInActivity.this).loginUser(obj.getId().toString());
                         Intent myIntent = new Intent(LogInActivity.this, AuctionsActivity.class);
                         startActivity(myIntent);
                     }
@@ -119,7 +130,9 @@ public class LogInActivity extends AppBasicMenuActivity {
         RequestQueueSingleton.getInstance(LogInActivity.this).addToRequestQue(request);
 
         Toast.makeText(this, "Saved", Toast.LENGTH_LONG).show();
-
+        //todo:
+        Intent myIntent = new Intent(LogInActivity.this, MainActivity.class);
+        startActivity(myIntent);
         /*btGoBackToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -153,87 +166,4 @@ public class LogInActivity extends AppBasicMenuActivity {
         String msg = "Saved User Name: " + name + "\nSaved Password: " + pw;
         dataView.setText(msg);
     }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        RelativeLayout main_view = (RelativeLayout) findViewById(R.id.main_view);
-
-        switch (item.getItemId()) {
-            case R.id.menu_level1: {
-                if (item.isChecked())
-                    item.setChecked(false);
-                else
-                    item.setChecked(true);
-
-                Intent myIntent = new Intent(LogInActivity.this, MainActivity.class);
-                startActivity(myIntent);
-                return true;
-            }
-
-            case R.id.menu_level2: {
-                if (item.isChecked())
-                    item.setChecked(false);
-                else
-                    item.setChecked(true);
-
-                Intent myIntent = new Intent(LogInActivity.this, AuctionsActivity.class);
-                startActivity(myIntent);
-                return true;
-            }
-
-            case R.id.menu_level3: {
-                if (item.isChecked())
-                    item.setChecked(false);
-                else
-                    item.setChecked(true);
-
-                Intent myIntent = new Intent(LogInActivity.this, SignUpActivity.class);
-                startActivity(myIntent);
-                return true;
-            }
-            case R.id.menu_level4: {
-                if (item.isChecked())
-                    item.setChecked(false);
-                else
-                    item.setChecked(true);
-
-                Intent myIntent = new Intent(LogInActivity.this, MyUserActivity.class);
-                startActivity(myIntent);
-                return true;
-            }
-            case R.id.menu_level5: {
-                if (item.isChecked())
-                    item.setChecked(false);
-                else
-                    item.setChecked(true);
-
-                Intent myIntent = new Intent(LogInActivity.this, ItemActivity.class);
-                startActivity(myIntent);
-                return true;
-            }
-//            case R.id.menu_level6: {
-//                if (item.isChecked())
-//                    item.setChecked(false);
-//                else
-//                    item.setChecked(true);
-//
-//                Intent myIntent = new Intent(SignInActivity.this, Exit.class);
-//                startActivity(myIntent);
-//                return true;
-//            }
-
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
 }

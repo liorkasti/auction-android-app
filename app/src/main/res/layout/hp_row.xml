@@ -1,28 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="5dp"
     android:background="@color/background_blue"
     android:orientation="horizontal"
     android:weightSum="1">
 
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="0"
-            android:orientation="horizontal">
             <ImageButton
                 android:id="@+id/hp_main_image"
                 style="@style/AuctionAppTheme.HPImage"
-                android:layout_width="16dp"
                 android:layout_height="50dp"
-                android:layout_weight="1"
+                android:layout_width="50dp"
                 />
             <TextView
                 android:id="@+id/item_text"
@@ -36,50 +25,14 @@
                 android:layout_weight="1"
                 android:text="Large Text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
-
-            <TextClock
-                android:id="@+id/textClock"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:textAlignment="textEnd" />
-
-        </LinearLayout>
-<!--
-
--->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="3"
-            android:orientation="horizontal">
-
             <Button
                 android:id="@+id/enter_btn"
                 style="@style/AuctionAppTheme.BasicButton"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_column="0"
                 android:layout_margin="5dp"
-                android:layout_row="0"
                 android:layout_weight="1"
                 android:text="ENTER"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
-
-            <Button
-                android:id="@+id/sign_up_btn"
-                style="@style/AuctionAppTheme.BasicButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:text="SIGN IN" />
-
-        </LinearLayout>
-    </GridLayout>
-
 
 </LinearLayout>

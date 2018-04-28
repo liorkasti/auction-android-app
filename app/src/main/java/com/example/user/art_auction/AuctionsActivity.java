@@ -64,8 +64,8 @@ public class AuctionsActivity extends AppBasicMenuActivity {
             but.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //Intent myIntent = new Intent(AuctionActivity.this, LogInActivity.class);
-                    //startActivity(myIntent);
+                    Intent myIntent = new Intent(AuctionsActivity.this, UserBidsActivity.class);
+                    startActivity(myIntent);
                 }
             });
         }

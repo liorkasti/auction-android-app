@@ -10,6 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="30dp"
         android:gravity="center_vertical|center_horizontal"
         android:orientation="vertical"
@@ -30,6 +31,7 @@
                 android:layout_marginStart="17dp"
                 android:layout_marginTop="47dp"
                 android:layout_weight="1"
+                android:width="130dp"
                 android:text="First Name"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -56,6 +58,7 @@
                 android:layout_marginStart="17dp"
                 android:layout_marginTop="47dp"
                 android:layout_weight="1"
+                android:width="130dp"
                 android:text="Last Name"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -68,6 +71,7 @@
                 android:width="200dp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -83,6 +87,7 @@
                 android:layout_marginTop="47dp"
                 android:layout_weight="1"
                 android:text="E-mail"
+                android:width="130dp"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <EditText
@@ -109,6 +114,7 @@
                 android:layout_marginStart="17dp"
                 android:layout_marginTop="47dp"
                 android:layout_weight="1"
+                android:width="130dp"
                 android:text="Password"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -152,6 +158,7 @@
                 android:onClick="saveData"
                 android:text="Sign up" />
         </LinearLayout>
+
         <TextView
             android:id="@+id/dataTextView"
             android:layout_width="match_parent"

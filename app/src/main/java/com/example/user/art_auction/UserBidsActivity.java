@@ -2,17 +2,11 @@ package com.example.user.art_auction;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -28,29 +22,21 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Date;
 
 
-public class AuctionActivity extends AppBasicMenuActivity {
+public class UserBidsActivity extends AppBasicMenuActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.auction_activity);
+        setContentView(R.layout.user_bids_activity);
 
-        Bundle b = getIntent().getExtras();
-        Auction a = (Auction)b.get("Auction");
-
-        ArrayList<AuctionItem> items = new ArrayList<>();
-        ListAdapter customListAdapter = new AuctionItemsCustomAdapter(this, items.toArray(new AuctionItem[items.size()]));// Pass the auction arrary to the constructor.
-        ListView customListView = (ListView) findViewById(R.id.auction_items_ListView);
-        customListView.setAdapter(customListAdapter);
-        getAuctionItems(this.getApplicationContext(), a);
+        getUserBids(UserBidsActivity.this);
     }
-
-    protected void getAuctionItems(final Context ctx, final Auction a){
-        String url = "http://10.0.2.2:8080/auction/" + a.getId() + "/items";
+    protected void getUserBids(final Context ctx){
+        String userId = UserSessionSingleton.getInstance(UserBidsActivity.this).getSessionId();
+        String url = "http://10.0.2.2:8080/user/" + userId + "/bids";
         final StringRequest request = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
@@ -60,16 +46,15 @@ public class AuctionActivity extends AppBasicMenuActivity {
                         ObjectMapper mapper = new ObjectMapper();
                         try {
                             JSONArray contacts = new JSONArray(response);
-                            ArrayList<AuctionItem> auctions = new ArrayList<>();
+                            ArrayList<AuctionItemBid> userBids = new ArrayList<>();
                             // looping through All Contacts
                             for (int i = 0; i < contacts.length(); i++) {
                                 JSONObject c = contacts.getJSONObject(i);
-                                AuctionItem obj = mapper.readValue(c.toString(), AuctionItem.class);
-                                obj.setAuction(a);
-                                auctions.add(obj);
+                                AuctionItemBid obj = mapper.readValue(c.toString(), AuctionItemBid.class);
+                                userBids.add(obj);
                             }
-                            ListAdapter customListAdapter = new AuctionItemsCustomAdapter(ctx, auctions.toArray(new AuctionItem[auctions.size()]));// Pass the auction arrary to the constructor.
-                            ListView customListView = (ListView) findViewById(R.id.auction_items_ListView);
+                            ListAdapter customListAdapter = new UserBidsCustomAdapter(ctx, userBids.toArray(new AuctionItemBid[userBids.size()]));
+                            ListView customListView = (ListView) findViewById(R.id.my_bids_ListView);
                             customListView.setAdapter(customListAdapter);
                             customListView.invalidateViews();
                         } catch (JSONException e) {
@@ -94,6 +79,6 @@ public class AuctionActivity extends AppBasicMenuActivity {
                 Toast.makeText(ctx, "Error" + body + "\nWTF", Toast.LENGTH_LONG).show();
             }
         });
-        RequestQueueSingleton.getInstance(AuctionActivity.this).addToRequestQue(request);
+        RequestQueueSingleton.getInstance(UserBidsActivity.this).addToRequestQue(request);
     }
 }

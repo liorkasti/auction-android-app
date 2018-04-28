@@ -2,4 +2,5 @@
 <resources>
     <item name="btnGoToCalander" type="id" />
     <item name="tvStartDate" type="id" />
+    <item name="my_bids_ListView" type="id">BidsListViewActivity</item>
 </resources>

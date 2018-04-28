@@ -25,7 +25,7 @@ public class MainActivity extends AppBasicMenuActivity{
 
     EditText userName;
 
-    Button bt_go_to_auctions, bt2, bt_log_in, bt_add_auction, bt_add_item, bt_test_rest;
+    Button bt_go_to_auctions, bt2, bt_log_in, bt_add_auction, bt_add_item, bt_test_rest,bt_my_active_auctions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +44,7 @@ public class MainActivity extends AppBasicMenuActivity{
             MSGuserName = "Hello: " + incomingIntent.getStringExtra("userName");
             userName.setText(MSGuserName);
         }
+
         bt_go_to_auctions = (Button) findViewById(R.id.guest_btn);
         bt_go_to_auctions.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,25 +55,25 @@ public class MainActivity extends AppBasicMenuActivity{
         });
 
 
-        bt_add_item = (Button) findViewById(R.id.add_item_btn);
-        bt_add_item.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, AddAuctionItemActivity.class);
-                myIntent.putExtra("auctionId", "1");
-                startActivity(myIntent);
-            }
-        });
+//        bt_add_item = (Button) findViewById(R.id.add_item_btn);
+//        bt_add_item.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent myIntent = new Intent(MainActivity.this, AddAuctionItemActivity.class);
+//                myIntent.putExtra("auctionId", "1");
+//                startActivity(myIntent);
+//            }
+//        });
 
 
-        bt_add_auction = (Button) findViewById(R.id.add_auction_btn);
-        bt_add_auction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, AddAuctionActivity.class);
-                startActivity(myIntent);
-            }
-        });
+//        bt_add_auction = (Button) findViewById(R.id.add_auction_btn);
+//        bt_add_auction.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent myIntent = new Intent(MainActivity.this, AddAuctionActivity.class);
+//                startActivity(myIntent);
+//            }
+//        });
 
 
         bt_log_in = (Button) findViewById(R.id.log_in_btn);
@@ -85,14 +86,26 @@ public class MainActivity extends AppBasicMenuActivity{
         });
 
 
-        bt_test_rest = (Button) findViewById(R.id.test_rest_btn);
-        bt_test_rest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Intent myIntent = new Intent(MainActivity.this, AddAuctionActivity.class);
-                //startActivity(myIntent);
-            }
-        });
+//        bt_test_rest = (Button) findViewById(R.id.test_rest_btn);
+//        bt_test_rest.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                Intent myIntent = new Intent(MainActivity.this, AddAuctionActivity.class);
+////                startActivity(myIntent);
+//            }
+//        });
+
+//        bt_my_active_auctions = (Button) findViewById(R.id.active_auction_btn);
+//        Log.i(TAG, "onCreate bt_my_active_auctions");
+//        bt_my_active_auctions.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.i(TAG, "onCreate getUserAuctionItems");
+//
+//                Intent myIntent = new Intent(MainActivity.this, UserHistoryActivity.class);
+//                startActivity(myIntent);
+//            }
+//        });
 
     }
 

@@ -30,6 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity> <!-- Include the AdActivity configChanges and theme. -->
+
         <activity android:name=".AddAuctionActivity" />
         <activity android:name=".ItemActivity" />
         <activity android:name=".SignUpActivity" />
@@ -39,15 +40,13 @@
         <activity android:name=".AuctionActivity" />
         <activity android:name=".AuctionsActivity" />
         <activity android:name=".LogInActivity" />
-        <!--<activity
-            android:name="com.google.android.gms.ads.AdActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
-            android:theme="@android:style/Theme.Translucent" /> -->
         <activity android:name=".AddAuctionItemActivity"/>
         <activity android:name=".CalendarActivity" />
         <activity android:name=".TimePickerActivity" />
         <activity android:name=".AboutActivity" />
         <activity android:name=".MyUserActivity" />
+        <!--<activity android:name=".UserHistoryActivity" />-->
+        <activity android:name=".UserBidsActivity" />
     </application>
 
 </manifest>

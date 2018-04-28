@@ -144,14 +144,20 @@ public class AddAuctionActivity extends AppBasicMenuActivity {
         if (startDate != null && startTime != null) {
             startTime = startDate + " " + startTime;
             Log.i(TAG, "dd-MM-yyyy:HH:mm-startTime Param to send: " + startTime);
+        } else {
+            Toast.makeText(this, "Missing Start Date", Toast.LENGTH_SHORT).show();
+            btnGoToCalander.setError("Please enter Start Date");
         }
         if (endDate != null && endTime != null) {
             endTime = endDate + " " + endTime;
             Log.i(TAG, "dd-MM-yyyy:HH:mm-endTime Param to send: " + endTime);
+        } else {
+            Toast.makeText(this, "Missing End Date", Toast.LENGTH_SHORT).show();
+            btnGoToCalander.setError("Please enter End Date");
         }
 
 
-//validateDate();
+//        validateDate();
 
         StringRequest request = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -160,6 +166,9 @@ public class AddAuctionActivity extends AppBasicMenuActivity {
                         //set the id from response as session id
                         //UserSessionSingleton.getInstance(AddAuctionActivity.this).loginUser(response);
                         Toast.makeText(view.getContext(), "ok " + response, Toast.LENGTH_LONG);
+                        Intent myIntent = new Intent(AddAuctionActivity.this, AddAuctionItemActivity.class);
+                        myIntent.putExtra("auctionId", response);
+                        startActivity(myIntent);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -177,12 +186,11 @@ public class AddAuctionActivity extends AppBasicMenuActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> params2 = new HashMap<String, String>();
                 params2.put("title", auctionName.getText().toString());
-                params2.put("description", auctionDesc.getText().toString()); //todo: add user ID, get auction id
+                params2.put("description", auctionDesc.getText().toString());
                 params2.put("startTime", startTime);
                 params2.put("endTime", endTime);
-                params2.put("user", "1");
-                //params2.put("email", userName.getText().toString());
-                //params2.put("password", password.getText().toString());
+                params2.put("user", UserSessionSingleton.getInstance(AddAuctionActivity.this).getSessionId());
+                params2.put("isSilent", "false");
                 return params2;
             }
 
@@ -196,6 +204,7 @@ public class AddAuctionActivity extends AppBasicMenuActivity {
         RequestQueueSingleton.getInstance(AddAuctionActivity.this).addToRequestQue(request);
 
         Toast.makeText(this, "Saved", Toast.LENGTH_LONG).show();
+
     }
 
 //    private void validateDate() {

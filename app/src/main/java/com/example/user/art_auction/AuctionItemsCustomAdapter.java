@@ -46,6 +46,9 @@ class AuctionItemsCustomAdapter extends ArrayAdapter<AuctionItem> {
         // get references.
         AuctionItem singleAuctionItem = getItem(position);
         TextView itemText = (TextView) customView.findViewById(R.id.item_text);
+        // dynamically update the text from the array
+        itemText.setText(singleAuctionItem.getName());
+
         Button b1 = (Button) customView.findViewById(R.id.enter_btn);
         b1.setTag(singleAuctionItem);
         b1.setOnClickListener(new View.OnClickListener() {
@@ -58,57 +61,16 @@ class AuctionItemsCustomAdapter extends ArrayAdapter<AuctionItem> {
                 v.getContext().startActivity(myIntent);
             }
         });
-        Button b2 = (Button) customView.findViewById(R.id.sign_up_btn);
+//        Button b2 = (Button) customView.findViewById(R.id.sign_up_btn);
+
         ImageView auctionImage = (ImageView) customView.findViewById(R.id.hp_main_image);
-
-
-        // dynamically update the text from the array
-        itemText.setText(singleAuctionItem.getName());
         // using the same image every time
         //getAuctionItemImage()
         auctionImage.setImageResource(R.drawable.art10);
-        getAuctionItemImage(getContext(), singleAuctionItem.getAuction(), singleAuctionItem, auctionImage);
+        RestAsyncCaller.getAuctionItemImage(getContext(), singleAuctionItem.getAuction(), singleAuctionItem, auctionImage);
         // Now we can finally return our custom View or custom item
         return customView;
     }
 
-    private void getAuctionItemImage(final Context ctx, Auction a, AuctionItem item,final ImageView auctionImage) {
-        String url = "http://10.0.2.2:8080/auction/" + a.getId() + "/" + item.getId() + "/getImage";
-        final StringRequest request = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        //set the id from response as session id
-                        JSONObject jsonResponse = null;
-                        ObjectMapper mapper = new ObjectMapper();
-                        try {
-                            JSONObject imObj= new JSONObject(response);
-                            AuctionItemImage obj = mapper.readValue(imObj.toString(), AuctionItemImage.class);
-                            Bitmap myBitmap = BitmapFactory.decodeByteArray(obj.getImage(), 0, obj.getImage().length);
-                            auctionImage.setImageBitmap(myBitmap);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        } catch (JsonParseException e) {
-                            auctionImage.setImageResource(R.drawable.art11);
-                        } catch (JsonMappingException e) {
-                            e.printStackTrace();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                String body = "";
-                try {
-                    body = new String(error.networkResponse.data, "UTF-8");
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
-                Toast.makeText(ctx, "Error" + body + "\nWTF", Toast.LENGTH_LONG).show();
-            }
-        });
-        RequestQueueSingleton.getInstance(ctx).addToRequestQue(request);
 
-    }
 }
