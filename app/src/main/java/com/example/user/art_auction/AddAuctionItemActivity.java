@@ -60,6 +60,16 @@ public class AddAuctionItemActivity extends AppBasicMenuActivity {
             auctionId= b.getString("auctionId");
     }
 
+    private void clearAll(){
+        final EditText itemName=    (EditText) findViewById(R.id.itemName);
+        final EditText itemDesc =   (EditText) findViewById(R.id.itemDesc);
+        final EditText itemPrice =  (EditText) findViewById(R.id.itemPrice);
+        itemDesc.setText("");
+        itemName.setText("");
+        itemPrice.setText("");
+        imagePath = "";
+    }
+
     public void addItem(final View view) {
         final EditText itemName=    (EditText) findViewById(R.id.itemName);
         final EditText itemDesc =   (EditText) findViewById(R.id.itemDesc);
@@ -74,10 +84,12 @@ public class AddAuctionItemActivity extends AppBasicMenuActivity {
                         //set the id from response as session id
                         String itemId = response;
                         //UserSessionSingleton.getInstance(AddAuctionItemActivity.this).loginUser(response);
-                        Toast.makeText(view.getContext(), "ok " + response, Toast.LENGTH_LONG);
+
                         if(!imagePath.isEmpty()) {
                             imageUpload(imagePath, itemId);
                         }
+                        Toast.makeText(view.getContext(), "Auction Item added successfully!", Toast.LENGTH_LONG);
+                        clearAll();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -244,5 +256,9 @@ public class AddAuctionItemActivity extends AppBasicMenuActivity {
 
     public void uploadImage(View view) {
         imageBrowse();
+    }
+
+    public void closeActivity(View view) {
+        closeActivity(view);
     }
 }

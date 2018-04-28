@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
@@ -42,7 +43,6 @@ public class AuctionsActivity extends AppBasicMenuActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_activity);
         ArrayList<Auction> auctions = new ArrayList<>();
-        auctions.add(new Auction(1, "First Auction", "lalala", Calendar.getInstance().getTime(), Calendar.getInstance().getTime()));
 
         ListAdapter customListAdapter = new AuctionCustomAdapter(this, auctions.toArray(new Auction[auctions.size()]));// Pass the auction arrary to the constructor.
         ListView customListView = (ListView) findViewById(R.id.hp_ListView);
@@ -57,6 +57,18 @@ public class AuctionsActivity extends AppBasicMenuActivity {
                     }
                 }
         );
+
+        if(UserSessionSingleton.getInstance(AuctionsActivity.this).isLoggedIn()) {
+            Button but = (Button) findViewById(R.id.sign_in_button);
+            but.setText("My Bids");
+            but.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //Intent myIntent = new Intent(AuctionActivity.this, LogInActivity.class);
+                    //startActivity(myIntent);
+                }
+            });
+        }
 
     }
 
@@ -168,6 +180,12 @@ public class AuctionsActivity extends AppBasicMenuActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+
+    public void gotoLogin(View view) {
+        Intent myIntent = new Intent(AuctionsActivity.this, LogInActivity.class);
+        startActivity(myIntent);
     }
 
     public void startMain(View view) {

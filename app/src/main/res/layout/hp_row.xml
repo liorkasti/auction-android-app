@@ -17,7 +17,13 @@
             android:layout_column="0"
             android:layout_row="0"
             android:orientation="horizontal">
-
+            <ImageButton
+                android:id="@+id/hp_main_image"
+                style="@style/AuctionAppTheme.HPImage"
+                android:layout_width="16dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                />
             <TextView
                 android:id="@+id/item_text"
 
@@ -40,18 +46,9 @@
                 android:textAlignment="textEnd" />
 
         </LinearLayout>
+<!--
 
-        <ImageButton
-            android:id="@+id/hp_main_image"
-            style="@style/AuctionAppTheme.HPImage"
-            android:layout_width="wrap_content"
-            android:layout_height="160dp"
-            android:layout_column="0"
-            android:layout_row="1"
-            android:layout_rowSpan="2"
-            android:layout_weight="1"
-            android:src="@drawable/art10" />
-
+-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

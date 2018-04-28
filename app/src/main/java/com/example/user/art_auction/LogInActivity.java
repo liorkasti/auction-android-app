@@ -81,16 +81,17 @@ public class LogInActivity extends AppBasicMenuActivity {
                     public void onResponse(String response) {
                         //set the id from response as session id
                         UserSessionSingleton.getInstance(LogInActivity.this).loginUser(response);
-                        Intent myIntent = new Intent(LogInActivity.this, AuctionActivity.class);
+                        Intent myIntent = new Intent(LogInActivity.this, AuctionsActivity.class);
                         startActivity(myIntent);
-                        //Toast.makeText(view.getContext(), "ok " + response, Toast.LENGTH_LONG);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 String body = "";
                 try {
-                    body = new String(error.networkResponse.data, "UTF-8");
+                    if (error.networkResponse.data != null) {
+                        body = new String(error.networkResponse.data, "UTF-8");
+                    }
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }

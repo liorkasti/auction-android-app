@@ -89,7 +89,7 @@ class AuctionItemsCustomAdapter extends ArrayAdapter<AuctionItem> {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         } catch (JsonParseException e) {
-                            e.printStackTrace();
+                            auctionImage.setImageResource(R.drawable.art11);
                         } catch (JsonMappingException e) {
                             e.printStackTrace();
                         } catch (IOException e) {

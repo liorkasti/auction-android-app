@@ -77,7 +77,9 @@ public class SignUpActivity extends AppBasicMenuActivity {
             public void onErrorResponse(VolleyError error) {
                 String body = "";
                 try {
-                    body = new String(error.networkResponse.data,"UTF-8");
+                    if( error.networkResponse.data != null) {
+                        body = new String(error.networkResponse.data, "UTF-8");
+                    }
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -87,10 +89,8 @@ public class SignUpActivity extends AppBasicMenuActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> params2 = new HashMap<String, String>();
-//                params2.put("fName", "Anton");
-//                params2.put("lName", "Lerner");
-                params2.put("First Name", firstName.getText().toString());
-                params2.put("Last Name", lastName.getText().toString());
+                params2.put("fName", firstName.getText().toString());
+                params2.put("lName", lastName.getText().toString());
                 params2.put("email", eMail.getText().toString());
                 params2.put("password", password.getText().toString());
                 return params2;

@@ -54,6 +54,20 @@
             android:hint="Item Description"
             tools:layout_below="@id/itemName" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnBack"
+            style="@style/AuctionAppTheme.BasicButton"
+            android:layout_width="wrap_content"
+            android:layout_alignRight="@+id/btLogIN"
+            android:layout_centerVertical="true"
+            android:onClick="closeActivity"
+            android:layout_margin="10dp"
+            android:text="Back" />
         <Button
             android:id="@+id/btLogIN"
             style="@style/AuctionAppTheme.BasicButton"
@@ -61,8 +75,11 @@
             android:layout_alignLeft="@+id/itemDesc"
             android:layout_alignStart="@+id/itemDesc"
             android:layout_centerVertical="true"
+            android:layout_margin="10dp"
             android:onClick="addItem"
             android:text="Add Item" />
+
+    </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>
