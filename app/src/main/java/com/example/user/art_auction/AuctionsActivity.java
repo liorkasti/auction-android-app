@@ -3,6 +3,7 @@ package com.example.user.art_auction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,8 +30,14 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class AuctionsActivity extends AppBasicMenuActivity {
+
+
+    String timer;
+    Date now = new Date();
+    Thread t;
 
     @Override
     public boolean onMenuOpened(int featureId, Menu menu) {
@@ -41,12 +48,31 @@ public class AuctionsActivity extends AppBasicMenuActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_activity);
+
         ArrayList<Auction> auctions = new ArrayList<>();
+
         auctions.add(new Auction(1, "First Auction", "lalala", Calendar.getInstance().getTime(), Calendar.getInstance().getTime()));
 
-        ListAdapter customListAdapter = new AuctionCustomAdapter(this, auctions.toArray(new Auction[auctions.size()]));// Pass the auction arrary to the constructor.
-        ListView customListView = (ListView) findViewById(R.id.hp_ListView);
+        final ListAdapter customListAdapter = new AuctionCustomAdapter(this, auctions.toArray(new Auction[auctions.size()]));// Pass the auction arrary to the constructor.
+        final ListView customListView = (ListView) findViewById(R.id.hp_ListView);
         customListView.setAdapter(customListAdapter);
+        customListView.invalidateViews();
+
+//todo: fix refresh tim
+// one way:
+//        final Handler handler = new Handler();
+//        handler.postDelayed( new Runnable() {
+//
+//            @Override
+//            public void run() {
+//                //    customListView.notifyDataSetChanged();
+//                customListView.setAdapter(customListAdapter);
+//                customListView.invalidateViews();
+//                handler.postDelayed( this, 5000 );
+//            }
+//        }, 5000 );
+
+
         getAuctions(this);
         customListView.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
@@ -85,7 +111,35 @@ public class AuctionsActivity extends AppBasicMenuActivity {
                                 ListView customListView = (ListView) findViewById(R.id.hp_ListView);
                                 customListView.setAdapter(customListAdapter);
                                 customListView.invalidateViews();
-                            }
+//todo: fix refresh tim
+// another way:
+//                                t=new Thread(){
+//                                    @Override
+//                                    public void run(){
+//
+//                                        while(!isInterrupted()){
+//
+//                                            try {
+//                                                Thread.sleep(1000);  //1000ms = 1 sec
+//
+//                                                runOnUiThread(new Runnable() {
+//
+//                                                    @Override
+//                                                    public void run() {
+//                                                       }
+//                                                });
+//
+//                                            } catch (InterruptedException e) {
+//                                                e.printStackTrace();
+//                                            }
+//                                        }
+//                                    }
+//                                };
+//
+//                                t.start();
+
+
+                        }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         } catch (JsonParseException e) {

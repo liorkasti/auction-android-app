@@ -16,11 +16,12 @@
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
             android:onClick="sign_in_intent"
-            android:text="Sign In / My bids" />
+            android:text="Log In / Sign In" />
 
         <ListView
             android:id="@+id/hp_ListView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"/>
 
 </LinearLayout>

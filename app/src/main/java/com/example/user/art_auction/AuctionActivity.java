@@ -36,6 +36,7 @@ public class AuctionActivity extends AppBasicMenuActivity {
 
     String timer;
     Date now = new Date();
+//    Thread t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,6 @@ public class AuctionActivity extends AppBasicMenuActivity {
         setContentView(R.layout.auction_activity
         );
 
-        //todo: calc the time left timer out time left in btn and validate
         Bundle endTime = getIntent().getExtras();
         if (endTime != null)
         timer = endTime.getString("STRING_End_Date_to_Active_Calc");
@@ -52,7 +52,7 @@ public class AuctionActivity extends AppBasicMenuActivity {
         Bundle b = getIntent().getExtras();
         Auction a = (Auction)b.get("Auction");
 
-        ArrayList<AuctionItem> items = new ArrayList<>();
+        final ArrayList<AuctionItem> items = new ArrayList<>();
         items.add(new AuctionItem(a,1, "Anton Item", "This is item", 1000));
         items.add(new AuctionItem(a,2, "Anton Item2", "This is item", 1000));
 
@@ -60,8 +60,6 @@ public class AuctionActivity extends AppBasicMenuActivity {
         ListView customListView = (ListView) findViewById(R.id.auction_items_ListView);
         customListView.setAdapter(customListAdapter);
         getAuctionItems(this.getApplicationContext(), a);
-//        customListView.notifyDataSetChanged();
-
     }
 
     protected void getAuctionItems(final Context ctx, final Auction a){
