@@ -3,6 +3,7 @@ package com.example.user.art_auction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,8 +31,14 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class AuctionsActivity extends AppBasicMenuActivity {
+
+
+    String timer;
+    Date now = new Date();
+    Thread t;
 
     @Override
     public boolean onMenuOpened(int featureId, Menu menu) {
@@ -42,11 +49,28 @@ public class AuctionsActivity extends AppBasicMenuActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_activity);
-        ArrayList<Auction> auctions = new ArrayList<>();
 
-        ListAdapter customListAdapter = new AuctionCustomAdapter(this, auctions.toArray(new Auction[auctions.size()]));// Pass the auction arrary to the constructor.
-        ListView customListView = (ListView) findViewById(R.id.hp_ListView);
+        ArrayList<Auction> auctions = new ArrayList<>();
+        final ListAdapter customListAdapter = new AuctionCustomAdapter(this, auctions.toArray(new Auction[auctions.size()]));// Pass the auction arrary to the constructor.
+        final ListView customListView = (ListView) findViewById(R.id.hp_ListView);
         customListView.setAdapter(customListAdapter);
+        customListView.invalidateViews();
+
+//todo: fix refresh tim
+// one way:
+//        final Handler handler = new Handler();
+//        handler.postDelayed( new Runnable() {
+//
+//            @Override
+//            public void run() {
+//                //    customListView.notifyDataSetChanged();
+//                customListView.setAdapter(customListAdapter);
+//                customListView.invalidateViews();
+//                handler.postDelayed( this, 5000 );
+//            }
+//        }, 5000 );
+
+
         getAuctions(this);
         customListView.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
@@ -83,21 +107,19 @@ public class AuctionsActivity extends AppBasicMenuActivity {
                         ObjectMapper mapper = new ObjectMapper();
                         try {
                             JSONArray contacts = new JSONArray(response);
-
+                            ArrayList<Auction> auctions = new ArrayList<>();
                             // looping through All Contacts
                             for (int i = 0; i < contacts.length(); i++) {
                                 JSONObject c = contacts.getJSONObject(i);
-
                                 Auction obj = mapper.readValue(c.toString(), Auction.class);
 
-                                ArrayList<Auction> auctions = new ArrayList<>();
                                 auctions.add(obj);
 
-                                ListAdapter customListAdapter = new AuctionCustomAdapter(ctx, auctions.toArray(new Auction[auctions.size()]));// Pass the auction arrary to the constructor.
-                                ListView customListView = (ListView) findViewById(R.id.hp_ListView);
-                                customListView.setAdapter(customListAdapter);
-                                customListView.invalidateViews();
                             }
+                            ListAdapter customListAdapter = new AuctionCustomAdapter(ctx, auctions.toArray(new Auction[auctions.size()]));// Pass the auction arrary to the constructor.
+                            ListView customListView = (ListView) findViewById(R.id.hp_ListView);
+                            customListView.setAdapter(customListAdapter);
+                            customListView.invalidateViews();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         } catch (JsonParseException e) {
@@ -123,73 +145,14 @@ public class AuctionsActivity extends AppBasicMenuActivity {
         RequestQueueSingleton.getInstance(AuctionsActivity.this).addToRequestQue(request);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        RelativeLayout main_view = (RelativeLayout) findViewById(R.id.main_view);
-
-        switch (item.getItemId()) {
-            case R.id.menu_level1: {
-                if (item.isChecked())
-                    item.setChecked(false);
-                else
-                    item.setChecked(true);
-
-                Intent myIntent = new Intent(AuctionsActivity.this, MainActivity.class);
-                startActivity(myIntent);
-                return true;
-            }
-
-            case R.id.menu_level2: {
-                if (item.isChecked())
-                    item.setChecked(false);
-                else
-                    item.setChecked(true);
-
-                Intent myIntent = new Intent(AuctionsActivity.this, AuctionsActivity.class);
-                startActivity(myIntent);
-                return true;
-            }
-
-            case R.id.menu_level3: {
-                if (item.isChecked())
-                    item.setChecked(false);
-                else
-                    item.setChecked(true);
-
-                Intent myIntent = new Intent(AuctionsActivity.this, SignUpActivity.class);
-                startActivity(myIntent);
-                return true;
-            }
-            case R.id.menu_level4: {
-                if (item.isChecked())
-                    item.setChecked(false);
-                else
-                    item.setChecked(true);
-
-                Intent myIntent = new Intent(AuctionsActivity.this, MyUserActivity.class);
-                startActivity(myIntent);
-                return true;
-            }
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+    public void startMain(View view) {
+        Intent myIntent = new Intent(AuctionsActivity.this, MainActivity.class);
+        startActivity(myIntent);
     }
 
 
     public void gotoLogin(View view) {
         Intent myIntent = new Intent(AuctionsActivity.this, LogInActivity.class);
-        startActivity(myIntent);
-    }
-
-    public void startMain(View view) {
-        Intent myIntent = new Intent(AuctionsActivity.this, MainActivity.class);
         startActivity(myIntent);
     }
 }

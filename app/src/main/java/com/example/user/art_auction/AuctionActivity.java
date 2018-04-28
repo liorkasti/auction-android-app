@@ -4,6 +4,7 @@ package com.example.user.art_auction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -28,24 +29,28 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 
 public class AuctionActivity extends AppBasicMenuActivity {
 
+    String timer;
+    Date now = new Date();
+//    Thread t;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.auction_activity);
+        setContentView(R.layout.auction_activity
+        );
 
+        Bundle endTime = getIntent().getExtras();
+        if (endTime != null)
+        timer = endTime.getString("STRING_End_Date_to_Active_Calc");
         Bundle b = getIntent().getExtras();
         Auction a = (Auction)b.get("Auction");
-
-        ArrayList<AuctionItem> items = new ArrayList<>();
-        ListAdapter customListAdapter = new AuctionItemsCustomAdapter(this, items.toArray(new AuctionItem[items.size()]));// Pass the auction arrary to the constructor.
-        ListView customListView = (ListView) findViewById(R.id.auction_items_ListView);
-        customListView.setAdapter(customListAdapter);
         getAuctionItems(this.getApplicationContext(), a);
     }
 

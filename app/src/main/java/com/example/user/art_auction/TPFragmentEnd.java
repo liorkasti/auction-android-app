@@ -9,6 +9,7 @@ import android.text.format.DateFormat;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -21,10 +22,19 @@ public class TPFragmentEnd extends DialogFragment
 
     private static final String TAG = "Messeges";
 
+    final Calendar c = Calendar.getInstance();
+    private int mYear = c.get(Calendar.YEAR);
+    private int mMonth = c.get(Calendar.MONTH);
+    private int mDay = c.get(Calendar.DAY_OF_MONTH);
+    private int mHour = c.get(Calendar.HOUR_OF_DAY);
+    private int mMinute = c.get(Calendar.MINUTE);
+
+
     @Override
-    public Dialog onCreateDialog (Bundle savedInstanceState){
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the current time as the default values for the picker
         final Calendar c = Calendar.getInstance();
+
         int hour = c.get(Calendar.HOUR_OF_DAY);
         int min = c.get(Calendar.MINUTE);
 
@@ -34,14 +44,26 @@ public class TPFragmentEnd extends DialogFragment
     }
 
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+/*
+        // time chosen at least 10 minutes from now
+        if (mYear == c.get(Calendar.YEAR)
+                && mMonth == c.get(Calendar.MONTH)
+                && mDay == c.get(Calendar.DAY_OF_MONTH)
+                && (mHour < c.get(Calendar.HOUR_OF_DAY) || (mHour == c.get(Calendar.HOUR_OF_DAY) && mMinute <= (c.get(Calendar.MINUTE) + 10)))
+                ) {
+//            String body = "";
+//            Toast.makeText(this,"Set time at least 10 minutes from now" + body, Toast.LENGTH_LONG).show();
+        } else {
+*/
+
         // time chosen by the user
         TextView tv1 = (TextView) getActivity().findViewById(R.id.tvEndTime);
         String time = "";
-        if (hourOfDay < 10){
+        if (hourOfDay < 10) {
             time = "0";
         }
         time += hourOfDay + ":";
-        if (minute < 10){
+        if (minute < 10) {
             time += "0";
         }
         time += minute;

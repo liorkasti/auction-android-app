@@ -47,6 +47,7 @@ public class AddAuctionItemActivity extends AppBasicMenuActivity {
 
     String auctionId;
     String imagePath;
+    String dateTimer,timeTimer;
 
     final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
 
@@ -54,10 +55,25 @@ public class AddAuctionItemActivity extends AppBasicMenuActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_auction_item);
+
         Bundle b = getIntent().getExtras();
         String value = "";
-        if(b != null)
-            auctionId= b.getString("auctionId");
+        if (b != null)
+            auctionId = b.getString("auctionId");
+
+        Bundle endTime = getIntent().getExtras();
+        if (endTime != null)
+            timeTimer = endTime.getString("STRING_End_Time");
+
+    }
+
+    public void save_items(final View view) {
+        Toast.makeText(this, "Saved! The Auction will be active util: " + timeTimer, Toast.LENGTH_LONG).show();
+
+        Intent myIntent = new Intent(AddAuctionItemActivity.this, AuctionActivity.class);
+        myIntent.putExtra("STRING_End_Time", timeTimer);
+//        myIntent.putExtra("STRING_End_Date_to_Active_Calc", dateTimer);
+        startActivity(myIntent);
     }
 
     private void clearAll(){
@@ -71,9 +87,9 @@ public class AddAuctionItemActivity extends AppBasicMenuActivity {
     }
 
     public void addItem(final View view) {
-        final EditText itemName=    (EditText) findViewById(R.id.itemName);
-        final EditText itemDesc =   (EditText) findViewById(R.id.itemDesc);
-        final EditText itemPrice =  (EditText) findViewById(R.id.itemPrice);
+        final EditText itemName = (EditText) findViewById(R.id.itemName);
+        final EditText itemDesc = (EditText) findViewById(R.id.itemDesc);
+        final EditText itemPrice = (EditText) findViewById(R.id.itemPrice);
 
         String url = "http://10.0.2.2:8080/auction/" + auctionId.toString() + "/additem";
 
@@ -83,9 +99,8 @@ public class AddAuctionItemActivity extends AppBasicMenuActivity {
                     public void onResponse(String response) {
                         //set the id from response as session id
                         String itemId = response;
-                        //UserSessionSingleton.getInstance(AddAuctionItemActivity.this).loginUser(response);
-
-                        if(!imagePath.isEmpty()) {
+                        Toast.makeText(view.getContext(), "ok " + response, Toast.LENGTH_LONG);
+                        if (!imagePath.isEmpty()) {
                             imageUpload(imagePath, itemId);
                         }
                         Toast.makeText(view.getContext(), "Auction Item added successfully!", Toast.LENGTH_LONG);
@@ -97,7 +112,7 @@ public class AddAuctionItemActivity extends AppBasicMenuActivity {
                 String body = "";
                 try {
                     if (error.networkResponse.data != null)
-                        body = new String(error.networkResponse.data,"UTF-8");
+                        body = new String(error.networkResponse.data, "UTF-8");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -116,7 +131,7 @@ public class AddAuctionItemActivity extends AppBasicMenuActivity {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<>();
-                headers.put("Content-Type","application/x-www-form-urlencoded");
+                headers.put("Content-Type", "application/x-www-form-urlencoded");
                 return headers;
             }
         };
@@ -139,7 +154,7 @@ public class AddAuctionItemActivity extends AppBasicMenuActivity {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                        requestPermissions(new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},
+                                        requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                                                 REQUEST_CODE_ASK_PERMISSIONS);
                                     }
                                 }
@@ -148,7 +163,7 @@ public class AddAuctionItemActivity extends AppBasicMenuActivity {
                 }
             }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                requestPermissions(new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},
+                requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                         REQUEST_CODE_ASK_PERMISSIONS);
             }
             return;
@@ -173,7 +188,7 @@ public class AddAuctionItemActivity extends AppBasicMenuActivity {
 
         if (resultCode == RESULT_OK) {
 
-            if(requestCode == 1){
+            if (requestCode == 1) {
                 Uri picUri = data.getData();
 
                 imagePath = getPath(picUri);
@@ -190,7 +205,7 @@ public class AddAuctionItemActivity extends AppBasicMenuActivity {
     private void imageUpload(final String imagePath, final String itemID) {
         MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
-        File f  = new File(imagePath);
+        File f = new File(imagePath);
         String url = "http://10.0.2.2:8080/auction/" + auctionId.toString() + "/" + itemID + "/uploadImage";
         //FileBody fileBody = new FileBody(new File(imagePath)); //image should be a String
         VolleyMultipartRequest multipartRequest = null;
@@ -244,7 +259,7 @@ public class AddAuctionItemActivity extends AppBasicMenuActivity {
     }
 
     private String getPath(Uri contentUri) {
-        String[] proj = { MediaStore.Images.Media.DATA };
+        String[] proj = {MediaStore.Images.Media.DATA};
         CursorLoader loader = new CursorLoader(getApplicationContext(), contentUri, proj, null, null, null);
         Cursor cursor = loader.loadInBackground();
         int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);

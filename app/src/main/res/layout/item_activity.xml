@@ -54,7 +54,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
-                android:id="@+id/itemPr"
+                android:id="@+id/itemPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="10"
@@ -102,7 +102,10 @@
                 android:id="@+id/bid_price"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:hint="Place your bid here: (min:)" />
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:text="Place your bid here: (min:)" />
 
             <Button
                 android:id="@+id/add_item_btn"

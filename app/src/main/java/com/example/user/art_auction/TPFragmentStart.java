@@ -60,6 +60,7 @@ public class TPFragmentStart extends DialogFragment
 
         tv1.setText(time);
         Log.i(TAG, "TPFragmentStart HH:mm---------------endTime " + time);
+
 //        valToPass = time;
 //        //INTENT OBJ
 //        Intent i = new Intent(getActivity().getBaseContext(),

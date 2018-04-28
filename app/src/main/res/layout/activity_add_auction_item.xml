@@ -69,7 +69,7 @@
             android:layout_margin="10dp"
             android:text="Back" />
         <Button
-            android:id="@+id/btLogIN"
+            android:id="@+id/add_item_btn"
             style="@style/AuctionAppTheme.BasicButton"
             android:layout_width="wrap_content"
             android:layout_alignLeft="@+id/itemDesc"
@@ -78,7 +78,6 @@
             android:layout_margin="10dp"
             android:onClick="addItem"
             android:text="Add Item" />
-
     </LinearLayout>
     </LinearLayout>
 
