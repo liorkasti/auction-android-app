@@ -18,7 +18,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/enter_btn"
+                android:id="@+id/enter_item_btn"
                 style="@style/AuctionAppTheme.BasicButton"
 
                 android:layout_width="wrap_content"

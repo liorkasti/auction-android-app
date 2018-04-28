@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
+import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.util.Calendar;
 import java.util.Date;
@@ -28,11 +29,10 @@ public class AddAuctionActivity extends AppBasicMenuActivity {
     private static final String TAG = "Messeges";
 
     Date today = new Date();
-    Date _endDate;
 
     private TextView tvStartDate, tvStartTime, tvEndDate, tvEndTime;
     private Button btnGoToCalander, btnGoToCalander2;
-    private String startDate, endDate, startTime, endTime;
+    private String startDate, endDate, startTime, endTime,endTimeToActiveCalc;
 
     static final int PICK_START_DATE_REQUEST = 1;  // The request code
     static final int PICK_END_DATE_REQUEST = 2;  // The request code
@@ -149,6 +149,7 @@ public class AddAuctionActivity extends AppBasicMenuActivity {
             btnGoToCalander.setError("Please enter Start Date");
         }
         if (endDate != null && endTime != null) {
+            endTimeToActiveCalc =  endTime;
             endTime = endDate + " " + endTime;
             Log.i(TAG, "dd-MM-yyyy:HH:mm-endTime Param to send: " + endTime);
         } else {
@@ -203,9 +204,13 @@ public class AddAuctionActivity extends AppBasicMenuActivity {
         };
         RequestQueueSingleton.getInstance(AddAuctionActivity.this).addToRequestQue(request);
 
-        Toast.makeText(this, "Saved", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Saved! The Auction will be active util: " + endTime, Toast.LENGTH_LONG).show();
 
         Intent myIntent = new Intent(AddAuctionActivity.this, AddAuctionItemActivity.class);
+        myIntent.putExtra("STRING_End_Time", endTime);
+//        myIntent.putExtra("STRING_End_Time", endTimeToActiveCalc);
+//        myIntent.putExtra("STRING_End_Date", endDate);
+
         startActivity(myIntent);
     }
 

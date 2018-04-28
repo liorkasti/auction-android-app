@@ -2,10 +2,11 @@
 <resources>
     <color name="colorPrimary">#000000</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#ef0051</color>
     <color name="background_blue">#15839f</color>
     <color name="primary_orange">#ff8000</color>
     <color name="primary_green">#83ca45</color>
     <color name="colorPrimaryText">#fff</color>
+    <color name="colorActiveAuction">#00aeff</color>
 
 </resources>

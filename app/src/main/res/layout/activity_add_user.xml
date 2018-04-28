@@ -147,7 +147,7 @@
                 android:text="Display Info" />
 
             <Button
-                android:id="@+id/btLogIN"
+                android:id="@+id/add_item_btn"
                 style="@style/AuctionAppTheme.BasicButton"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"

@@ -25,6 +25,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
@@ -119,8 +120,13 @@ public class LogInActivity extends AppBasicMenuActivity {
 
         Toast.makeText(this, "Saved", Toast.LENGTH_LONG).show();
         //todo:
+        Log.i(TAG, "userName: " + userName);
+
         Intent myIntent = new Intent(LogInActivity.this, MainActivity.class);
+        myIntent.putExtra("STRING_User_Name", (Serializable) userName);
         startActivity(myIntent);
+
+
         /*btGoBackToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

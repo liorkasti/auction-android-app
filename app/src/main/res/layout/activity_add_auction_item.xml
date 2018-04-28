@@ -55,7 +55,7 @@
             tools:layout_below="@id/itemName" />
 
         <Button
-            android:id="@+id/btLogIN"
+            android:id="@+id/add_item_btn"
             style="@style/AuctionAppTheme.BasicButton"
             android:layout_width="wrap_content"
             android:layout_alignLeft="@+id/itemDesc"
@@ -63,6 +63,15 @@
             android:layout_centerVertical="true"
             android:onClick="addItem"
             android:text="Add Item" />
+
+        <Button
+            android:id="@+id/save_items_btn"
+            style="@style/AuctionAppTheme.BasicButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="save_items"
+
+            android:text="Save and Review" />
     </LinearLayout>
 
 </RelativeLayout>

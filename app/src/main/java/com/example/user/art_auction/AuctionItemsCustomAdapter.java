@@ -31,10 +31,12 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Date;
 
 class AuctionItemsCustomAdapter extends ArrayAdapter<AuctionItem> {
+
     public AuctionItemsCustomAdapter(Context context, AuctionItem[] auctions) {
-        super(context, R.layout.hp_row, auctions);
+        super(context, R.layout.auction_item_row, auctions);
     }
 
     @Override
@@ -42,26 +44,25 @@ class AuctionItemsCustomAdapter extends ArrayAdapter<AuctionItem> {
         // default -  return super.getView(position, convertView, parent);
         // add the layout
         LayoutInflater myCustomInflater = LayoutInflater.from(getContext());
-        View customView = myCustomInflater.inflate(R.layout.hp_row, parent, false);
+        View customView = myCustomInflater.inflate(R.layout.auction_item_row, parent, false);
         // get references.
         AuctionItem singleAuctionItem = getItem(position);
-        TextView itemText = (TextView) customView.findViewById(R.id.item_text);
+        TextView itemText = (TextView) customView.findViewById(R.id.item_name_tv);
         // dynamically update the text from the array
         itemText.setText(singleAuctionItem.getName());
 
-        Button b1 = (Button) customView.findViewById(R.id.enter_btn);
+        Button b1 = (Button) customView.findViewById(R.id.item_enter_btn);
         b1.setTag(singleAuctionItem);
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AuctionItem a = (AuctionItem)v.getTag();
-                //Toast.makeText(v.getContext(), "Hi2" + a.getName(), Toast.LENGTH_LONG).show();
                 Intent myIntent = new Intent(v.getContext(), ItemActivity.class);
                 myIntent.putExtra("AuctionItem", a);
                 v.getContext().startActivity(myIntent);
             }
         });
-//        Button b2 = (Button) customView.findViewById(R.id.sign_up_btn);
+
 
         ImageView auctionImage = (ImageView) customView.findViewById(R.id.hp_main_image);
         // using the same image every time

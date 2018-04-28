@@ -23,7 +23,7 @@ public class MainActivity extends AppBasicMenuActivity{
 
     private static final String TAG = "Messeges";
 
-    EditText userName;
+    EditText userNameET;
 
     Button bt_go_to_auctions, bt2, bt_log_in, bt_add_auction, bt_add_item, bt_test_rest,bt_my_active_auctions;
 
@@ -35,14 +35,15 @@ public class MainActivity extends AppBasicMenuActivity{
 
 //        Log.i(TAG, "onCreate");
 
-        userName = (EditText) findViewById(R.id.userName);
+        userNameET = (EditText) findViewById(R.id.userName);
         Intent incomingIntent = getIntent();
 //        set the userName
-        String MSGuserName = incomingIntent.getStringExtra("userName");
+        String MSGuserName = incomingIntent.getStringExtra("STRING_User_Name");
         if (MSGuserName == null) {
         } else {
             MSGuserName = "Hello: " + incomingIntent.getStringExtra("userName");
-            userName.setText(MSGuserName);
+            Log.i(TAG, "userName: " + MSGuserName);
+            userNameET.setText(MSGuserName);
         }
 
         bt_go_to_auctions = (Button) findViewById(R.id.guest_btn);

@@ -3,6 +3,7 @@ package com.example.user.art_auction;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
@@ -26,16 +27,27 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 
 public class AuctionActivity extends AppBasicMenuActivity {
 
+    String timer;
+    Date now = new Date();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.auction_activity);
+        setContentView(R.layout.auction_activity
+        );
+
+        //todo: calc the time left timer out time left in btn and validate
+        Bundle endTime = getIntent().getExtras();
+        if (endTime != null)
+        timer = endTime.getString("STRING_End_Date_to_Active_Calc");
+
 
         Bundle b = getIntent().getExtras();
         Auction a = (Auction)b.get("Auction");
@@ -48,6 +60,8 @@ public class AuctionActivity extends AppBasicMenuActivity {
         ListView customListView = (ListView) findViewById(R.id.auction_items_ListView);
         customListView.setAdapter(customListAdapter);
         getAuctionItems(this.getApplicationContext(), a);
+//        customListView.notifyDataSetChanged();
+
     }
 
     protected void getAuctionItems(final Context ctx, final Auction a){

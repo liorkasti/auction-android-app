@@ -26,6 +26,7 @@ public class CalendarActivity extends AppBasicMenuActivity{
         setContentView(R.layout.calendar_layout);
 
         mCalenderView = (CalendarView) findViewById(R.id.calendarView);
+        mCalenderView.setMinDate(System.currentTimeMillis() - 1000);
 
         mCalenderView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override

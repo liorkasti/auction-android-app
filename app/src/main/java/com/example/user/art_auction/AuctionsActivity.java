@@ -111,67 +111,14 @@ public class AuctionsActivity extends AppBasicMenuActivity {
         RequestQueueSingleton.getInstance(AuctionsActivity.this).addToRequestQue(request);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        RelativeLayout main_view = (RelativeLayout) findViewById(R.id.main_view);
-
-        switch (item.getItemId()) {
-            case R.id.menu_level1: {
-                if (item.isChecked())
-                    item.setChecked(false);
-                else
-                    item.setChecked(true);
-
-                Intent myIntent = new Intent(AuctionsActivity.this, MainActivity.class);
-                startActivity(myIntent);
-                return true;
-            }
-
-            case R.id.menu_level2: {
-                if (item.isChecked())
-                    item.setChecked(false);
-                else
-                    item.setChecked(true);
-
-                Intent myIntent = new Intent(AuctionsActivity.this, AuctionsActivity.class);
-                startActivity(myIntent);
-                return true;
-            }
-
-            case R.id.menu_level3: {
-                if (item.isChecked())
-                    item.setChecked(false);
-                else
-                    item.setChecked(true);
-
-                Intent myIntent = new Intent(AuctionsActivity.this, SignUpActivity.class);
-                startActivity(myIntent);
-                return true;
-            }
-            case R.id.menu_level4: {
-                if (item.isChecked())
-                    item.setChecked(false);
-                else
-                    item.setChecked(true);
-
-                Intent myIntent = new Intent(AuctionsActivity.this, MyUserActivity.class);
-                startActivity(myIntent);
-                return true;
-            }
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
     public void startMain(View view) {
         Intent myIntent = new Intent(AuctionsActivity.this, MainActivity.class);
+        startActivity(myIntent);
+    }
+
+    public void sign_in_intent(View view) {
+
+        Intent myIntent = new Intent(AuctionsActivity.this, LogInActivity.class);
         startActivity(myIntent);
     }
 }
