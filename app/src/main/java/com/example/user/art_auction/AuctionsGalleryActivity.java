@@ -3,13 +3,9 @@ package com.example.user.art_auction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -30,10 +26,9 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 
-public class AuctionsActivity extends AppBasicMenuActivity {
+public class AuctionsGalleryActivity extends AppBasicMenuActivity {
 
 
     String timer;
@@ -41,14 +36,9 @@ public class AuctionsActivity extends AppBasicMenuActivity {
     Thread t;
 
     @Override
-    public boolean onMenuOpened(int featureId, Menu menu) {
-        return super.onMenuOpened(featureId, menu);
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_activity);
+        setContentView(R.layout.auctions_gallery_activity);
 
         ArrayList<Auction> auctions = new ArrayList<>();
         final ListAdapter customListAdapter = new AuctionCustomAdapter(this, auctions.toArray(new Auction[auctions.size()]));// Pass the auction arrary to the constructor.
@@ -77,18 +67,19 @@ public class AuctionsActivity extends AppBasicMenuActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         String auctions = String.valueOf(parent.getItemAtPosition(position));
-                        Toast.makeText(AuctionsActivity.this, "Hi", Toast.LENGTH_LONG).show();
+                        Toast.makeText(AuctionsGalleryActivity.this, "Hi", Toast.LENGTH_LONG).show();
                     }
                 }
         );
 
-        if(UserSessionSingleton.getInstance(AuctionsActivity.this).isLoggedIn()) {
-            Button but = (Button) findViewById(R.id.sign_in_button);
+
+        if(UserSessionSingleton.getInstance(AuctionsGalleryActivity.this).isLoggedIn()) {
+            Button but = (Button) findViewById(R.id.sign_in_btn);
             but.setText("My Bids");
             but.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent myIntent = new Intent(AuctionsActivity.this, UserBidsActivity.class);
+                    Intent myIntent = new Intent(AuctionsGalleryActivity.this, UserBidsActivity.class);
                     startActivity(myIntent);
                 }
             });
@@ -142,17 +133,17 @@ public class AuctionsActivity extends AppBasicMenuActivity {
                 Toast.makeText(ctx, "Error" + body + "\nWTF", Toast.LENGTH_LONG).show();
             }
         });
-        RequestQueueSingleton.getInstance(AuctionsActivity.this).addToRequestQue(request);
+        RequestQueueSingleton.getInstance(AuctionsGalleryActivity.this).addToRequestQue(request);
     }
 
     public void startMain(View view) {
-        Intent myIntent = new Intent(AuctionsActivity.this, MainActivity.class);
+        Intent myIntent = new Intent(AuctionsGalleryActivity.this, MainActivity.class);
         startActivity(myIntent);
     }
 
 
     public void gotoLogin(View view) {
-        Intent myIntent = new Intent(AuctionsActivity.this, LogInActivity.class);
+        Intent myIntent = new Intent(AuctionsGalleryActivity.this, LogInActivity.class);
         startActivity(myIntent);
     }
 }

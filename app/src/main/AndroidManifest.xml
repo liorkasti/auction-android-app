@@ -38,7 +38,7 @@
         <!--<activity android:name=".AddUserActivity" />-->
         <activity android:name=".ItemActivity" />
         <activity android:name=".AuctionActivity" />
-        <activity android:name=".AuctionsActivity" />
+        <activity android:name=".AuctionsGalleryActivity" />
         <activity android:name=".LogInActivity" />
         <activity android:name=".AddAuctionItemActivity"/>
         <activity android:name=".CalendarActivity" />

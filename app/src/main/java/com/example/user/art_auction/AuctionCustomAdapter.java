@@ -56,21 +56,21 @@ class AuctionCustomAdapter extends ArrayAdapter<Auction> {
         endAuction = singleAuctionItem.getEndAuction();
 
 
-        Button b2 = (Button) customView.findViewById(R.id.timer_btn);
-        String dateDiff;
-        if (now.after(startAuction) && now.before(endAuction)) {
-//            b2.setBackgroundColor("00aeff");
-            b2.setClickable(false);
-            dateDiff = getDateDiff(now, endAuction);
-            b2.setText("Ends in: " + dateDiff);
-        }
-        else if (now.after(startAuction) && now.after(endAuction)){
-            dateDiff = getDateDiff(startAuction,now);
-            b2.setText("Starts in: " + dateDiff);
-        }
-        else {
-            b2.setClickable(false);
-        }
+//        Button b2 = (Button) customView.findViewById(R.id.timer_btn);
+//        String dateDiff;
+//        if (now.after(startAuction) && now.before(endAuction)) {
+////            b2.setBackgroundColor("00aeff");
+//            b2.setClickable(false);
+//            dateDiff = getDateDiff(now, endAuction);
+//            b2.setText("Ends in: " + dateDiff);
+//        }
+//        else if (now.after(startAuction) && now.after(endAuction)){
+//            dateDiff = getDateDiff(startAuction,now);
+//            b2.setText("Starts in: " + dateDiff);
+//        }
+//        else {
+//            b2.setClickable(false);
+//        }
 
         /*todo: refresh active by dateDiff getView every second
             // Create the Handler object (on the main thread by default)

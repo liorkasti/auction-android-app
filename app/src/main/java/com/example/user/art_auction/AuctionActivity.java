@@ -101,4 +101,10 @@ public class AuctionActivity extends AppBasicMenuActivity {
         });
         RequestQueueSingleton.getInstance(AuctionActivity.this).addToRequestQue(request);
     }
+
+    public void gotoLogin(View view) {
+        Intent myIntent = new Intent(AuctionActivity.this, LogInActivity.class);
+        startActivity(myIntent);
+    }
+
 }

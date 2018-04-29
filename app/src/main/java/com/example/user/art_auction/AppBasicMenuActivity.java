@@ -43,7 +43,7 @@ public class AppBasicMenuActivity extends AppCompatActivity {
                 else
                     item.setChecked(true);
 
-                Intent myIntent = new Intent(AppBasicMenuActivity.this, AuctionsActivity.class);
+                Intent myIntent = new Intent(AppBasicMenuActivity.this, AuctionsGalleryActivity.class);
                 startActivity(myIntent);
                 return true;
             }

@@ -2,30 +2,38 @@
 package com.example.user.art_auction;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 
-public class MainActivity extends AppBasicMenuActivity{
+public class MainActivity extends AppBasicMenuActivity {
 
     private static final String TAG = "Messeges";
 
     EditText userNameET;
 
-    Button bt_go_to_auctions, bt2, bt_log_in, bt_add_auction, bt_add_item, bt_test_rest,bt_my_active_auctions;
+    Button bt_go_to_auctions, bt2, bt_log_in, bt_add_auction, bt_add_item, bt_test_rest, bt_my_active_auctions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,25 +43,31 @@ public class MainActivity extends AppBasicMenuActivity{
 
 //        Log.i(TAG, "onCreate");
 
-        userNameET = (EditText) findViewById(R.id.userName);
+        userNameET = (EditText) findViewById(R.id.userNameMainET);
         Intent incomingIntent = getIntent();
 //        set the userName
-        String MSGuserName = incomingIntent.getStringExtra("STRING_User_Name");
+        String MSGuserName = incomingIntent.getStringExtra("userName");
         if (MSGuserName == null) {
         } else {
             MSGuserName = "Hello: " + incomingIntent.getStringExtra("userName");
-            Log.i(TAG, "userName: " + MSGuserName);
             userNameET.setText(MSGuserName);
         }
-
         bt_go_to_auctions = (Button) findViewById(R.id.guest_btn);
         bt_go_to_auctions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, AuctionsActivity.class);
+                Intent myIntent = new Intent(MainActivity.this, AuctionsGalleryActivity.class);
                 startActivity(myIntent);
             }
         });
+
+//        String MSGuserName = getData(rest);
+//        if (UserSessionSingleton.getInstance(MainActivity.this).isLoggedIn()) {
+//        } else {
+//            MSGuserName = "Hello: " + MSGuserName;
+//            Log.i(TAG, "userName: " + MSGuserName);
+//            userNameET.setText(MSGuserName);
+//        }
 
 
 //        bt_add_item = (Button) findViewById(R.id.add_item_btn);
@@ -110,11 +124,54 @@ public class MainActivity extends AppBasicMenuActivity{
 
     }
 
-    public void getData(View view) {
-//        SharedPreferences loginData = LogInActivity.getSharedPreferences("userInfo", Context.MODE_PRIVATE);
-//        String name = loginData.getString("userName", "");
-//        dataView.setText(msg);
-    }
+
+//    protected String getData(final ServerRestConsumer ctx) {
+//        String url = "http://10.0.2.2:8080/user/";
+//        final StringRequest request = new StringRequest(Request.Method.GET, url,
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        //set the id from response as session id
+//                        JSONObject jsonResponse = null;
+//                        ObjectMapper mapper = new ObjectMapper();
+//                        try {
+//                            JSONArray contacts = new JSONArray(response);
+//                            ArrayList<User> users = new ArrayList<>();
+//                            // looping through All Contacts
+//                            for (int i = 0; i < contacts.length(); i++) {
+//                                JSONObject c = contacts.getJSONObject(i);
+//                                User obj = mapper.readValue(c.toString(), User.class);
+//
+//                                users.add(obj);
+//
+//                            }
+//
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        } catch (JsonParseException e) {
+//                            e.printStackTrace();
+//                        } catch (JsonMappingException e) {
+//                            e.printStackTrace();
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
+//                        }
+////                        String rest = rest.setUser().getFistName();
+//                    }
+//                }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                String body = "";
+//                try {
+//                    body = new String(error.networkResponse.data, "UTF-8");
+//                } catch (UnsupportedEncodingException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
+//        RequestQueueSingleton.getInstance(MainActivity.this).addToRequestQue(request);
+//
+//        return rest;
+//    }
 
     @Override
     protected void onResume() {

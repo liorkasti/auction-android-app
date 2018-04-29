@@ -1,15 +1,9 @@
 package com.example.user.art_auction;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Parcelable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.view.View;
@@ -91,7 +85,7 @@ public class LogInActivity extends AppBasicMenuActivity {
                             e.printStackTrace();
                         }
                         UserSessionSingleton.getInstance(LogInActivity.this).loginUser(obj.getId().toString());
-                        Intent myIntent = new Intent(LogInActivity.this, AuctionsActivity.class);
+                        Intent myIntent = new Intent(LogInActivity.this, AuctionsGalleryActivity.class);
                         startActivity(myIntent);
                     }
                 }, new Response.ErrorListener() {
