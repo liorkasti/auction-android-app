@@ -100,14 +100,11 @@ public class LogInActivity extends AppBasicMenuActivity {
                     e.printStackTrace();
                 }
                 Toast.makeText(view.getContext(), "Error" + body + "\nUsing MOCK", Toast.LENGTH_LONG).show();
-                UserSessionSingleton.getInstance(LogInActivity.this).loginUser("10000");
             }
         }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> params2 = new HashMap<String, String>();
-                //params2.put("fName", "Anton");
-                //params2.put("lName", "Lerner");
                 params2.put("email", userName.getText().toString());
                 params2.put("password", password.getText().toString());
                 return params2;
@@ -123,24 +120,6 @@ public class LogInActivity extends AppBasicMenuActivity {
         RequestQueueSingleton.getInstance(LogInActivity.this).addToRequestQue(request);
 
         Toast.makeText(this, "Saved", Toast.LENGTH_LONG).show();
-        //todo:
-        Log.i(TAG, "userName: " + userName);
-
-        Intent myIntent = new Intent(LogInActivity.this, MainActivity.class);
-        myIntent.putExtra("STRING_User_Name", (Serializable) userName);
-        startActivity(myIntent);
-
-
-        /*btGoBackToMain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent returnIntent = new Intent(LogInActivity.this, MainActivity.class);
-                returnIntent.putExtra("userName", (Parcelable) userName);
-                setResult(Activity.RESULT_OK,returnIntent);
-                finish();
-                Log.i(TAG, "sign in and go to main");
-            }
-        });*/
     }
 
     public void goSignUP(View view) {

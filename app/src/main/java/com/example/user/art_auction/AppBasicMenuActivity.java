@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 /**
@@ -63,8 +65,13 @@ public class AppBasicMenuActivity extends AppCompatActivity {
                     item.setChecked(false);
                 else
                     item.setChecked(true);
+                if (UserSessionSingleton.getInstance(AppBasicMenuActivity.this).isLoggedIn()) {
+                    Intent myIntent = new Intent(AppBasicMenuActivity.this, MyUserActivity.class);
+                    startActivity(myIntent);
+                    return true;
+                }
 
-                Intent myIntent = new Intent(AppBasicMenuActivity.this, MyUserActivity.class);
+                Intent myIntent = new Intent(AppBasicMenuActivity.this, LogInActivity.class);
                 startActivity(myIntent);
                 return true;
             }

@@ -43,8 +43,7 @@ public class AuctionActivity extends AppBasicMenuActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.auction_activity
-        );
+        setContentView(R.layout.auction_activity);
 
         Bundle endTime = getIntent().getExtras();
         if (endTime != null)

@@ -4,11 +4,12 @@ package com.example.user.art_auction;
  * Created by user on 14/10/2017.
  */
 
+import java.io.Serializable;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class User {
+public class User implements Serializable {
     private String firstName;
     private String lastName;
     private String password;

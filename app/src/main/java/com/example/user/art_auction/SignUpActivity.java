@@ -51,9 +51,8 @@ public class SignUpActivity extends AppBasicMenuActivity {
 
     }
 
-    // Lesson 64
-    //Save login info
     public void saveData(final View view) {
+        //todo: if login display Save login info
         SharedPreferences loginData = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = loginData.edit();
         editor.putString("First Name", firstName.getText().toString());
@@ -68,7 +67,7 @@ public class SignUpActivity extends AppBasicMenuActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Intent myIntent = new Intent(SignUpActivity.this, AuctionActivity.class);
+                        Intent myIntent = new Intent(SignUpActivity.this, AuctionsGalleryActivity.class);
                         startActivity(myIntent);
                         //Toast.makeText(view.getContext(), "ok " + response, Toast.LENGTH_LONG);
                     }

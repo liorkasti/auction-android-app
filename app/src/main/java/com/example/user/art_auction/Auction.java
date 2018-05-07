@@ -13,7 +13,6 @@ class Auction implements Serializable{
         private long id;
         private String title;
         private String description;
-//        private String type;
         private Date startAuction;
         private Date endAuction;
         private String auctionType;
@@ -21,7 +20,6 @@ class Auction implements Serializable{
         private User owner;
         private boolean silentAuction;
 
-        //list of bidders?
 
 
         public Auction() {

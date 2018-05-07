@@ -45,18 +45,6 @@
                 android:text="Item Name"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
-            <!--<TextView-->
-            <!--android:id="@+id/auction_name_text_text"-->
-
-            <!--style="@style/AuctionAppTheme.BasicTextView"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_column="0"-->
-            <!--android:layout_margin="5dp"-->
-            <!--android:layout_row="0"-->
-            <!--android:layout_weight="1"-->
-            <!--android:text="Auction Name"-->
-            <!--android:textAppearance="?android:attr/textAppearanceLarge" />-->
         </LinearLayout>
 
         <LinearLayout
@@ -117,6 +105,17 @@
                 android:layout_row="0"
                 android:layout_weight="1"
                 android:text="price"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+            <TextView
+                android:id="@+id/item_bid_won"
+                style="@style/AuctionAppTheme.BasicTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_margin="5dp"
+                android:layout_row="0"
+                android:layout_weight="1"
+                android:text="Not Closed"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
         </LinearLayout>
 
